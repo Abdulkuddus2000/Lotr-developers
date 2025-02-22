@@ -1,0 +1,76 @@
+/* om de css variabelen en de fonts te kunnen gebruiken moet je ze importeren: */
+@import url('variables.css');
+
+
+/* body */
+body{
+    background: var(--zwart);
+}
+
+/* title */
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    color: wheat;
+    font-size: 30px;
+}
+
+/* navigation */
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 10px 20px;
+}
+
+ul{
+    display: flex;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li{
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    transition: transform 0.3s ease, font-size 0.3s;
+}
+
+li:hover{
+    /* background: red; */
+    font-size: 21px;
+    transform: scale(1.2);
+}
+
+li a{
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    color: white;
+}
+
+/* main */
+main{
+    flex: 1;
+    height: 100vh;
+}
+
+/* footer */
+footer{
+    color: wheat;
+    height: auto;
+    text-align: center;
+    margin: 10px;
+    padding: 10px;
+    font-size: 10px;
+}
