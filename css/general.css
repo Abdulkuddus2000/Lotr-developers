@@ -1,7 +1,6 @@
 /* om de css variabelen en de fonts te kunnen gebruiken moet je ze importeren: */
 @import url('variables.css');
 
-
 /* body */
 body{
     background: var(--zwart);
@@ -40,7 +39,6 @@ li{
 }
 
 li:hover{
-    /* background: red; */
     font-size: 21px;
     transform: scale(1.2);
 }
