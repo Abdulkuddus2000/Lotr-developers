@@ -41,3 +41,18 @@ function showMessage(text, color) {
   // Voeg het bericht toe aan <main>
   main.appendChild(pEl);
 }
+
+// toggle visbility password
+function togglePasswordVisibility(event) {
+  let password = document.querySelector(".eyeIcon").target.previousSibling; // geklikte icon opvragen
+
+  if (passwordInput.type === "password") {
+    password.type = "text";
+    eyeIcon.classList.remove("fa-eye");
+    eyeIcon.classList.add("fa-eye-slash");
+  } else {
+    password.type = "password";
+    eyeIcon.classList.remove("fa-eye-slash");
+    eyeIcon.classList.add("fa-eye");
+  }
+}
