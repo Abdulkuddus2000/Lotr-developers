@@ -43,16 +43,20 @@ function showMessage(text, color) {
 }
 
 // toggle visbility password
-function togglePasswordVisibility(event) {
-  let password = document.querySelector(".eyeIcon").target.previousSibling; // geklikte icon opvragen
+function togglePasswordOnMouseDown(event) {
+  let password = event.target.previousElementSibling; // geklikte icon ogen
+  let eyeIcon = event.target;
 
-  if (passwordInput.type === "password") {
-    password.type = "text";
-    eyeIcon.classList.remove("fa-eye");
-    eyeIcon.classList.add("fa-eye-slash");
-  } else {
-    password.type = "password";
-    eyeIcon.classList.remove("fa-eye-slash");
-    eyeIcon.classList.add("fa-eye");
-  }
+  password.type = "text";
+  eyeIcon.classList.remove("fa-eye");
+  eyeIcon.classList.add("fa-eye-slash");
+}
+
+function togglePasswordOnMouseUp(event) {
+  let password = event.target.previousElementSibling; // geklikte icon ogen
+  let eyeIcon = event.target;
+
+  password.type = "password";
+  eyeIcon.classList.remove("fa-eye-slash");
+  eyeIcon.classList.add("fa-eye");
 }
