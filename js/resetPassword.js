@@ -46,7 +46,7 @@ function showMessage(text, color) {
 function togglePasswordVisibility(event) {
   let password = document.querySelector(".eyeIcon").target.previousSibling; // geklikte icon opvragen
 
-  if (passwordInput.type === "password") {
+  if (password.type === "password") {
     password.type = "text";
     eyeIcon.classList.remove("fa-eye");
     eyeIcon.classList.add("fa-eye-slash");
