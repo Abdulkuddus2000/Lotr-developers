@@ -8,7 +8,7 @@ submitButton.addEventListener("click", (event) => {
 
   let existingMessage = document.getElementById("message");
 
-  // verwijder meldingen die er mss al zijn:
+  // verwijder meldingen die er misschien al zijn:
   if (existingMessage) {
     existingMessage.remove();
   }

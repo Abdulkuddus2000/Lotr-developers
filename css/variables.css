@@ -33,6 +33,7 @@
 
 /*fonts*/
 @font-face {
-    font-family: 'Ringbearer Medium';
     src: url("../assets/fonts/RingbearerMedium-51mgZ.ttf");
+    font-family: 'Ringbearer Medium';
+    --lotr-font: 'Ringbearer Medium';
 }
