@@ -1,0 +1,38 @@
+/* kleurenpallet */
+:root{
+    /* Moria en Mordor */
+    --donkergrijs: #2c2c2c;
+    --zwart: #000;
+    --roodbruin: #8b4513;
+    --grijs: #808080;
+    /* Rivendel */
+    --lichtgroen: #90ee90;
+    --goudgeel: #ffd700;
+    --hemelsblauw: #87ceeb;
+    --parelwit: #f5f5f5;
+    /* De Gouw: */
+    --groen: #008000;
+    --beige: #f5f5dc;
+    /* Rohan */
+    --grasgroen: #228B22;
+    --lichtbruin: #A0522D;
+    --Zachtgroen: #98FB98;
+    /* Isengard */
+    --donkergroen: #006400;
+    --lichtgrijs: #D3D3D3;
+    /* Lothlórien */
+    --zilver: #C0C0C0;
+    --donkergroen: #013220;
+    --lichtgoud: #E6BE8A;
+    /* Helm's Deep */
+    --donkerblauw: #00008B;
+    /* Minas Tirith */
+    --wit: #FFFFFF;
+}
+
+
+/*fonts*/
+@font-face {
+    font-family: 'Ringbearer Medium';
+    src: url("../assets/fonts/RingbearerMedium-51mgZ.ttf");
+}
