@@ -8,7 +8,7 @@ submitButton.addEventListener("click", (event) => {
 
   let existingMessage = document.getElementById("message");
 
-  // verwijder meldingen die er mss al zijn:
+  // verwijder meldingen die er misschien al zijn:
   if (existingMessage) {
     existingMessage.remove();
   }
@@ -43,20 +43,16 @@ function showMessage(text, color) {
 }
 
 // toggle visbility password
-function togglePasswordOnMouseDown(event) {
-  let password = event.target.previousElementSibling; // geklikte icon ogen
-  let eyeIcon = event.target;
+function togglePasswordVisibility(event) {
+  let password = document.querySelector(".eyeIcon").target.previousSibling; // geklikte icon opvragen
 
-  password.type = "text";
-  eyeIcon.classList.remove("fa-eye");
-  eyeIcon.classList.add("fa-eye-slash");
-}
-
-function togglePasswordOnMouseUp(event) {
-  let password = event.target.previousElementSibling; // geklikte icon ogen
-  let eyeIcon = event.target;
-
-  password.type = "password";
-  eyeIcon.classList.remove("fa-eye-slash");
-  eyeIcon.classList.add("fa-eye");
+  if (password.type === "password") {
+    password.type = "text";
+    eyeIcon.classList.remove("fa-eye");
+    eyeIcon.classList.add("fa-eye-slash");
+  } else {
+    password.type = "password";
+    eyeIcon.classList.remove("fa-eye-slash");
+    eyeIcon.classList.add("fa-eye");
+  }
 }
