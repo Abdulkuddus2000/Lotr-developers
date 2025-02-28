@@ -2,7 +2,91 @@
 
 
 /* css for account.html */
+.account{
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
 
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px 20px;
+        border-bottom: 1px solid black;
+    }
+
+    .logo {
+        width: 100px;
+        height: 40px;
+        border: 1px solid black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 20px;
+    }
+
+    .user-icon {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }  
+
+    .profile-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 60%;
+        margin-top: 50px;
+        padding: 20px;
+        border: 1px solid black;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+        border: 1px solid black;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 50px;
+    }
+
+    .profile-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 50px;
+    }
+
+    input {
+        padding: 5px;
+        width: 200px;
+    }
+
+    .save-button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        border: 1px solid black;
+        cursor: pointer;
+    }
+}
 /* css for login.html */
 
 /* css for registration.html */
