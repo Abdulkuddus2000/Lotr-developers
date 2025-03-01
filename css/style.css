@@ -16,6 +16,7 @@ footer{
     color: var(--goudgeel);
     text-align: center;
     margin: 2%;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 /* css for landing.html */
@@ -129,6 +130,7 @@ footer{
         margin-left: 20%;
         padding: 5%;
         border-radius: 10px;
+        
     }
     
     label{
@@ -149,7 +151,7 @@ footer{
         color: var(--donkergrijs);
         font-size: 18px;
         margin-left: -5%;
-        opacity: 0.5;
+        opacity: .5;
         cursor: pointer;
     }
 
@@ -226,6 +228,7 @@ footer{
         margin-left: -5%;
         opacity: 0.5;
         cursor: pointer;
+
     }
     
     button {
