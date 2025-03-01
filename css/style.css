@@ -4,17 +4,22 @@ body{
     background-color: black;
 }
 
+h2{
+    margin-bottom: 5%;
+    text-align: center;
+    font-family: 'Ringbearer Medium';
+    color: var(--goudgeel);
+    font-size: 30px;
+}
+
+footer{
+    color: var(--goudgeel);
+    text-align: center;
+    margin: 2%;
+}
 
 /* css for landing.html */
-.landing{
-    h2{
-        margin-bottom: 5%;
-        text-align: center;
-        font-family: 'Ringbearer Medium';
-        color: var(--goudgeel);
-        font-size: 30px;
-    }
-    
+.landing{    
     .gameChoice{
         text-align: center;
         font-weight: bold;
@@ -52,9 +57,10 @@ body{
         cursor: pointer;
         font-size: 18px;
         font-family: Arial, sans-serif;
-        transition: transform 0.3s ease, 
+        transition: transform 0.3s ease,
                     font-size 0.3s;
         background-position: calc(100%-20px) calc(100%-20px);
+        background-size: cover;
     }
     
     .game:hover{
@@ -62,6 +68,10 @@ body{
         opacity: 0.5;
         /* box-shadow: 5px 5px 5px white; x-as, y-as, blur, kleur */
         box-shadow: 0 4px 8px 0 rgb(255, 255, 255), 0 6px 20px 0 rgb(255, 255, 255);
+    }
+
+    .game a{
+        text-decoration: none;
     }
     
     .game p{
@@ -108,27 +118,11 @@ body{
         grid-area: game6;
         background-image: url("../assets/images/pokemon_large.png");
     }
-    
-    footer{
-        margin-top: 10%;
-    }
 }
 
 /* css for registration.html */
 
 .registration{
-
-    body{
-        background: #000;
-    }
-    
-    h2{
-        text-align: center;
-        font-family: 'Ringbearer Medium';
-        color: var(--goudgeel);
-        margin-bottom: 2.5%;
-    }
-    
     form{
         width: 50%;
         background: var(--donkergrijs);
@@ -151,6 +145,14 @@ body{
         opacity: 0.5;
     }
     
+    .eyeIcon{
+        color: var(--donkergrijs);
+        font-size: 18px;
+        margin-left: -5%;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
     .forgot-password{
         margin: 2%;
         color: var(--lichtgrijs);
@@ -196,14 +198,6 @@ body{
 
 /* css for resetPassword.html */
 .resetPassword{
-    
-    h2{
-        text-align: center;
-        font-family: 'Ringbearer Medium';
-        color: var(--goudgeel);
-        margin-bottom: 2.5%;
-    }
-    
     form{
         width: 50%;
         background: var(--donkergrijs);
