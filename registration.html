@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="nl-BE">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/images/logo.png" />
-    <title>Lord Of The Rings - Registratie</title>
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/registration.css">
+    <link rel="stylesheet" href="css/general.css">
 </head>
-
 <body>
     <header>
         <figure>
@@ -20,31 +19,23 @@
         </figure>
     </header>
     <main>
-        <h2>Registreer</h2>
-        <form action="" method="post">
-            <label for="firstname">Gebruikersnaam</label>
-            <input type="text" id="username" name="username" placeholder="John123">
-            <br>
-
-            <label for="password">Wachtwoord</label>
-            <input type="password" id="password" name="password" placeholder="*****">
-            <br>
-
-            <label for="confirm-password">Bevestig uw wachtwoord</label>
-            <input type="password" id="confirm-password" name="confirm-password" placeholder="*****">
-            <br>
-
-            <a href="resetPassword.html">
-                <p class="forgot-password">Wachtwoord vergeten?</p>
-            </a>
-            <br>
-
-            <button type="submit">Bevestig</button>
-        </form>
+        <h1 class="L">  Registratie</h1>
+        <div class="Reg-clean">
+            <form method="post">
+                <h2 class="sr-only">Login Form</h2>
+                <div class="illustration"><img src="assets/images/logo_new_bg_fixed.png" alt=""></div>
+                <div class="form-group"><input class="form-control" type="gebruikersnaam" name="gebruikersnaam" placeholder="gebruikersnaam"></div>
+                <div class="form-group"><input class="form-control" type="paswoord" name="paswoord" placeholder="Paswoord"></div>
+                <div class="form-group"><input class="form-control" type="bevestig paswoord" name="bevestig paswoord" placeholder="bevestig paswoord"></div>
+                <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Registreer</button></div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+        
     </main>
     <footer>
         &copy; Copyright WPL Projects 2024-2025
     </footer>
-</body>
 
+</body>
 </html>
