@@ -10,6 +10,9 @@ h2{
     font-family: 'Ringbearer Medium';
     color: var(--goudgeel);
     font-size: 30px;
+
+    /* dit stukje geeft de tekst weer in boogvorm */
+    
 }
 
 footer{
