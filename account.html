@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl-BE">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Account</title>
-    <link rel="stylesheet" href="css/user.css" />
-    <link rel="stylesheet" href="css/general.css" />
+    <title>Lord Of The Rings - Account</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body class="account">
     <header class="navbar">
@@ -16,23 +16,39 @@
           height="100px"
         />
       </a>
-      <section class="nav-links">
-        <a href="index.html">HOME</a>
-        <a href="favorites.html">FAV</a>
-        <a href="blacklist.html">BLACKLIST</a>
-      </section>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="favorites.html">Favorieten</a></li>
+          <li><a href="blacklist.html">Blacklist</a></li>
+        </ul>
+      </nav>
       <div class="user-icon">&#128100;</div>
     </header>
 
-    <section class="profile-container">
-      <section class="profile-photo">FOTO</section>
-      <section class="profile-info">
-        <input type="text" placeholder="username" />
-        <input type="email" placeholder="e-mail" />
-        <input type="password" placeholder="password" />
-        <input type="text" placeholder="bio" />
-        <button class="save-button">SAVE</button>
+    <main>
+      <h2>Uw account gegevens</h2>
+      <section class="profile-container">
+        <section class="profile-photo">FOTO</section>
+        <section class="profile-info">
+          <input type="text" placeholder="username" />
+          <input type="email" placeholder="e-mail" />
+          <input type="password" placeholder="password" />
+          <textarea
+            name=""
+            id=""
+            rows="4"
+            cols="10"
+            placeholder="uw bio"
+          ></textarea>
+          <button>SAVE</button>
+        </section>
       </section>
-    </section>
+    </main>
+
+    <footer>
+      &copy; Copyright WPL Projects 2024-2025 - Abdul Kosimov, Hakki Turaç,
+      Metin Molov, Nabil Habrani
+    </footer>
   </body>
 </html>

@@ -8,7 +8,7 @@ submitButton.addEventListener("click", (event) => {
 
   let existingMessage = document.getElementById("message");
 
-  // verwijder meldingen die er misschien al zijn:
+  // verwijder meldingen die er mss al zijn:
   if (existingMessage) {
     existingMessage.remove();
   }
@@ -43,15 +43,37 @@ function showMessage(text, color) {
 }
 
 // toggle visbility password
-function togglePasswordVisibility(event) {
-  let password = document.querySelector(".eyeIcon").target.previousSibling; // geklikte icon opvragen
+function toggleVisibillityOnMouseDown(event) {
+  // let password = event.target.previousElementSibling; // geklikte icon opvragen
+  // let eyeIcon = password.target;
 
-  if (password.type === "password") {
-    password.type = "text";
+  // password.type = "text";
+  // eyeIcon.classList.remove("fa-eye");
+  // eyeIcon.classList.add("fa-eye-slash");
+
+  let passwordInput = event.target.previousElementSibling; // Selecteer het wachtwoordveld
+  let eyeIcon = event.target; // Selecteer het geklikte oog-icoon
+
+  if (passwordInput && passwordInput.tagName === "INPUT") {
+    passwordInput.type = "text";
     eyeIcon.classList.remove("fa-eye");
     eyeIcon.classList.add("fa-eye-slash");
-  } else {
-    password.type = "password";
+  }
+}
+
+function toggleVisibillityOnMouseUp(event) {
+  // let password = event.target.previousElementSibling;
+  // let eyeIcon = password.target;
+
+  // password.type = "password";
+  // eyeIcon.classList.remove("fa-eye-slash");
+  // eyeIcon.classList.add("fa-eye");
+
+  let passwordInput = event.target.previousElementSibling; // Selecteer het wachtwoordveld
+  let eyeIcon = event.target; // Selecteer het geklikte oog-icoon
+
+  if (passwordInput && passwordInput.tagName === "INPUT") {
+    passwordInput.type = "password";
     eyeIcon.classList.remove("fa-eye-slash");
     eyeIcon.classList.add("fa-eye");
   }
