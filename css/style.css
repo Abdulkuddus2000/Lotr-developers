@@ -1,0 +1,524 @@
+@import url("variables.css");
+
+
+/* general css */
+body{
+    background-color: black;
+}
+
+h2{
+    margin-bottom: 5%;
+    text-align: center;
+    font-family: 'Ringbearer Medium';
+    color: var(--goudgeel);
+    font-size: 30px;
+}
+
+footer{
+    color: var(--goudgeel);
+    text-align: center;
+    margin: 2%;
+}
+
+/* css for landing.html */
+.landing{    
+    .gameChoice{
+        text-align: center;
+        font-weight: bold;
+    }
+    
+    /* main */
+    .games-list{
+        height: 100vh;
+    }
+    
+    .games{
+        display: grid;
+        grid-template-columns: 2;
+        grid-template-rows: 3;
+        grid-template-areas: 
+        "game1 game2"
+        "game3 game4"
+        "game5 game6";
+        grid-gap: 10px;
+        margin-left: 10%;
+        margin: 1% 0 0 20%;
+        height: 100%;
+    }
+    
+    .game{
+        display: flex;
+        justify-content: center;
+        border-radius: 10px;
+        align-items: center;
+        background: #002b7b;
+        width: calc(50%-20px);
+        max-width: 300px;
+        height: 150px;
+        border: 3px solid #007BFF;
+        cursor: pointer;
+        font-size: 18px;
+        font-family: Arial, sans-serif;
+        transition: transform 0.3s ease,
+                    font-size 0.3s;
+        background-position: calc(100%-20px) calc(100%-20px);
+        background-size: cover;
+    }
+    
+    .game:hover{
+        transform: scale(1.1);
+        opacity: 0.5;
+        /* box-shadow: 5px 5px 5px white; x-as, y-as, blur, kleur */
+        box-shadow: 0 4px 8px 0 rgb(255, 255, 255), 0 6px 20px 0 rgb(255, 255, 255);
+    }
+
+    .game a{
+        text-decoration: none;
+    }
+    
+    .game p{
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        transition: transform 0.3s ease, 
+                    font-size 0.3s;
+        text-decoration: none;
+    }
+    
+    .game .source{
+        position: absolute;
+        font-size: 12px;
+        margin-bottom: -130px;
+        margin-left: 170px;
+        /* margin-left: calc(50%+100px); */
+    }
+    
+    .game1{
+        grid-area: game1;
+        background-image: url("../assets/images/image1_large.png");
+        
+    }
+    .game2{
+        grid-area: game2;
+        background-image: url("../assets/images/fifa_large.png");
+    }
+    .game3{
+        grid-area: game3;
+        background-image: url("../assets/images/fortnite_large.png");
+    }
+    .game4{
+        grid-area: game4;
+        background-image: url("../assets/images/legoMaster_large.png");
+    }
+    
+    .game5{
+        grid-area: game5;
+        background-image: url("../assets/images/mtg_large.png");
+    }
+    
+    .game6{
+        grid-area: game6;
+        background-image: url("../assets/images/pokemon_large.png");
+    }
+}
+
+/* css for registration.html */
+
+.registration{
+    form{
+        width: 50%;
+        background: var(--donkergrijs);
+        margin-left: 20%;
+        padding: 5%;
+        border-radius: 10px;
+    }
+    
+    label{
+        margin-right: 25%;
+        color: var(--parelwit);
+    }
+    
+    input{
+        margin-top: -15px;
+        margin-left: 60%;
+    }
+    
+    input::placeholder{
+        opacity: 0.5;
+    }
+    
+    .eyeIcon{
+        color: var(--donkergrijs);
+        font-size: 18px;
+        margin-left: -5%;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+
+    .forgot-password{
+        margin: 2%;
+        color: var(--lichtgrijs);
+        font-family: "Arial";
+        font-size: 12px;
+        margin-left: 60%;
+        text-decoration: none;
+    }
+    
+    .forgot-password:hover{
+        color: var(--hemelsblauw);
+    }
+    
+    button {
+        height: 40px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--goudgeel), var(--lichtgrijs));
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+    
+    button:hover {
+        background: linear-gradient(135deg, var(--lichtgrijs), var(--goudgeel));
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    button:active {
+        transform: scale(0.95);
+    }
+}
+
+
+/* css for resetPassword.html */
+.resetPassword{
+    form{
+        width: 50%;
+        background: var(--donkergrijs);
+        margin-left: 20%;
+        padding: 5%;
+        border-radius: 10px;
+    }
+    
+    label{
+        margin-right: 25%;
+        color: var(--parelwit);
+    }
+    
+    input{
+        margin-top: -15px;
+        margin-left: 60%;
+    }
+    
+    input::placeholder{
+        opacity: 0.5;
+    }
+    
+    .eyeIcon{
+        color: var(--donkergrijs);
+        font-size: 18px;
+        margin-left: -5%;
+        opacity: 0.5;
+        cursor: pointer;
+    }
+    
+    button {
+        height: 40px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--goudgeel), var(--lichtgrijs));
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 3% auto;
+    }
+    
+    button:hover {
+        background: linear-gradient(135deg, var(--lichtgrijs), var(--goudgeel));
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    button:active {
+        transform: scale(0.95);
+    }
+}
+
+
+
+
+/* css for login.html */
+/* css for index.html */
+.index {
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        
+        margin: 0;
+        padding: 0;
+        background-color: #f8f4e3; 
+    }
+    
+    header {
+        background:black; 
+        color: #d4c29a; 
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+    }
+    
+    .logo img {
+        width: 100px;
+    }
+    
+    .login-icon {
+        margin-left: 450px;
+    }
+    .login-icon img {
+        filter: brightness(0) saturate(100%) invert(76%) sepia(100%) saturate(0%) hue-rotate(24deg) brightness(103%) contrast(101%); 
+        
+    }
+    
+    
+    nav ul {
+        list-style-type: none; 
+        display: flex; 
+        
+        justify-content: space-between;
+        padding: 0; 
+        margin: 0; 
+        width: 100%;
+    }
+    
+    nav ul li {
+        margin-left: 20px; 
+    }
+    
+    nav ul li a {
+        font-family: 'Ringbearer Medium';
+        color:var(--goudgeel); 
+        text-decoration: none; 
+        font-weight: bold; 
+    }
+    
+    nav ul li a:hover {
+        text-decoration: underline; 
+        color:var(--goudgeel); 
+    }
+    
+    main {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        height: 120vh; 
+        background-image: url(../assets/images/banner.png); 
+        background-position: center;
+        background-size: cover;
+        overflow: hidden;
+        
+        
+        
+    }
+    
+    .frontpage {
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    }
+    
+     .h1front {
+        font-family: 'Ringbearer Medium';
+        color: var(--goudgeel);
+        font-size: 3em;
+        margin: 20px;
+        text-align: center;
+        
+    }
+    
+    button {
+        font-family: 'Ringbearer Medium';
+        margin: 10px 0; 
+        background:var(--goudgeel); 
+        color: var(--donkergrijs); 
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background 0.3s, color 0.3s;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+    }
+    
+    button:hover {
+        background: #f1c40f; 
+        color: #3e3b32; 
+    }
+    
+    footer {
+        text-align: center;
+        padding: 1px;
+        background: black; 
+        color:var(--goudgeel); 
+    }
+    
+    .back-to-top {
+        color: var(--goudgeel); 
+        text-decoration: none;
+    }
+    
+    .back-to-top:hover {
+        text-decoration: underline;
+        color: #f1c40f; 
+    }
+    
+}
+
+/* css for quiz.html */
+/* css for favoriteCharacter.html */
+
+
+/* css for favorite-character.html */
+/* css for blacklist.html */
+.blacklist {
+    header {
+        background: black; 
+        color: #d4c29a; 
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+    }
+    
+    .logo img {
+        width: 100px;
+    }
+    
+    .login-icon {
+        margin-left: 450px;
+    }
+    
+    .login-icon img {
+        filter: brightness(0) saturate(100%) invert(76%) sepia(100%) saturate(0%) hue-rotate(24deg) brightness(103%) contrast(101%); 
+    }
+    
+    nav ul {
+        list-style-type: none; 
+        display: flex; 
+        justify-content: space-between;
+        padding: 0; 
+        margin: 0; 
+        width: 100%;
+    }
+    
+    nav ul li {
+        margin-left: 20px; 
+    }
+    
+    nav ul li a {
+        font-family: 'Ringbearer Medium';
+        color: var(--goudgeel); 
+        text-decoration: none; 
+        font-weight: bold; 
+    }
+    
+    nav ul li a:hover {
+        text-decoration: underline; 
+        color: var(--goudgeel); 
+    }
+
+    main {
+        flex: 1; 
+        display: flex; 
+        justify-content: center; 
+        align-items: flex-start; 
+        background-color: var(--donkergrijs); 
+        flex-direction: column; 
+        padding: 20px; 
+    }
+
+    h2 {
+        text-align: center; 
+        margin-bottom: 20px; 
+        color: var(--goudgeel); 
+    }
+
+    select {
+        width: 100%; 
+        padding: 10px;
+        border-radius: 5px; 
+        border: 1px solid #555; 
+        background-color: #444; 
+        color: #ffffff; 
+        margin-bottom: 20px; 
+    }
+
+    .blacklist-item {
+        display: flex;
+        justify-content: space-between; 
+        align-items: center; 
+        color: var(--parelwit);
+        padding: 10px;
+        width: 100%; 
+        border-bottom: 1px solid #555; 
+    }
+
+    .edit-button {
+        background-color: var(--goudgeel); 
+        color: brown; 
+        border: none; 
+        padding: 5px 10px; 
+        border-radius: 5px; 
+        cursor: pointer; 
+        margin-left: auto; 
+    }
+
+    .eidt-button:hover {
+        background-color: var(--lichtgrijs); 
+    }
+
+    footer {
+        text-align: center;
+        padding: 1px;
+        background: black; 
+        color: var(--goudgeel); 
+    }
+    
+    .back-to-top {
+        color: var(--goudgeel); 
+        text-decoration: none;
+    }
+    
+    .back-to-top:hover {
+        text-decoration: underline;
+        color: var(--goudgeel); 
+    }
+}
+
+
+
+
+/* css for account.html */
+
+

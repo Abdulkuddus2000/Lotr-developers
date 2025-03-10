@@ -43,6 +43,7 @@ function showMessage(text, color) {
 }
 
 // toggle visbility password
+<<<<<<< HEAD
 function togglePasswordOnMouseDown(event) {
   let password = event.target.previousElementSibling; // geklikte icon ogen
   let eyeIcon = event.target;
@@ -59,4 +60,40 @@ function togglePasswordOnMouseUp(event) {
   password.type = "password";
   eyeIcon.classList.remove("fa-eye-slash");
   eyeIcon.classList.add("fa-eye");
+=======
+function toggleVisibillityOnMouseDown(event) {
+  // let password = event.target.previousElementSibling; // geklikte icon opvragen
+  // let eyeIcon = password.target;
+
+  // password.type = "text";
+  // eyeIcon.classList.remove("fa-eye");
+  // eyeIcon.classList.add("fa-eye-slash");
+
+  let passwordInput = event.target.previousElementSibling; // Selecteer het wachtwoordveld
+  let eyeIcon = event.target; // Selecteer het geklikte oog-icoon
+
+  if (passwordInput && passwordInput.tagName === "INPUT") {
+    passwordInput.type = "text";
+    eyeIcon.classList.remove("fa-eye");
+    eyeIcon.classList.add("fa-eye-slash");
+  }
+}
+
+function toggleVisibillityOnMouseUp(event) {
+  // let password = event.target.previousElementSibling;
+  // let eyeIcon = password.target;
+
+  // password.type = "password";
+  // eyeIcon.classList.remove("fa-eye-slash");
+  // eyeIcon.classList.add("fa-eye");
+
+  let passwordInput = event.target.previousElementSibling; // Selecteer het wachtwoordveld
+  let eyeIcon = event.target; // Selecteer het geklikte oog-icoon
+
+  if (passwordInput && passwordInput.tagName === "INPUT") {
+    passwordInput.type = "password";
+    eyeIcon.classList.remove("fa-eye-slash");
+    eyeIcon.classList.add("fa-eye");
+  }
+>>>>>>> db4c2bc (update)
 }
