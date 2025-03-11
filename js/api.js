@@ -12,12 +12,25 @@ for (let i = 0; i < characters.docs.length; i++){
   // section aanmaken per karakter
   let section = document.createElement('section');
   section.style.backgroundColor = "grey";
+  section.style.padding = "10px";
+  section.style.marginBottom = "10px";
+  section.style.borderRadius = "5px";
+
+  // de afbeelding van het karakter
+  let figure = document.createElement("figure");
+  let img = document.createElement("img");
+  img.src = characters.docs[i].wikiUrl ? `https://lotr-wiki-images.com/${characters.docs[i]._id}.jpg` :
+    "placeholder.jpg";
+  img.alt = `Afbeelding van ${characterName}`;
+  img.style.width = "150px";
+  img.style.height = "auto";
+
+  figure.appendChild(img);
+  section.appendChild(figure);
 
   // h3 aanmaken voor naam van karakter
-  let titleForName = document.createElement('h3');
+  let titleForName = document.createElement("h3");
   titleForName.textContent = characterName;
-  
-  // h3 toevoegen aan sectie
   section.appendChild(titleForName);
 
 

@@ -9,10 +9,7 @@ h2{
     text-align: center;
     font-family: 'Ringbearer Medium';
     color: var(--goudgeel);
-    font-size: 30px;
-
-    /* dit stukje geeft de tekst weer in boogvorm */
-    
+    font-size: 30px;    
 }
 
 footer{
@@ -270,8 +267,17 @@ footer{
 /* css for index.html */
 /* css for quiz.html */
 /* css for favoriteCharacter.html */
-.favCharacter{
+.favorites{
+    h2{
+        display: block;
+    }
     
+    main{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 }
 
 
