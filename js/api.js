@@ -9,15 +9,23 @@ import quotes from "./quotes.json" with { type: "json" };
 //   ul.appendChild(li);
 // });
 
-//  console.table(characters.docs);
-//  console.table(quotes.docs);
 
 
-for (const character of characters) {
-  for (const quote of quotes) {
-    if (character._id === quote._id) {
-      console.log(character.docs.name, ": ", quote.docs.dialog)
+// test met alle karakters en hun quotes
+for (let i = 0; i < characters.docs.length; i++){
+  let numberOfQuotes = 0; // teller aanmaken + resetten per nieuw karakter
+  let characterName = characters.docs[i].name;
+
+  // aantal quotes tellen voor elk karakter
+  for (let j = 0; j < quotes.docs.length; j++){
+    if (characters.docs[i]._id === quotes.docs[j].character) {
+      numberOfQuotes++;
+      console.log(`${characters.docs[i].name} zei: "${quotes.docs[j].dialog}"`)
     }
+  }
+  // toon het aantal quotes
+  if (numberOfQuotes > 0) {
+    console.log(`Aantal quotes van ${characterName}: ${numberOfQuotes}`);
   }
 }
 
