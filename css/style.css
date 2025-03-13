@@ -266,18 +266,24 @@ footer{
 /* css for login.html */
 /* css for index.html */
 /* css for quiz.html */
-/* css for favoriteCharacter.html */
+/* css for favorites..html */
 .favorites{
-    h2{
-        display: block;
+
+    main {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
     }
     
-    main{
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 10px;
+    section {
+        border: 2px solid #000;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: var(--grijs);
     }
+
+    
 }
 
 
