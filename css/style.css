@@ -4,6 +4,46 @@ body{
     background-color: black;
 }
 
+header {
+    background:black; 
+    color: #d4c29a; 
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+}
+
+nav ul {
+    list-style-type: none; 
+    display: flex; 
+    
+    justify-content: space-between;
+    padding: 0; 
+    margin: 0; 
+    width: 100%;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    font-family: 'Ringbearer Medium';
+    color:var(--goudgeel); 
+    text-decoration: none; 
+    font-weight: bold; 
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    text-decoration: underline; 
+    color:var(--goudgeel); 
+}
+
 h2{
     margin-bottom: 5%;
     text-align: center;
@@ -12,11 +52,16 @@ h2{
     font-size: 30px;    
 }
 
+h3{
+    font-family: 'Ringbearer Medium';
+    color: var(--goudgeel);
+}
+
 footer{
     color: var(--goudgeel);
     text-align: center;
     margin: 2%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial;
 }
 
 /* css for landing.html */
@@ -228,7 +273,6 @@ footer{
         margin-left: -5%;
         opacity: 0.5;
         cursor: pointer;
-
     }
     
     button {
@@ -260,34 +304,106 @@ footer{
     }
 }
 
-
-
-
 /* css for login.html */
 /* css for index.html */
 /* css for quiz.html */
-/* css for favorites..html */
+/* css for favorites.html */
 .favorites{
-
     main {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
-    }
     
-    section {
-        border: 2px solid #000;
-        padding: 10px;
-        border-radius: 10px;
-        background-color: var(--grijs);
-    }
+        section {
+            border: 2px solid #000;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: var(--grijs);
+        }
 
-    
+        a{
+            transition: transform 0.3s ease;
+        }
+
+        a:hover{
+            opacity: 0.75;
+            box-shadow: 0 4px 8px 0 rgb(255, 255, 255), 0 6px 20px 0 rgb(255, 255, 255);
+            
+            h3,
+            figure,
+            p{
+                transition: transform .3s ease ease-out;
+                transform: scale(1.03);
+            }
+        }
+
+        h3, p{
+            padding: 0.5em;
+            text-align: center;
+        }
+
+        figure{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        p{
+            color: var(--goudgeel);
+        }
+    }
 }
 
 
-/* css for favorite-character.html */
+/* css for favoriteCharacter.html */
+.favCharacter{
+    main{
+        padding: 10%;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: auto 1fr auto;
+        gap: 10px;
+        grid-auto-flow: row;
+        grid-template-areas: 
+        "title title"
+        "profile info"
+        "quotes quotes";
+    }
+
+    h2{
+        grid-area: title;
+        text-align: center;
+    }
+
+    .profile{
+        grid-area: profile;
+        border: 1px solid white;
+        padding: 10px;
+
+        img{
+            border: 5px solid var(--goudgeel);
+            border-radius: 10px;
+        }
+    }
+
+    .info{
+        grid-area: info;
+        border: 1px solid white;
+        padding: 10px
+    }
+
+    .quotes{
+        grid-area: quotes;
+        border: 1px solid white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        height: auto;
+    }
+}
+
 /* css for blacklist.html */
 /* css for account.html */
 
