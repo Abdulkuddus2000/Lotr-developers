@@ -696,16 +696,17 @@ footer{
 
 .cancel-button {
     background-color: var(--goudgeel); 
-    color: var(--parelwit);
+    
 }
 
 .cancel-button:hover {
     background-color: brown; 
+    color: var(--parelwit);
 }
 
 .quoteReason{
     margin: 20px 0;
-    
+
 }
 
         
