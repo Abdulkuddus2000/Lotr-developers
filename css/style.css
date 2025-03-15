@@ -301,10 +301,12 @@ footer{
         padding: 0; 
         margin: 0; 
         width: 100%;
+        
     }
     
     nav ul li {
         margin-left: 20px; 
+        
     }
     
     nav ul li a {
@@ -312,10 +314,11 @@ footer{
         color:var(--goudgeel); 
         text-decoration: none; 
         font-weight: bold; 
+        
     }
     
     nav ul li a:hover {
-        text-decoration: underline; 
+         
         color:var(--goudgeel); 
     }
     
