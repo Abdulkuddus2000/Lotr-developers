@@ -273,7 +273,7 @@ footer{
         
         margin: 0;
         padding: 0;
-        background-color: #f8f4e3; 
+        background-color: var(--parelwit); 
     }
     
     header {
@@ -285,17 +285,12 @@ footer{
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
     }
     
-    .logo img {
-        width: 100px;
-    }
     
     .login-icon {
-        margin-left: 450px;
+        margin-left: 470px;
+        color: var(--goudgeel);
     }
-    .login-icon img {
-        filter: brightness(0) saturate(100%) invert(76%) sepia(100%) saturate(0%) hue-rotate(24deg) brightness(103%) contrast(101%); 
-        
-    }
+    
     
     
     nav ul {
@@ -344,19 +339,29 @@ footer{
         flex-direction: column; 
         align-items: center; 
         justify-content: center; 
-        color: white;
+        color: var(--goudgeel);
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     }
     
-     .h1front {
+     .h1-front {
         font-family: 'Ringbearer Medium';
-        color: var(--goudgeel);
-        font-size: 3em;
-        margin: 20px;
+       
+       font-size: 4rem;
+        margin-bottom: 100px;
         text-align: center;
         
     }
     
+    .quiz{
+        text-decoration: none;
+        color: var(--donkergrijs);
+    }
+
+    .sudden-death{
+        text-decoration: none;
+        color: var(--donkergrijs);
+    }
+
     button {
         font-family: 'Ringbearer Medium';
         margin: 10px 0; 
@@ -378,21 +383,99 @@ footer{
     
     footer {
         text-align: center;
-        padding: 1px;
+        padding: 5px;
         background: black; 
         color:var(--goudgeel); 
+        font-size: 14px;
     }
     
     .back-to-top {
-        color: var(--goudgeel); 
+        position: fixed; 
+        bottom: 20px;    
+        right: 20px;     
+        border-radius: 5px; 
+        padding: 10px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        cursor: pointer; 
+        transition: background-color 0.3s; 
+        color: var(--goudgeel);
         text-decoration: none;
     }
     
     .back-to-top:hover {
-        text-decoration: underline;
-        color: #f1c40f; 
+        background-color: rgba(0, 0, 0, 0.8); 
+
+    }
+
+    @media (max-width: 412px) {
+        header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .login-icon {
+            margin-left: 0;
+            margin-top: 10px;
+        }
+    
+        nav ul {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    
+        nav ul li {
+            margin: 5px 0; 
+        }
+    
+        .main-blacklist {
+            padding: 10px;
+        }
+    
+        .title-blacklist {
+            font-size: 20px; 
+        }
+    
+        .blacklist-item {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px 5px;
+        }
+    
+        .icon-edit {
+            margin-top: 5px;
+        }
     }
     
+    /* Responsieve stijl voor tablets (max-width: 820px) */
+    @media (max-width: 820px) {
+        header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    
+        nav ul {
+            justify-content: space-around;
+        }
+    
+        .main-blacklist {
+            padding: 15px;
+        }
+    
+        .title-blacklist {
+            font-size: 22px; 
+        }
+    
+        .blacklist-item {
+            padding: 10px;
+        }
+
+    
+    
+   
+    
+}
 }
 
 /* css for quiz.html */
@@ -402,6 +485,14 @@ footer{
 /* css for favorite-character.html */
 /* css for blacklist.html */
 .blacklist {
+
+    
+        display: grid;
+        grid-template-rows: auto 1fr auto; 
+        min-height: 100vh; 
+        margin: 0; 
+    
+    
     header {
         background: black; 
         color: #d4c29a; 
@@ -411,17 +502,15 @@ footer{
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
     }
     
-    .logo img {
-        width: 100px;
-    }
+    
+    
+   
     
     .login-icon {
-        margin-left: 450px;
+        margin-left: 470px;
+        color: var(--goudgeel);
     }
     
-    .login-icon img {
-        filter: brightness(0) saturate(100%) invert(76%) sepia(100%) saturate(0%) hue-rotate(24deg) brightness(103%) contrast(101%); 
-    }
     
     nav ul {
         list-style-type: none; 
@@ -448,31 +537,24 @@ footer{
         color: var(--goudgeel); 
     }
 
-    main {
-        flex: 1; 
-        display: flex; 
-        justify-content: center; 
-        align-items: flex-start; 
-        background-color: var(--donkergrijs); 
-        flex-direction: column; 
-        padding: 20px; 
+    .main-blacklist {
+    
+            display: flex; 
+            flex-direction: column; 
+            padding: 20px; 
+            margin: 0;
+            background-color: var(--donkergrijs);
+        
     }
 
-    h2 {
-        text-align: center; 
-        margin-bottom: 20px; 
-        color: var(--goudgeel); 
+    .title-blacklist {
+        text-align: center;   
+        margin: 20px 0;      
+        font-size: 24px;      
+        color:var(--goudgeel); 
     }
-
-    select {
-        width: 100%; 
-        padding: 10px;
-        border-radius: 5px; 
-        border: 1px solid #555; 
-        background-color: #444; 
-        color: #ffffff; 
-        margin-bottom: 20px; 
-    }
+    
+  
 
     .blacklist-item {
         display: flex;
@@ -484,42 +566,181 @@ footer{
         border-bottom: 1px solid #555; 
     }
 
-    .edit-button {
-        background-color: var(--goudgeel); 
-        color: brown; 
-        border: none; 
-        padding: 5px 10px; 
-        border-radius: 5px; 
-        cursor: pointer; 
-        margin-left: auto; 
-    }
-
-    .eidt-button:hover {
-        background-color: var(--lichtgrijs); 
+    .icon-edit {
+        color: var(--goudgeel);
+        text-decoration: none;
+        cursor: pointer;
+        padding: 1px;
         
     }
 
-    footer {
-        text-align: center;
-        padding: 1px;
-        background: black; 
-        color: var(--goudgeel); 
+    .icon-edit:hover{
+        color:brown;
     }
-    
-    .back-to-top {
+
+    .footer-blacklist {
+        text-align: center;
+        padding: 5px;
         color: var(--goudgeel); 
+        font-size: 14px;
+    }
+    .back-to-top {
+        position: fixed; 
+        bottom: 20px;    
+        right: 20px;     
+        border-radius: 5px; 
+        padding: 10px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        cursor: pointer; 
+        transition: background-color 0.3s; 
+        color: var(--goudgeel);
         text-decoration: none;
     }
     
     .back-to-top:hover {
-        text-decoration: underline;
-        color: var(--goudgeel); 
+        background-color: rgba(0, 0, 0, 0.8); 
     }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8); 
+    }
+    
+    .modal-content {
+        background-color: var(--donkergrijs); 
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid var(--donkergrijs);
+        width: 90%; 
+        max-width: 500px; 
+        color: var(--parelwit); 
+        border-radius: 8px; 
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); 
+    }
+    
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: var(--parelwit);
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .quote-text {
+        margin-bottom: 15px; 
+        font-size: 18px; 
+    }
+    
+    .edit-input {
+        width: 100%; 
+        padding: 5px; 
+        margin-bottom: 15px;  
+        border: 1px solid var(--donkergrijs); 
+        border-radius: 5px; 
+        font-size: 16px; 
+    }
+    
+    .save-button {
+        font-family: 'Ringbearer Medium';
+        background-color: var(--goudgeel); 
+        color: var(--donkergrijs); 
+        border: 2px solid black; 
+        padding: 12px 20px; 
+        border-radius: 5px; 
+        cursor: pointer; 
+        transition: background-color 0.3s, color 0.3s; 
+        font-size: 15px; 
+    }
+    
+    .save-button:hover {
+        background-color: brown; 
+        color: var(--parelwit); 
+    }
+        
+    @media (max-width: 412px) {
+        header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .login-icon {
+            margin-left: 0;
+            margin-top: 10px;
+        }
+    
+        nav ul {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    
+        nav ul li {
+            margin: 5px 0; 
+        }
+    
+        .main-blacklist {
+            padding: 10px;
+        }
+    
+        .title-blacklist {
+            font-size: 20px; 
+        }
+    
+        .blacklist-item {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 10px 5px;
+        }
+    
+        .icon-edit {
+            margin-top: 5px;
+        }
+    }
+    
+    /* Responsieve stijl voor tablets (max-width: 820px) */
+    @media (max-width: 820px) {
+        header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    
+        nav ul {
+            justify-content: space-around;
+        }
+    
+        .main-blacklist {
+            padding: 15px;
+        }
+    
+        .title-blacklist {
+            font-size: 22px; 
+        }
+    
+        .blacklist-item {
+            padding: 10px;
+        }
+    
+   
+   
+}
+
 }
 
 
 
 
-/* css for account.html */
 
+/* css for account.html */
 
