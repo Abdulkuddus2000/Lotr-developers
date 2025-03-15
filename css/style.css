@@ -536,7 +536,6 @@ footer{
     }
     
     nav ul li a:hover {
-        text-decoration: underline; 
         color: var(--goudgeel); 
     }
 
@@ -672,6 +671,38 @@ footer{
         background-color: brown; 
         color: var(--parelwit); 
     }
+
+    /* Knoppen */
+.confirm-button,
+.cancel-button {
+    font-family: 'Ringbearer Medium';
+        background-color: var(--goudgeel); 
+        color: var(--donkergrijs); 
+        border: 2px solid black; 
+        padding: 12px 20px; 
+        border-radius: 5px; 
+        cursor: pointer; 
+        transition: background-color 0.3s, color 0.3s; 
+        font-size: 15px; 
+}
+.p-confirm{
+    margin: 20px 0;
+}
+
+.confirm-button:hover {
+    background-color: brown; 
+    color: var(--parelwit);
+}
+
+.cancel-button {
+    background-color: var(--goudgeel); 
+    color: var(--parelwit);
+}
+
+.cancel-button:hover {
+    background-color: brown; 
+}
+
         
     @media (max-width: 412px) {
         header {
