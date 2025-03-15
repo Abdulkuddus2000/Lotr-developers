@@ -672,7 +672,7 @@ footer{
         color: var(--parelwit); 
     }
 
-    /* Knoppen */
+    
 .confirm-button,
 .cancel-button {
     font-family: 'Ringbearer Medium';
@@ -701,6 +701,11 @@ footer{
 
 .cancel-button:hover {
     background-color: brown; 
+}
+
+.quoteReason{
+    margin: 20px 0;
+    
 }
 
         
