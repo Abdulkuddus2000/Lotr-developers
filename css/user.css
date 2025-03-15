@@ -4,84 +4,175 @@
 /* css for account.html */
 
 /* css for login.html */
+.login-clean {
+  background:#000;
+  padding:80px 0;
+}
+
+.login-clean form {
+  max-width:500px;
+  width:90%;
+  margin:0 auto;
+  background-color:#2c2c2c;
+  padding:40px;
+  border-radius:4px;
+  color:#2c2c2c;
+  box-shadow:1px 1px 5px rgba(0,0,0,0.1);
+}
+
+.login-clean .illustration {
+  text-align:center;
+  padding:0 0 20px;
+  font-size:100px;
+ color: #ffd700;
+}
+
+.login-clean form .form-control {
+  background:#f5f5dc;
+  border:none;
+  border-bottom:1px solid #f5f5dc;
+  border-radius:4px;
+  box-shadow:none;
+  outline:none;
+  color:inherit;
+  text-indent:8px;
+  height:42px;
+  font-family: 'Ringbearer Medium';
+}
+
+.login-clean form .btn-primary {
+  background:#ffd700;
+  border:none;
+  border-radius:4px;
+  padding:11px;
+  box-shadow:none;
+  margin-top:26px;
+  text-shadow:none;
+  outline:none !important;
+  
+}
+
+.login-clean form .btn-primary:hover, .login-clean form .btn-primary:active {
+  background:#808080;
+}
+
+.login-clean form .btn-primary:active {
+  transform:translateY(1px);
+}
+
+.login-clean form .forgot {
+  display:block;
+  text-align:center;
+  font-size:12px;
+  color:#ffd700;
+  opacity:0.9;
+  text-decoration:none;
+}
+
+.login-clean form .forgot:hover, .login-clean form .forgot:active {
+  opacity:1;
+  text-decoration:none;
+}
+
+.L{
+  text-align: center;
+  font-size: x-large;
+  font-family: 'Ringbearer Medium';
+}
+
+img{
+  width: 150px;
+}
 
 /* css for registration.html */
 
-.registration{
-    body{
-        background: #000;
-    }
-    
-    h2{
-        text-align: center;
+    .Reg-clean {
+        background:#000;
+        padding:80px 0;
+      }
+      
+      .Reg-clean form {
+        max-width:500px;
+        width:90%;
+        margin:0 auto;
+        background-color:#2c2c2c;
+        padding:40px;
+        border-radius:4px;
+        color:#2c2c2c;
+        box-shadow:1px 1px 5px rgba(0,0,0,0.1);
+      }
+      
+      .Reg-clean .illustration {
+        text-align:center;
+        padding:0 0 20px;
+        font-size:100px;
+       color: #ffd700;
+      }
+      
+      .Reg-clean form .form-control {
+        background:#f5f5dc;
+        border:none;
+        border-bottom:1px solid #f5f5dc;
+        border-radius:4px;
+        box-shadow:none;
+        outline:none;
+        color:inherit;
+        text-indent:8px;
+        height:42px;
         font-family: 'Ringbearer Medium';
-        color: var(--goudgeel);
-        margin-bottom: 2.5%;
-    }
+      }
+      
+      .Reg-clean form .btn-primary {
+        background:#ffd700;
+        border:none;
+        border-radius:4px;
+        padding:11px;
+        box-shadow:none;
+        margin-top:26px;
+        text-shadow:none;
+        outline:none !important;
+        
+      }
+      
+      .Reg-clean form .btn-primary:hover, .login-clean form .btn-primary:active {
+        background:#808080;
+      }
+      
+      .Reg-clean form .btn-primary:active {
+        transform:translateY(1px);
+      }
+      
+      .Reg-clean form .forgot {
+        display:block;
+        text-align:center;
+        font-size:12px;
+        color:#ffd700;
+        opacity:0.9;
+        text-decoration:none;
+      }
+      
+      .Reg-clean form .forgot:hover, .login-clean form .forgot:active {
+        opacity:1;
+        text-decoration:none;
+      }
+      
+      .L{
+        text-align: center;
+        font-size: x-large;
+        font-family: 'Ringbearer Medium';
+      }
     
-    form{
-        width: 50%;
-        background: var(--donkergrijs);
-        margin-left: 20%;
-        padding: 5%;
-        border-radius: 10px;
+      img{
+        width: 150px;
+      }
+      footer{
+        color: wheat;
+        height: auto;
+        text-align: center;
+        margin: 10px;
+        padding: 10px;
+        font-size: 10px;
     }
-    
-    label{
-        margin-right: 25%;
-        color: var(--parelwit);
-    }
-    
-    input{
-        margin-top: -15px;
-        margin-left: 60%;
-    }
-    
-    input::placeholder{
-        opacity: 0.5;
-    }
-    
-    .forgot-password{
-        margin: 2%;
-        color: var(--lichtgrijs);
-        font-family: "Arial";
-        font-size: 12px;
-        margin-left: 60%;
-        text-decoration: none;
-    }
-    
-    .forgot-password:hover{
-        color: var(--hemelsblauw);
-    }
-    
-    button {
-        height: 40px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 8px;
-        background: linear-gradient(135deg, var(--goudgeel), var(--lichtgrijs));
-        color: white;
-        font-size: 16px;
-        font-weight: bold;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto;
-    }
-    
-    button:hover {
-        background: linear-gradient(135deg, var(--lichtgrijs), var(--goudgeel));
-        transform: scale(1.05);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-    
-    button:active {
-        transform: scale(0.95);
-    }
-}
 
 
 /* css for resetPassword.html */
