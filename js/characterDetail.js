@@ -2,18 +2,23 @@ import characters from "./characters.json" with { type: "json" };
 import quotes from "./quotes.json" with { type: "json" };
 
 
-// info tonen over character
 
 const character = characters.docs.find(char => char.name === "Gandalf");
+const gandalfQuotes = quotes.docs.filter(quote => quote.character === character._id);
 
-if (character) {
-  const gandalQuotes = quotes.docs.filter(quote => quote.character === character._id);
-  
-  const info = document.querySelector(".info");
-  
-  gandalQuotes.forEach(quote => {
-    let p = document.createElement('p');
-    p.textContent = quote.dialog;
-    info.appendChild(p);
-  });
-}
+// info over het karakter
+const info = document.querySelector(".quotes");
+
+// quotes van het karakter
+
+gandalfQuotes.forEach(quote => {
+  let quoteSection = document.createElement('section');
+  let q = document.createElement('q');
+  let em = document.createElement('em');
+
+  q.textContent = `"${quote.dialog}"`;
+
+  em.appendChild(q)
+  quoteSection.appendChild(em);
+  info.appendChild(quoteSection);
+});

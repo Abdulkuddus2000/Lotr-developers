@@ -69,7 +69,48 @@ footer{
 }
 
 /* css for landing.html */
-.landing{    
+.landing{
+    /* venster: spel niet beschikbaar */
+    .customAlert{
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        align-items: center;
+        text-align: center;
+        border: 5px solid blue;
+        height: 300px;
+        width: 600px;
+        background-color: var(--grijs);
+        z-index: 1000;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .alert-content{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        p{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+        }
+    }
+
+    #confirmBtn{
+        height: 50px;
+        width: auto;
+        color: var(--goudgeel);
+        font-family: "Ringbearer Medium";
+        margin: 20px;
+        padding: 10px 20px;
+        font-size: large;
+        border: none;
+        background: gray;
+        cursor: pointer;
+    }
+
     .gameChoice{
         text-align: center;
         font-weight: bold;
@@ -394,18 +435,37 @@ footer{
     .info{
         grid-area: info;
         border: 1px solid white;
-        padding: 10px
+        padding: 10px;
+        color: white;
     }
 
     .quotes{
+        display: flex;
+        flex-direction: column;
         grid-area: quotes;
         border: 1px solid white;
+        color: white;
         display: flex;
         justify-content: center;
         align-items: center;
         padding: 10px;
         height: auto;
     }
+
+}
+
+.quotes section{
+    font-size: 20px;
+    font-style: italic;
+}
+
+.quotes section:nth-child(even){
+    border: 1px solid gray;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: var(--grijs);
+    color: var(--goudgeel);
+    border-radius: 5px;
 }
 
 /* css for blacklist.html */
