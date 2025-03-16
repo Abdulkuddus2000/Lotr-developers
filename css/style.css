@@ -329,6 +329,7 @@ footer{
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
+        transition: background 0.3s, color 0.3s;
     }
 
     .navbar {
@@ -349,7 +350,19 @@ footer{
 
     ul {
         display: flex;
+        font-family: 'Ringbearer Medium';
         gap: 20px;
+    }
+
+    a { 
+        color: var(--goudgeel); 
+        text-decoration: none
+    } 
+
+    a:hover {
+        color:#00A0C6; 
+        text-decoration:none; 
+        cursor:pointer;  
     }
 
     .user-icon {
@@ -384,6 +397,7 @@ footer{
         width: 150px;
         height: 150px;
         border: 1px solid var(--goudgeel);
+        background-color:white;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -418,5 +432,62 @@ footer{
 
     button:active {
         transform: scale(0.95);
+    }
+
+    @media screen and (max-width: 1024px) {
+        .profile-container {
+            width: 70%;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        ul {
+            gap: 10px;
+        }
+
+        .profile-container {
+            flex-direction: column;
+            text-align: center;
+            width: 80%;
+            padding: 15px;
+        }
+
+        .profile-photo {
+            margin: 0 auto 20px auto;
+        }
+
+        .profile-info {
+            margin-left: 0;
+        }
+
+        input {
+            width: 100%;
+            max-width: 250px;
+        }
+
+        button {
+            width: 100%;
+            max-width: 250px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .profile-container {
+            width: 90%;
+        }
+
+        .navbar {
+            padding: 10px;
+        }
+
+        ul {
+            flex-direction: column;
+        }
     }
 }
