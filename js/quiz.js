@@ -11,17 +11,17 @@ const questions = [
     {
         question: "A Wizard is never late MR Baggins",
         answers: [
-            { img: "assets/", correct: true },
-            { img: "joker.jpg", correct: false },
-            { img: "superman.jpg", correct: false }
+            { img: "image/", correct: true },
+            { img: "image.jpg", correct: false },
+            { img: "image.jpg", correct: false }
         ]
     },
     {
-        question: "Bu repliği kim söyledi? 'I am inevitable.'",
+        question: "Mellon",
         answers: [
-            { img: "thanos.jpg", correct: true },
-            { img: "ironman.jpg", correct: false },
-            { img: "captain.jpg", correct: false }
+            { img: "image.jpg",correct: true },
+            { img: "image.jpg", correct: false },
+            { img: "image.jpg", correct: false }
         ]
     }
 ];
@@ -66,23 +66,23 @@ document.getElementById("next-btn").addEventListener("click", () => {
     }
 });
 
-// 📌 "Favorilere Ekle" butonu
+// FAV button
 document.getElementById("fav-btn").addEventListener("click", () => {
     favorites.push(questions[currentQuestionIndex]);
-    alert("Soru favorilere eklendi!");
+    alert("QOUTE toegevoegd aan favorieten");
 });
 
-// 📌 "Blacklist'e Ekle" butonu
+// 📌 Blacklist button
 document.getElementById("blacklist-btn").addEventListener("click", () => {
     blacklist.push(questions[currentQuestionIndex]);
-    alert("Soru blacklist'e eklendi!");
+alert("QOUTE oegevoegd aan Blacklisten");
 });
 
-// 📌 Quiz bittiğinde sonucu göster
+// SHowresults
 function showResults() {
     let correctAnswers = userAnswers.filter(ans => ans === "correct").length;
     alert(`Quiz bitti! Doğru sayısı: ${correctAnswers} / ${questions.length}`);
 }
 
-// 📌 Sayfa yüklendiğinde ilk soruyu başlat
+// start van quiz
 loadQuestion();

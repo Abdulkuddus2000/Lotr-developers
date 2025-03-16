@@ -63,6 +63,11 @@ article.col-md-4{
     color: #ffd700;
 
 }
+.option-card:focus{
+    border: 1px;
+    border-style: solid;
+    color: #ffd700;
+}
 .option-name{
     color: #ffd700;
 }
