@@ -57,6 +57,10 @@ h3{
     color: var(--goudgeel);
 }
 
+button{
+    font-family: "Ringbearer Medium";
+}
+
 footer{
     color: var(--goudgeel);
     text-align: center;
