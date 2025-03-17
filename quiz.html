@@ -11,37 +11,41 @@
     <script defer src="js/quiz.js"></script>
 </head>
 <body>
-     <header>
+    <header>
         <figure>
-            <a href="landing.html">
+            <a href="index.html">
                 <img src="assets/images/logo.png" alt="logo Lord Of The Rings" height="100px">
             </a>
         </figure>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="favorites.html">Favorieten</a></li>
+                <li><a href="blacklist.html">Zwarte lijst</a></li>
+            </ul>
+        </nav>
     </header>
     <main class="container text-center my-5">
-        <h2>QUIZ</h2>
+        <h2>QUİZ</h2>
         <br>
         <section class="quiz-box p-4 rounded">
             <div class="question-box p-3 mb-3">
-                <p id="question-text">??????</p>
+                <p id="question-text"></p>
             </div>
             <div class="row">
-                <article class="col-md-4">
-                    <h3 class="option-name">naam</h3>
+                <article class="col-md-4" id="col-md-4">
                     <br>
                 <div class="option-card">
                     <img class="quiz-option" src="" alt="option1">
                 </div>
                 </article>
-                <article class="col-md-4">
-                    <h3 class="option-name">naam</h3>
+                <article class="col-md-4" id="col-md-4">
                     <br>
                     <div class="option-card">
                         <img class="quiz-option" src="" alt="option2">
                     </div>
                 </article>
-                <article class="col-md-4">
-                    <h3 class="option-name">naam</h3>
+                <article class="col-md-4" id="col-md-4">
                     <br>
                     <div class="option-card">
                         <img class="quiz-option" src="" alt="option3">
@@ -54,6 +58,7 @@
             <button class="btn btn-secondary mt-4" id="blacklist-btn">BLACK</button>
         </section>
     </main>
+    <br>
     <footer>
         &copy; Copyright WPL Projects 2024-2025
     </footer>

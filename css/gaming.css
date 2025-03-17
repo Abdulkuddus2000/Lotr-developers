@@ -6,16 +6,32 @@
 
 /* css for quiz.html */
 body{
-    
+    background-image: url(../assets/images/banner.png);
+    background-size: cover;
+    background-position: center;
     font-family: 'Ringbearer Medium';    
-    
 }
-.quiz-box {
+header {
+    background:black; 
+    color: #d4c29a; 
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+}
+footer{
+   background: rgba(0,0,0,0.0);
+}
+h2{
+    font-family: 'Ringbearer Medium';
+    color: #ffd700; 
+}
+.quiz-box{
     background: var(--darkgrey);
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     height: 500px;
+    
 }
-
 .question-box {
     background: #f5f5dc;
     font-size: 1.2rem;
@@ -27,8 +43,9 @@ body{
     background: var(--darkgrey);
     border: 1px solid var(--darkgrey);
     border-radius: 8px;
-    width: 60%;
+    width: 35vh;
     height: 30vh;
+    overflow: hidden;
     cursor: pointer;
 }
 
@@ -38,8 +55,9 @@ article.col-md-4{
 }
 
 .option-card img {
-    width: 100%;
+    width:100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .option-card button {
@@ -82,4 +100,62 @@ article.col-md-4{
 }
 #next-btn:hover{
     background-color: #ffd700
+}
+
+@media (max-width: 820px) {    
+    body{
+        background-image: url(../assets/images/banner.png);
+        background-size: cover;
+        overflow: hidden;
+
+    }
+    .quiz-box {
+        min-height:auto ;
+        padding: 1rem;
+    }
+    
+    .option-card {
+        width: 90%; 
+        margin-bottom: 0,5rem;
+        height: 80%; 
+        
+    }
+    
+    article.col-md-4 {
+        margin-bottom: 1rem;
+        height: auto;
+    }
+    
+    #next-btn {
+        width: 100px; 
+    }
+}
+
+@media (max-width: 420px) 
+{
+    body{
+        background-image: url(../assets/images/banner.png);
+        background-position: center;
+        background-size: cover;
+        overflow: hidden;
+    }
+    .quiz-box {
+        height: 95%;
+        padding: 0.5rem;
+    }
+    .option-card {
+        width: 50%;  
+        height: auto;
+    }
+    
+    .option-name {
+        font-size: 1rem;
+    }
+    
+    #next-btn {
+        width: 100%;  
+        max-width: 200px; 
+        margin-top: 1rem;
+    }
+    
 }

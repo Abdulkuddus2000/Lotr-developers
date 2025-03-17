@@ -1,27 +1,27 @@
 // lijst van vragen en antwoords
 const questions = [
     {
-        question: "'You shall not pass!'",
+        question: "You shall not pass!",
         answers: [
-            { img: "gandalf.jpg", correct: true },
-            { img: "frodo.jpg", correct: false },
-            { img: "aragorn.jpg", correct: false }
+            { img: "character_gandalf.jpeg", correct: true },
+            { img: "character_frodo.jpeg", correct: false },
+            { img: "character_aragorn.jpeg", correct: false }
         ]
     },
     {
         question: "A Wizard is never late MR Baggins",
         answers: [
-            { img: "image/", correct: true },
-            { img: "image.jpg", correct: false },
-            { img: "image.jpg", correct: false }
+            { img: "character_gandalf.jpeg", correct: true },
+            { img: "character_Gollum.jpeg", correct: false },
+            { img: "character_saruman.jpeg", correct: false }
         ]
     },
     {
-        question: "Mellon",
+        question: "They are taking the Hobbits to İsnengard",
         answers: [
-            { img: "image.jpg",correct: true },
-            { img: "image.jpg", correct: false },
-            { img: "image.jpg", correct: false }
+            { img: "character_legolas.jpeg",correct: true },
+            { img: "character_gimli.jpeg", correct: false },
+            { img: "character_aragorn.jpeg", correct: false }
         ]
     }
 ];
@@ -72,7 +72,7 @@ document.getElementById("fav-btn").addEventListener("click", () => {
     alert("QOUTE toegevoegd aan favorieten");
 });
 
-// 📌 Blacklist button
+//  Blacklist button
 document.getElementById("blacklist-btn").addEventListener("click", () => {
     blacklist.push(questions[currentQuestionIndex]);
 alert("QOUTE oegevoegd aan Blacklisten");
@@ -81,7 +81,7 @@ alert("QOUTE oegevoegd aan Blacklisten");
 // SHowresults
 function showResults() {
     let correctAnswers = userAnswers.filter(ans => ans === "correct").length;
-    alert(`Quiz bitti! Doğru sayısı: ${correctAnswers} / ${questions.length}`);
+    alert(`Quiz is over uw score is: ${correctAnswers} / ${questions.length}`);
 }
 
 // start van quiz
