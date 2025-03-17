@@ -55,9 +55,17 @@
             <br>
             <button class="btn btn-secondary mt-4" id="fav-btn">FAV</button>
             <button class="btn btn-secondary mt-4" id="next-btn">NEXT</button>
-            <button class="btn btn-secondary mt-4" id="blacklist-btn">BLACK</button>
+            <button class="btn btn-secondary mt-4" id="blacklist-btn" onclick="openPopup()">BLACK</button>
         </section>
     </main>
+    <aside id="popup" class="popup">
+        <div class="popup-content">
+          <span class="close" onclick="closePopup()">&times;</span>
+          <h3>Reden voor blacklist</h3>
+          <textarea id="reason" placeholder="UW REDEN..."></textarea>
+          <button onclick="submitReason()">SEND</button>
+        </div>
+      </aside>
     <br>
     <footer>
         &copy; Copyright WPL Projects 2024-2025

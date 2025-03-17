@@ -86,3 +86,27 @@ function showResults() {
 
 // start van quiz
 loadQuestion();
+
+//Popup screen//
+function openPopup() {
+    document.getElementById('popup').style.display = 'block';
+  }
+  
+  function closePopup() {
+    document.getElementById('popup').style.display = 'none';
+  }
+  
+  function submitReason() {
+    const reason = document.getElementById('reason').value;
+  
+    if (reason) {
+      // Sebebi işlem yapmak için al (örneğin, backend'e gönder veya yerel bir listede sakla)
+      console.log('Reden:', reason); // Burada sebebi console'a yazdırıyoruz, ihtiyaca göre başka bir işlem yapılabilir.
+  
+    
+      closePopup();
+    } else {
+      alert('Type een reden');
+    }
+  }
+  
