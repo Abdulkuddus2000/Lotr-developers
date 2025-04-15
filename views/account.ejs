@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="nl-BE">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/logo.png" />
+    <title>Lord Of The Rings - Account</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="js/account.js" defer></script>
+
+   
+    
+</head>
+
+<body class="account">
+    <header>
+        <a class="logo" href="index.html">
+            <img src="assets/images/logo.png" alt="logo" width="100px" id="logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="favorites.html">Favorieten</a></li>
+                <li><a href="blacklist.html">Zwartelijst</a></li>
+                <li class="login-icon">
+                    <a href="account.html" class="login-icon">
+                        <i class="fas fa-user-circle" style="font-size: 30px; "></i> 
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Account Gegevens</h1>
+    
+        <section class="profile-container">
+            <div class="profile-photo" onclick="openAvatarSelection();">
+                <img id="avatar" src="assets/images/aragon.png" />
+                <p class="avatar-text">Kies Avatar</p>
+            </div>
+    
+            <section class="profile-info">
+                <input type="text" id="username" placeholder="Naam" required />
+                <input type="text" id="level" value="Level: 5 (XP: 1200)" readonly />
+                <textarea id="bio" placeholder="Bio"></textarea>
+
+                <h2>Gewonnen games</h2>
+                <section class="won-games">
+                    <p>Quiz: <span id="quiz-wins">4</span> </p>
+                    <p>Sudden-death: <span id="sudden-death-wins">2</span></p>
+                    <p>Ten rounds: <span id="ten-rounds-wins">1</span></p>
+    
+
+                </section>
+
+                <section class="logout-button">
+                    <button onclick="logout()">Uitloggen</button>
+
+                </section>
+
+
+            <section>
+        </section>
+    
+    
+        
+        <section id="avatar-modal" class="modal">
+            <section class="modal-content">
+                <span class="close" onclick="closeAvatarSelection()">&times;</span>
+                <h2>Kies jouw Avatar</h2>
+                <section class="avatar-list">
+                    
+                    <section class="avatar-item">
+                        <img src="assets/images/aragon.png" alt="Aragon"  onclick="selectAvatar('assets/images/aragon.png')" />
+                        <p>Aragon</p>
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/galadriel.png" alt="Galadriel" onclick="selectAvatar('assets/images/galadriel.png')" />
+                        <p>Galadriel</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/gollum.png" alt="Gollum" onclick="selectAvatar('assets/images/gollum.png')" />
+                        <p>Gollum</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/bilbo baggins.png" alt="Bilbo" onclick="selectAvatar('assets/images/bilbo baggins.png')" />
+                        <p>Bilbo</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/bormir.png" alt="Boromir" onclick="selectAvatar('assets/images/bormir.png')" />
+                        <p>Boromir</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/elrond.png" alt="Elrond" onclick="selectAvatar('assets/images/elrond.png')" />
+                        <p>Elrond</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/eowyn.png" alt="Eowyn" onclick="selectAvatar('assets/images/eowyn.png')" />
+                        <p>Eowyn</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/faramir.png" alt="Faramir" onclick="selectAvatar('assets/images/faramir.png')" />
+                        <p>Faramir</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/frodo.png" alt="Frodo" onclick="selectAvatar('assets/images/frodo.png')" />
+                        <p>Frodo</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/gandalf.png" alt="Gandalf" onclick="selectAvatar('assets/images/gandalf.png')" />
+                        <p>Gandalf</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/gimli.png" alt="Gimli" onclick="selectAvatar('assets/images/gimli.png')" />
+                        <p>Gimli</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/legolas.png" alt="Legolas" onclick="selectAvatar('assets/images/legolas.png')" />
+                        <p>Legolas</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/merry.png" alt="Merry" onclick="selectAvatar('assets/images/merry.png')" />
+                        <p>Merry</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/nazgul.png" alt="Nazgul" onclick="selectAvatar('assets/images/nazgul.png')" />
+                        <p>Nazgul</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/pippin.png" alt="Pippin" onclick="selectAvatar('assets/images/pippin.png')" />
+                        <p>Pippin</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/samwise.png" alt="Samwise" onclick="selectAvatar('assets/images/samwise.png')" />
+                        <p>Samwise</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/saruman.png" alt="Saruman" onclick="selectAvatar('assets/images/saruman.png')" />
+                        <p>Saruman</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/sauron.png" alt="sauron" onclick="selectAvatar('assets/images/sauron.png')" />
+                        <p>Sauron</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/theodon.png" alt="Theodon" onclick="selectAvatar('assets/images/theodon.png')" />
+                        <p>Theodon</p>
+
+                    </section>
+                    <section class="avatar-item">
+                        <img src="assets/images/treebeard.png" alt="Treebeard" onclick="selectAvatar('assets/images/treebeard.png')" />
+                        <p>Treebeard</p>
+
+                    </section>
+
+                    
+                <section>
+            <section>
+        <section>
+    
+    </main>
+    <footer class="footer-blacklist">
+        <p>&copy;2024 AP-Hogeschool | Kosimov Abdul, Habrani Nabil, Tukka Hakki en Molov Metin</p>
+        <a href="#" class="back-to-top">
+            <i class="fas fa-chevron-circle-up"></i>   
+        </a>
+    </footer>
+
+
+    
+</body>
+
+</html>
