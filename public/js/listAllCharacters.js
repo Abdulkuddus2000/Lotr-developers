@@ -21,7 +21,8 @@ characternames.forEach(name => {
 
   let figure = document.createElement("figure");
   let img = document.createElement("img");
-  img.src = `../../assets/images/character_${name}.jpeg`;
+  // img.src = `../../assets/images/character_${name}.png`;
+  img.src = `../assets/images/character_${name}.png`;
   img.alt = `Afbeelding van ${name}`;
   img.style.height = "200px";
   img.style.alignItems = "center";

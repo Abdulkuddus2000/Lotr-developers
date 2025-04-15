@@ -19,7 +19,14 @@ app.get("/landing", (req, res) => {
     res.render("landing", {
         title: "Landing",
         message: "Landing"
-    })
+    });
+});
+
+app.get("/registration", (req, res) => {
+    res.render("registration", {
+        title: "registration",
+        message: "registration"
+    });
 });
 
 app.listen(app.get("port"), () => {
