@@ -22,24 +22,25 @@
     </header>
     <main>
         <h2>Registreer</h2>
-        <form>
+        <form action="/login" method="post">
             <label for="firstname">Gebruikersnaam</label>
-            <input type="text" id="username" name="username" placeholder="John123">
+            <input type="text" id="username" name="username" placeholder="John123" required>
             <br>
 
             <label for="password">Wachtwoord</label>
-            <input type="password" id="passwordRegistrationPage" name="password" placeholder="*****">
+            <input type="password" id="passwordRegistrationPage" name="password" placeholder="*****" required>
             <i class="fa fa-eye eyeIcon eyeIcon1" onmousedown="togglePasswordOnMouseDown(event)"
                 onmouseup="togglePasswordOnMouseUp(event)"></i>
             <br>
 
             <label for="confirm-password">Bevestig uw wachtwoord</label>
-            <input type="password" id="confirm-passwordRegistrationPage" name="confirm-password" placeholder="*****">
+            <input type="password" id="confirm-passwordRegistrationPage" name="confirm-password" placeholder="*****" required>
             <i class="fa fa-eye eyeIcon eyeIcon1" onmousedown="togglePasswordOnMouseDown(event)"
                 onmouseup="togglePasswordOnMouseUp(event)"></i>
             <br>
 
-            <button type="submit" id="submitRegistration">Bevestig</button>
+            <button type="submit">Bevestigen</button>
+            <!-- <button type="submit" id="submitRegistration">Bevestig</button> -->
         </form>
     </main>
     <footer>

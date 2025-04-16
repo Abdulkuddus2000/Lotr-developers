@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         passwords.push(passwordRegistrationPage);
         message.textContent = "Je bent successvol geregistreerd !!!";
         message.style.color = "green";
-        window.location.href = "../login.html"
+        window.location.href = "login.ejs";
       } else {
         message.textContent = "De wachtwoorden komen niet overeen, gebruik het oog-icoontje ter controle.";
         message.style.color = "red";
@@ -79,7 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function ShowAllUsernames() {
   return usernames.map((username) => username);
 }
-
 
 function AreIdentical(a, b) {
   return a === b;
