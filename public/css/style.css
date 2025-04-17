@@ -218,13 +218,14 @@ footer{
         border-radius: 10px;
         
     }
-    
+
     label{
         margin-right: 25%;
         color: var(--parelwit);
     }
     
     input{
+        flex: 1;
         margin-top: -15px;
         margin-left: 60%;
     }
@@ -269,7 +270,7 @@ footer{
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto;
+        margin: 1% 30%;
     }
     
     button:hover {
