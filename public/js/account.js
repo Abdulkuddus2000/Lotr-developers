@@ -8,8 +8,8 @@ function closeAvatarSelection() {
 }
 
 function selectAvatar(src) {
-    document.getElementById('avatar').src = src; // Stelt de geselecteerde avatar in
-    closeAvatarSelection(); // Sluit het modal venster
+    document.getElementById('avatar').src = src;
+    closeAvatarSelection(); 
 }
 
 function logout() {
