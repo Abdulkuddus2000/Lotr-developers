@@ -468,8 +468,6 @@ footer{
         color: var(--goudgeel);
     }
     
-    
-    
     nav ul {
         list-style-type: none; 
         display: flex; 
@@ -493,6 +491,38 @@ footer{
     
     nav ul li a:hover {
         color:var(--goudgeel); 
+    }
+
+    /* dropdown voor karakters */
+    .dropdown_li:hover {
+        /* background-color: red; */
+    }
+    
+    .dropdown_li .dropdown_li_content {
+        display: none;
+        position: absolute;
+        /* background-color: red; */
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0 rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+    
+    .dropdown_li .dropdown_li_content li{
+        width: auto;
+        /* color: black; */
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+    
+
+    .dropdown_li:hover .dropdown_li_content {
+        display: block;
+    }
+
+    .show {
+        display: block;
     }
     
     main {

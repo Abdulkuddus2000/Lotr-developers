@@ -8,7 +8,7 @@ dotenv.config();
 
 const app : Express = express();
 
-app.use(express.static("public"))
+app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,17 +31,24 @@ app.get("/registration", (req, res) => {
     });
 });
 
-app.get("/account", (req, res) => {
-    res.render("account", {
-        title: "Account",
-        message: "Account settings"
+app.get("/index", (req, res) => {
+    res.render("index", {
+        title: "Home",
+        message: "Welcome to Lord Of The Rings"
     });
 });
 
-app.get("/blacklist", (req, res) => {
-    res.render("blacklist", {
-        title: "Blacklist",
-        message: "Overview of your blacklisted items"
+app.get("/allCharacters", (req, res) => {
+    res.render("allCharacters", {
+        title: "Lotr karakters",
+        message: "Alle Lotr karakters"
+    });
+});
+
+app.get("/characters", (req, res) => {
+    res.render("characters", {
+        title: "characters",
+        message: "characters"
     });
 });
 
@@ -59,17 +66,17 @@ app.get("/favorites", (req, res) => {
     });
 });
 
-app.get("/index", (req, res) => {
-    res.render("index", {
-        title: "Home",
-        message: "Welcome to Lord Of The Rings"
+app.get("/blacklist", (req, res) => {
+    res.render("blacklist", {
+        title: "Blacklist",
+        message: "Overview of your blacklisted items"
     });
 });
 
-app.get("/login", (req, res) => {
-    res.render("login", {
-        title: "Login",
-        message: "Login to your account"
+app.get("/account", (req, res) => {
+    res.render("account", {
+        title: "Account",
+        message: "Account settings"
     });
 });
 
@@ -77,13 +84,6 @@ app.get("/quiz", (req, res) => {
     res.render("quiz", {
         title: "Quiz",
         message: "Start the quiz"
-    });
-});
-
-app.get("/resetPassword", (req, res) => {
-    res.render("resetPassword", {
-        title: "Reset password",
-        message: "Reset your password"
     });
 });
 
@@ -101,33 +101,12 @@ app.get("/ten_rounds", (req, res) => {
     });
 });
 
-
-
-// post-route
-// app.post("/login", (req, res) => {
-//     const { username, password, confirmPassword } = req.body;
-//     const usernames: string[] = [];
-
-//     // Simpele checks (je kan eventueel dit naar een aparte functie/module verplaatsen)
-//     if (!username || username.length < 3) {
-//         return res.render("registration", { message: "Gebruikersnaam is te kort." });
-//     }
-
-//     if (password !== confirmPassword) {
-//         return res.render("registration", { message: "Wachtwoorden komen niet overeen." });
-//     }
-
-//     // Simulatie van username-check
-//     if (usernames.includes(username)) {
-//         return res.render("registration", { message: "Gebruikersnaam is al in gebruik." });
-//     }
-
-//     // Voeg nieuwe username toe (tijdelijk)
-//     usernames.push(username);
-    
-//     // Login is succesvol → render login pagina
-//     return res.render("login", { title: "login", message: `Welkom, ${username}!` });
-// });
+app.get("/resetPassword", (req, res) => {
+    res.render("resetPassword", {
+        title: "Reset password",
+        message: "Reset your password"
+    });
+});
 
 
 // registratie en login:
@@ -155,7 +134,6 @@ app.post("/registration", (req, res) => {
     if (allreadyExists) {
         return res.render("registration", { message: "Gebruikersnaam is al in gebruik." });
     }
-
 
     //gbruiker toevoegen
     users.push({ username, password });

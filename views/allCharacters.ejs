@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/images/logo.png" />
-    <title>Lord Of The Rings - Index</title>
+    <title>Lord Of The Rings - Alle Lotr karacters</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body class="index">
+<body class="allCharacters">
     <header>
         <a class="logo" href="index">
             <img src="assets/images/logo.png" alt="logo" width="100px" id="logo">
@@ -34,16 +34,21 @@
         </nav>
     </header>
 
-    <main>
-        <section class="frontpage">
-            <h1 class="h1-front">Welkom bij LOTR</h1>
-            <h2>Start hier jouw avontuur !</h2>
-            <button class="start-quiz"><a href="quiz.html" class="quiz">Quiz</a></button>
-            <button class="sudden"><a href="quiz.html" class="sudden-death">Sudden death</a></button>
-            <button><a href="ten-rounds.html" class="ten-rounds">Ten rounds</a></button>
-        </section>
+    <!-- <pre><%= JSON.stringify(characters, null, 2) %></pre> -->
 
-        <section class="banner"></section>
+    <main>
+        <% characters.forEach(function(character) { %>
+            <h1><%= character.name %></h1>
+            <h1><%= character %></h1>
+            <!-- <img src="<%= character.imageUrl %>" alt="<%= character.name %>" style="width:200px;height:auto;"> -->
+            
+            <h2>Quotes (<%= character.quotes.length %>)</h2>
+            <ul>
+                <% character.quotes.forEach(function(quote) { %>
+                    <li><%= quote %></li>
+                <% }); %>
+            </ul>
+        <% }); %>
     </main>
 
     <footer>
