@@ -13,6 +13,11 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
 }
 
+header figure img {
+    margin-left: 0px;
+    color: var(--goudgeel);
+}
+
 nav ul {
     list-style-type: none; 
     display: flex; 
@@ -59,7 +64,7 @@ h3{
 footer{
     color: var(--goudgeel);
     text-align: center;
-    margin: 2%;
+    margin: 0%;
     font-family: Arial;
 }
 
@@ -74,7 +79,7 @@ footer{
         transform: translate(-50%, -50%);
         align-items: center;
         text-align: center;
-        border: 5px solid blue;
+        border: 5px solid var(--goudgeel);
         height: 300px;
         width: 600px;
         background-color: var(--grijs);
@@ -106,7 +111,6 @@ footer{
             border-radius: 10px;
         }
     }
-
     .gameChoice{
         text-align: center;
         font-weight: bold;
@@ -114,21 +118,17 @@ footer{
     
     /* main */
     .games-list{
-        height: 100vh;
+        margin-bottom: 150px;
     }
     
     .games{
         display: grid;
-        grid-template-columns: 2;
-        grid-template-rows: 3;
-        grid-template-areas: 
-        "game1 game2"
-        "game3 game4"
-        "game5 game6";
-        grid-gap: 10px;
-        margin-left: 10%;
-        margin: 1% 0 0 20%;
-        height: 100%;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+        "game1 game2 game3"
+        "game4 game5 game6";
+        grid-gap: 80px;
+        margin-left: 9%;
     }
     
     .game{
@@ -138,9 +138,9 @@ footer{
         align-items: center;
         background: #002b7b;
         width: calc(50%-20px);
-        max-width: 300px;
+        max-width: 250px;
         height: 150px;
-        border: 3px solid #007BFF;
+        border: 3px solid var(--goudgeel);
         cursor: pointer;
         font-size: 18px;
         font-family: Arial, sans-serif;
@@ -148,14 +148,13 @@ footer{
                     font-size 0.3s;
         background-position: calc(100%-20px) calc(100%-20px);
         background-size: cover;
+        margin-top: 30px;
     }
     
     .game:hover{
         transform: scale(1.1);
         opacity: 0.5;
-        /* box-shadow: 5px 5px 5px white; x-as, y-as, blur, kleur */
-        box-shadow: 0 4px 8px 0 rgb(255, 255, 255), 0 6px 20px 0 rgb(255, 255, 255);
-    }
+      }
 
     .game a{
         text-decoration: none;
@@ -205,28 +204,45 @@ footer{
         grid-area: game6;
         background-image: url("../assets/images/pokemon_large.png");
     }
+    .footer-landing{
+        position: fixed;
+        color: var(--goudgeel);
+        text-align: center;
+        top: 600;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 13px;
+    }
 }
+
 
 /* css for registration.html */
 
 .registration{
+
     form{
-        width: 50%;
+        width: 30%;
         background: var(--donkergrijs);
-        margin-left: 20%;
+        margin-left: 30%;
         padding: 5%;
         border-radius: 10px;
-        
+        margin-top: 100px;
+        align-items: center;
     }
-    
+    .form-registration{
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+    }
     label{
-        margin-right: 25%;
+        width: 40%;
+        margin: 0 0 15px 20%;
         color: var(--parelwit);
+        align-items: center;
     }
-    
     input{
         margin-top: -15px;
-        margin-left: 60%;
     }
     
     input::placeholder{
@@ -236,7 +252,8 @@ footer{
     .eyeIcon{
         color: var(--donkergrijs);
         font-size: 18px;
-        margin-left: -5%;
+        margin-left: -6%;
+        margin-bottom: 15px;
         opacity: .5;
         cursor: pointer;
     }
@@ -281,6 +298,16 @@ footer{
     button:active {
         transform: scale(0.95);
     }
+    .footer-registration{
+        position: fixed;
+        color: var(--goudgeel);
+        text-align: center;
+        top: 600;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 13px;
+    }
 }
 
 
@@ -292,6 +319,8 @@ footer{
         margin-left: 20%;
         padding: 5%;
         border-radius: 10px;
+        margin-top: 100px;
+        align-items: center;
     }
     
     label{
@@ -342,6 +371,16 @@ footer{
     
     button:active {
         transform: scale(0.95);
+    }
+    .footer-resetPassword{
+        position: fixed;
+        color: var(--goudgeel);
+        text-align: center;
+        top: 600;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 13px;
     }
 }
 
@@ -404,16 +443,18 @@ footer{
         transform:translateY(1px);
       }
       
-      .login-clean form .forgot {
+      .login-clean form .register , .forgot {
         display:block;
         text-align:center;
         font-size:12px;
         color:#ffd700;
         opacity:0.9;
-        text-decoration:none;
+        text-decoration:underline;
+        font-size: 16px;
+        
       }
       
-      .login-clean form .forgot:hover, .login-clean form .forgot:active {
+      .login-clean form .forgot:hover .register, .login-clean form .forgot:active{
         opacity:1;
         text-decoration:none;
       }
@@ -423,17 +464,16 @@ footer{
         font-size: x-large;
         font-family: 'Ringbearer Medium';
       }
-    
-      img{
-        width: 150px;
-      }
-      footer{
-        color: wheat;
-        height: auto;
+
+      .footer-login{
+        position: fixed;
+        color: var(--goudgeel);
         text-align: center;
-        margin: 10px;
-        padding: 10px;
-        font-size: 10px;
+        top: 600;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        font-size: 13px;
     }
 }
 
