@@ -1,7 +1,6 @@
 {
-  "name": "Lotr-developers",
+  "name": "lotr-developers",
   "version": "1.0.0",
-  "description": "",
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
@@ -25,9 +24,11 @@
   },
   "dependencies": {
     "dotenv": "^16.5.0",
-    "ejs": "^3.1.9",
+    "ejs": "^3.1.10",
     "express": "^4.21.2",
     "node-fetch": "^3.3.2",
     "open": "^10.1.1"
-  }
+  },
+  "keywords": [],
+  "description": ""
 }

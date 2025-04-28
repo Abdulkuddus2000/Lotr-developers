@@ -21,30 +21,34 @@
         </figure>
     </header>
     <main>
-        <h2>Registreer</h2>
         <form action="/login" method="post">
-            <label for="firstname">Gebruikersnaam</label>
-            <input type="text" id="username" name="username" placeholder="John123" required>
-            <br>
-
-            <label for="password">Wachtwoord</label>
-            <input type="password" id="passwordRegistrationPage" name="password" placeholder="*****" required>
-            <i class="fa fa-eye eyeIcon eyeIcon1" onmousedown="togglePasswordOnMouseDown(event)"
+            <h2>Registreer</h2>
+            <section class="form-registration">
+                <label for="firstname">Gebruikersnaam</label>
+                <input type="text" id="username" name="username" placeholder="John123" required>
+                <br>
+            </section>
+            <section class="form-registration">
+                <label for="password">Wachtwoord</label>
+                <input type="password" id="passwordRegistrationPage" name="password" placeholder="*****" required>
+                <i class="fa fa-eye eyeIcon eyeIcon1" onmousedown="togglePasswordOnMouseDown(event)"
                 onmouseup="togglePasswordOnMouseUp(event)"></i>
-            <br>
-
-            <label for="confirm-password">Bevestig uw wachtwoord</label>
-            <input type="password" id="confirm-passwordRegistrationPage" name="confirm-password" placeholder="*****" required>
-            <i class="fa fa-eye eyeIcon eyeIcon1" onmousedown="togglePasswordOnMouseDown(event)"
-                onmouseup="togglePasswordOnMouseUp(event)"></i>
-            <br>
-
+                <br>
+            </section>
+            <section class="form-registration">
+                <label for="confirm-password">Bevestig uw wachtwoord</label>
+                <input type="password" id="confirm-passwordRegistrationPage" name="confirm-password" placeholder="*****" required>
+                <i class="fa fa-eye eyeIcon eyeIcon1" onmousedown="togglePasswordOnMouseDown(event)"
+                    onmouseup="togglePasswordOnMouseUp(event)"></i>
+                <br>
+            </section>
+            
             <button type="submit">Bevestigen</button>
-            <!-- <button type="submit" id="submitRegistration">Bevestig</button> -->
+            
         </form>
     </main>
-    <footer>
-        &copy; Copyright WPL Projects 2024-2025 - Abdul Kosimov, Hakki Turaç, Metin Molov, Nabil Habrani
+    <footer class="footer-registration">
+        &copy; Copyright WPL Projects 2024-2025 - Abdul Kosimov, Hakki Turaç, Nabil Habrani en Hamse Mohammed
     </footer>
 </body>
 
