@@ -1,39 +1,7 @@
-<!DOCTYPE html>
-<html lang="nl-BE">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/logo.png" />
-    <title>Lord Of The Rings - Account</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="js/account.js" defer></script>
-
-   
-    
-</head>
+<%- include("partials/head")%>
 
 <body class="account">
-    <header>
-        <a class="logo" href="index.html">
-            <img src="assets/images/logo.png" alt="logo" width="100px" id="logo">
-        </a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="favorites.html">Favorieten</a></li>
-                <li><a href="blacklist.html">Zwartelijst</a></li>
-                <li class="login-icon">
-                    <a href="account.html" class="login-icon">
-                        <i class="fas fa-user-circle" style="font-size: 30px; "></i> 
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <%- include("partials/nav")%>
     <main>
         <h1>Account Gegevens</h1>
     
@@ -65,9 +33,6 @@
 
             <section>
         </section>
-    
-    
-        
         <section id="avatar-modal" class="modal">
             <section class="modal-content">
                 <span class="close" onclick="closeAvatarSelection()">&times;</span>
@@ -96,7 +61,6 @@
                     <section class="avatar-item">
                         <img src="assets/images/bormir.png" alt="Boromir" onclick="selectAvatar('assets/images/bormir.png')" />
                         <p>Boromir</p>
-
                     </section>
                     <section class="avatar-item">
                         <img src="assets/images/elrond.png" alt="Elrond" onclick="selectAvatar('assets/images/elrond.png')" />
@@ -171,24 +135,10 @@
                     <section class="avatar-item">
                         <img src="assets/images/treebeard.png" alt="Treebeard" onclick="selectAvatar('assets/images/treebeard.png')" />
                         <p>Treebeard</p>
-
                     </section>
-
-                    
                 <section>
             <section>
         <section>
     
     </main>
-    <footer class="footer-blacklist">
-        <p>&copy;2024 AP-Hogeschool | Kosimov Abdul, Habrani Nabil, Tukka Hakki en Molov Metin</p>
-        <a href="#" class="back-to-top">
-            <i class="fas fa-chevron-circle-up"></i>   
-        </a>
-    </footer>
-
-
-    
-</body>
-
-</html>
+<%- include("partials/footer")%>

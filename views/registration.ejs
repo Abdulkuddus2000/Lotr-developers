@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html lang="nl-BE">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/logo.png" />
-    <title>Lord Of The Rings - Registratie</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="js/password.js" defer></script>
-</head>
+<%- include("partials/head")%>
 
 <body class="registration">
-    <header>
-        <figure>
-            <a href="landing.html">
-                <img src="assets/images/logo.png" alt="logo Lord Of The Rings" height="100px">
-            </a>
-        </figure>
-    </header>
+    <%- include("partials/logo") %>
     <main>
         <h2>Registreer</h2>
         <form action="/registration" method="POST">
@@ -44,9 +26,4 @@
             <!-- <button type="submit" id="submitRegistration">Bevestig</button> -->
         </form>
     </main>
-    <footer>
-        &copy; Copyright WPL Projects 2024-2025 - Abdul Kosimov, Hakki Turaç, Metin Molov, Nabil Habrani
-    </footer>
-</body>
-
-</html>
+<%- include("partials/footer")%>
