@@ -1,51 +1,29 @@
-<!DOCTYPE html>
-<html lang="nl-BE">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/logo.png" />
-    <title>Lord Of The Rings - Registratie</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="js/password.js" defer></script>
-</head>
+<%- include("partials/head")%>
 
 <body class="registration">
-    <header>
-        <figure>
-            <a href="landing.html">
-                <img src="assets/images/logo.png" alt="logo Lord Of The Rings" height="100px">
-            </a>
-        </figure>
-    </header>
+    <%- include("partials/logo") %>
     <main>
         <h2>Registreer</h2>
-        <form action="/login" method="post">
-            <label for="firstname">Gebruikersnaam</label>
+        <form action="/registration" method="POST">
+            
+            <label for="username">Gebruikersnaam</label>
             <input type="text" id="username" name="username" placeholder="John123" required>
             <br>
 
             <label for="password">Wachtwoord</label>
             <input type="password" id="passwordRegistrationPage" name="password" placeholder="*****" required>
             <i class="fa fa-eye eyeIcon eyeIcon1" onmousedown="togglePasswordOnMouseDown(event)"
-                onmouseup="togglePasswordOnMouseUp(event)"></i>
+            onmouseup="togglePasswordOnMouseUp(event)"></i>
             <br>
 
             <label for="confirm-password">Bevestig uw wachtwoord</label>
-            <input type="password" id="confirm-passwordRegistrationPage" name="confirm-password" placeholder="*****" required>
+            <input type="password" id="confirm-passwordRegistrationPage" name="confirmPassword" placeholder="*****" required>
             <i class="fa fa-eye eyeIcon eyeIcon1" onmousedown="togglePasswordOnMouseDown(event)"
-                onmouseup="togglePasswordOnMouseUp(event)"></i>
+            onmouseup="togglePasswordOnMouseUp(event)"></i>
             <br>
 
             <button type="submit">Bevestigen</button>
             <!-- <button type="submit" id="submitRegistration">Bevestig</button> -->
         </form>
     </main>
-    <footer>
-        &copy; Copyright WPL Projects 2024-2025 - Abdul Kosimov, Hakki Turaç, Metin Molov, Nabil Habrani
-    </footer>
-</body>
-
-</html>
+<%- include("partials/footer")%>

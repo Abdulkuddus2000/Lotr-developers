@@ -1,0 +1,22 @@
+<%- include("partials/head")%>
+<body class="allCharacters">
+    <%- include("partials/nav")%>
+
+    <!-- <pre><%= JSON.stringify(characters, null, 2) %></pre> -->
+
+    <main>
+        <% characters.forEach(function(character) { %>
+            <h1><%= character.name %></h1>
+            <h1><%= character %></h1>
+            <!-- <img src="<%= character.imageUrl %>" alt="<%= character.name %>" style="width:200px;height:auto;"> -->
+            
+            <h2>Quotes (<%= character.quotes.length %>)</h2>
+            <ul>
+                <% character.quotes.forEach(function(quote) { %>
+                    <li><%= quote %></li>
+                <% }); %>
+            </ul>
+        <% }); %>
+    </main>
+
+<%- include("partials/footer")%>
