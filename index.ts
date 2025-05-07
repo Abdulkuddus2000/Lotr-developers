@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import path from "path";
 import open from "open";
 import { error } from "console";
+import { title } from "process";
 
 dotenv.config();
 
@@ -100,6 +101,11 @@ app.get("/ten_rounds", (req, res) => {
         message: "ten_rounds"
     });
 });
+
+app.get("/spelregels", (req, res) => {
+    res.render("spelregels")
+});
+
 
 // post-route
 app.post("/login", (req, res) => {
