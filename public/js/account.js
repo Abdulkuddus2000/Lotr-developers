@@ -12,6 +12,6 @@ function selectAvatar(src) {
     closeAvatarSelection(); // Sluit het modal venster
 }
 
-function logout() {
-    alert("U bent uitgelogd!");
+function save() {
+    alert("Het is opgeslagen!");
 }

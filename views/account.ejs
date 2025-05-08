@@ -18,16 +18,16 @@
 
 <body class="account">
     <header>
-        <a class="logo" href="index.html">
+        <a class="logo" href="landing">
             <img src="assets/images/logo.png" alt="logo" width="100px" id="logo">
         </a>
-        <nav>
+        <nav class="nav-bar">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="favorites.html">Favorieten</a></li>
-                <li><a href="blacklist.html">Zwartelijst</a></li>
+                <li><a href="index">Home</a></li>
+                <li><a href="favorites">Favorieten</a></li>
+                <li><a href="blacklist">Zwartelijst</a></li>
                 <li class="login-icon">
-                    <a href="account.html" class="login-icon">
+                    <a href="account" class="login-icon">
                         <i class="fas fa-user-circle" style="font-size: 30px; "></i> 
                     </a>
                 </li>
@@ -35,14 +35,11 @@
         </nav>
     </header>
     <main>
-        <h1>Account Gegevens</h1>
-    
         <section class="profile-container">
-            <div class="profile-photo" onclick="openAvatarSelection();">
+            <section class="profile-photo" onclick="openAvatarSelection();">
                 <img id="avatar" src="assets/images/character_aragorn.png" />
                 <p class="avatar-text">Kies Avatar</p>
-            </div>
-    
+            </section>
             <section class="profile-info">
                 <input type="text" id="username" placeholder="Naam" required />
                 <input type="text" id="level" value="Level: 5 (XP: 1200)" readonly />
@@ -57,8 +54,8 @@
 
                 </section>
 
-                <section class="logout-button">
-                    <button onclick="logout()">Uitloggen</button>
+                <section class="save-button">
+                    <button onclick="save()">save</button>
 
                 </section>
 
@@ -75,113 +72,111 @@
                 <section class="avatar-list">
                     
                     <section class="avatar-item">
-                        <img src="assets/images/aragon.png" alt="Aragon"  onclick="selectAvatar('assets/images/aragon.png')" />
+                        <img src="../assets/images/imageC/character_aragorn.png" alt="Aragon"  onclick="selectAvatar('/assets/images/imageC/character_aragorn.png')" />
                         <p>Aragon</p>
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/galadriel.png" alt="Galadriel" onclick="selectAvatar('assets/images/galadriel.png')" />
+                        <img src="../assets/images/imageC/character_galadriel-Photoroom.png" alt="Galadriel" onclick="selectAvatar('/assets/images/imageC/character_galadriel-Photoroom.png')" />
                         <p>Galadriel</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/gollum.png" alt="Gollum" onclick="selectAvatar('assets/images/gollum.png')" />
+                        <img src="../assets/images/imageC/character_gollum-Photoroom.png" alt="Gollum" onclick="selectAvatar('/assets/images/imageC/character_gollum-Photoroom.png')" />
                         <p>Gollum</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/bilbo baggins.png" alt="Bilbo" onclick="selectAvatar('assets/images/bilbo baggins.png')" />
+                        <img src="../assets/images/imageC/character_bilbo-Photoroom.png" alt="Bilbo" onclick="selectAvatar('/assets/images/imageC/character_bilbo-Photoroom.png')" />
                         <p>Bilbo</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/bormir.png" alt="Boromir" onclick="selectAvatar('assets/images/bormir.png')" />
+                        <img src="../assets/images/imageC/character_boromir-Photoroom.png" alt="Boromir" onclick="selectAvatar('/assets/images/imageC/character_boromir-Photoroom.png')" />
                         <p>Boromir</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/elrond.png" alt="Elrond" onclick="selectAvatar('assets/images/elrond.png')" />
+                        <img src="../assets/images/imageC/character_elrond-Photoroom.png" alt="Elrond" onclick="selectAvatar('/assets/images/imageC/character_éowyn-Photoroom.png')" />
                         <p>Elrond</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/eowyn.png" alt="Eowyn" onclick="selectAvatar('assets/images/eowyn.png')" />
+                        <img src="../assets/images/imageC/character_éowyn-Photoroom.png" alt="Eowyn" onclick="selectAvatar('assets/images/eowyn.png')" />
                         <p>Eowyn</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/faramir.png" alt="Faramir" onclick="selectAvatar('assets/images/faramir.png')" />
+                        <img src="../assets/images/imageC/character_faramir-Photoroom.png" alt="Faramir" onclick="selectAvatar('/assets/images/imageC/character_faramir-Photoroom.png')" />
                         <p>Faramir</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/frodo.png" alt="Frodo" onclick="selectAvatar('assets/images/frodo.png')" />
+                        <img src="../assets/images/imageC/character_frodo-Photoroom.png" alt="Frodo" onclick="selectAvatar('/assets/images/imageC/character_frodo-Photoroom.png')" />
                         <p>Frodo</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/gandalf.png" alt="Gandalf" onclick="selectAvatar('assets/images/gandalf.png')" />
+                        <img src="../assets/images/imageC/character_gandalf.png" alt="Gandalf" onclick="selectAvatar('/assets/images/imageC/character_gandalf.png')" />
                         <p>Gandalf</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/gimli.png" alt="Gimli" onclick="selectAvatar('assets/images/gimli.png')" />
+                        <img src="../assets/images/imageC/character_gimli-Photoroom.png" alt="Gimli" onclick="selectAvatar('/assets/images/imageC/character_gimli-Photoroom.png')" />
                         <p>Gimli</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/legolas.png" alt="Legolas" onclick="selectAvatar('assets/images/legolas.png')" />
+                        <img src="../assets/images/imageC/character_legolas-Photoroom.png" alt="Legolas" onclick="selectAvatar('/assets/images/imageC/character_legolas-Photoroom.png')" />
                         <p>Legolas</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/merry.png" alt="Merry" onclick="selectAvatar('assets/images/merry.png')" />
+                        <img src="../assets/images/imageC/character_merry-Photoroom.png" alt="Merry" onclick="selectAvatar('/assets/images/imageC/character_merry-Photoroom.png')" />
                         <p>Merry</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/nazgul.png" alt="Nazgul" onclick="selectAvatar('assets/images/nazgul.png')" />
+                        <img src="../assets/images/imageC/character_nazgul-Photoroom.png" alt="Nazgul" onclick="selectAvatar('/assets/images/imageC/character_nazgul-Photoroom.png')" />
                         <p>Nazgul</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/pippin.png" alt="Pippin" onclick="selectAvatar('assets/images/pippin.png')" />
+                        <img src="../assets/images/imageC/character_pippin-Photoroom.png" alt="Pippin" onclick="selectAvatar('/assets/images/imageC/character_pippin-Photoroom.png')" />
                         <p>Pippin</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/samwise.png" alt="Samwise" onclick="selectAvatar('assets/images/samwise.png')" />
+                        <img src="../assets/images/imageC/character_samwise-Photoroom.png" alt="Samwise" onclick="selectAvatar('assets/images/imageC/character_samwise-Photoroom.png')" />
                         <p>Samwise</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/saruman.png" alt="Saruman" onclick="selectAvatar('assets/images/saruman.png')" />
+                        <img src="../assets/images/imageC/character_saruman-Photoroom.png" alt="Saruman" onclick="selectAvatar('/assets/images/imageC/character_saruman-Photoroom.png')" />
                         <p>Saruman</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/sauron.png" alt="sauron" onclick="selectAvatar('assets/images/sauron.png')" />
+                        <img src="../assets/images/imageC/character_sauron-Photoroom.png" alt="sauron" onclick="selectAvatar('/assets/images/imageC/character_sauron-Photoroom.png')" />
                         <p>Sauron</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/theodon.png" alt="Theodon" onclick="selectAvatar('assets/images/theodon.png')" />
+                        <img src="../assets/images/imageC/character_théodon-Photoroom.png" alt="Theodon" onclick="selectAvatar('/assets/images/imageC/character_théodon-Photoroom.png')" />
                         <p>Theodon</p>
 
                     </section>
                     <section class="avatar-item">
-                        <img src="assets/images/treebeard.png" alt="Treebeard" onclick="selectAvatar('assets/images/treebeard.png')" />
+                        <img src="../assets/images/imageC/character_treebeard-Photoroom.png" alt="Treebeard" onclick="selectAvatar('/assets/images/imageC/character_treebeard-Photoroom.png')" />
                         <p>Treebeard</p>
 
                     </section>
-
-                    
                 <section>
             <section>
         <section>
     
     </main>
     <footer class="footer-blacklist">
-        <p>&copy;2024 AP-Hogeschool | Kosimov Abdul, Habrani Nabil, Tukka Hakki en Molov Metin</p>
+        <p>&copy;2025 AP-Hogeschool | Kosimov Abdul, Habrani Nabil en Hamse Mohammed Yassin</p>
         <a href="#" class="back-to-top">
             <i class="fas fa-chevron-circle-up"></i>   
         </a>
