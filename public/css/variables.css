@@ -34,6 +34,10 @@
     --donkerblauw: #00008B;
     /* Minas Tirith */
     --wit: #FFFFFF;
+    --font-titel: 'Georgia', sans-serif;
+    --font-inhoud: 'Cinzel Decorative', serif;
+    --font--quotte: 'Cormorant Garamond', serif;
+
 }
 
 

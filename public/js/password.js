@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
         passwords.push(passwordRegistrationPage);
         message.textContent = "Je bent successvol geregistreerd !!!";
         message.style.color = "green";
-        window.location.href = "login.ejs";
+        window.location.href = "login";
       } else {
         message.textContent = "De wachtwoorden komen niet overeen, gebruik het oog-icoontje ter controle.";
         message.style.color = "red";
