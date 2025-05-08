@@ -103,7 +103,13 @@ app.get("/ten_rounds", (req, res) => {
 });
 
 app.get("/spelregels", (req, res) => {
-    res.render("spelregels")
+    res.render("spelregels", {
+        title: "spelregels",
+        message: "spelregels"
+
+    }
+        
+    );
 });
 
 
