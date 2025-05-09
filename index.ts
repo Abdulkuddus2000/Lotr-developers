@@ -73,6 +73,7 @@ app.get("/favoriteCharacter", (req, res) => {
     res.render("favoriteCharacter", {
         title: "favoriteCharacter",
         message: "favoritCharacter"
+        
     });
 });
 app.get("/favorites", (req, res) => {

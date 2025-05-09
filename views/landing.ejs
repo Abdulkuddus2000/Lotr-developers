@@ -1,16 +1,4 @@
-<!DOCTYPE html>
-<html lang="nl-BE">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/logo.png" />
-    <title>Lord Of The Rings - Landing page</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/general.js" defer></script>
-</head>
-
+<%- include('partials/head.ejs') %>
 <body class="landing">
     <section class="customAlert">
         <section class="alert-content">
@@ -20,13 +8,7 @@
         </section>
     </section>
 
-    <header>
-        <figure>
-            <a href="#">
-                <img src="assets/images/logo.png" alt="logo Lord Of The Rings" height="100px">
-            </a>
-        </figure>
-    </header>
+    <%- include("partials/logo")%>
     <main>
         <h2 class="gameChoice">Maak uw keuze</h2>
         <section class="games-list">
@@ -60,9 +42,6 @@
             </section>
         </section>
     </main>
-    <footer class="footer-landing">
-        &copy; Copyright WPL Projects 2024-2025 - by Abdul Kosimovs, Nabil Habrani en Hamse Mohamed Yassin
-    </footer>
+    <%- include('partials/footer.ejs') %>
 </body>
-
 </html>
