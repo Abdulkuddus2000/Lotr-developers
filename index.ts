@@ -29,7 +29,12 @@ app.get("/registration", (req, res) => {
         message: "registration"
     });
 });
-
+app.get("/forgetPassword", (req, res) => {
+    res.render("forgetPassword", {
+        title: "forgetPassword",
+        message: "forgetPassword"
+    });
+});
 app.get("/account", (req, res) => {
     res.render("account", {
         title: "account",

@@ -25,10 +25,12 @@ header figure img {
     margin-top: 20px;
 }
 
-.login-icon {
-    font-size: 24px;
-    margin-left: 480px;
+.user-icon {
+    position: fixed;
+    right: 30px;
+    top: 70px;
     color: var(--goudgeel);
+    font-size: 24px;
     cursor: pointer;
     transition: color 0.3s;
 }
@@ -77,12 +79,15 @@ h3{
 }
 
 .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     text-align: center;
     background: black; 
     color:var(--goudgeel);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
-    padding-top: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -112,7 +117,7 @@ h3{
     color: var(--goudgeel);
     font-family: 'Ringbearer Medium';
     text-align: center;
-
+    min-height:55vh;
 }
 .customAlert{
     display: none;
@@ -140,14 +145,14 @@ h3{
         font-size: 30px;
     }
     button#confirmBtn{
-        margin: 30px !important;
-        height: 120px !important;
+        margin: 30px ;
+        height: 120px ;
         width: auto;
         color: var(--goudgeel);
         font-family: "Ringbearer Medium";
-        margin: 20px !important;
-        padding: 20px 40px !important;
-        font-size: 24px !important;
+        margin: 20px;
+        padding: 20px 40px;
+        font-size: 24px ;
         border: none;
         background: gray;
         cursor: pointer;
@@ -247,180 +252,254 @@ h3{
 }
 /* css for registration.html */
 
-.registration{
+.registration-page{
+    color: var(--goudgeel);
+    font-family: 'Ringbearer Medium';
+    text-align: center;
+    min-height:100vh;
+}
 
-    form{
-        width: 30%;
-        background: var(--donkergrijs);
-        margin-left: 30%;
-        padding: 5%;
-        border-radius: 10px;
-        margin-top: 100px;
-        align-items: center;
-    }
-    .form-registration{
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-    label{
-        width: 40%;
-        margin: 0 0 15px 20%;
-        color: var(--parelwit);
-        align-items: center;
-    }
-    input{
-        margin-top: -15px;
-    }
+form{
+    width: 30%;
+    background: var(--donkergrijs);
+    margin-left: 30%;
+    padding: 5%;
+    border-radius: 10px;
+    margin-top: 80px;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.form-registration{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+label{
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 16px;
+    width: 80%;
+    margin: 0 0 0 0;
+    margin-right: 15px;
+    margin-left: 15px;
+    color: var(--parelwit);
+    align-items: center;
+    inline-size: 200px;
+}
+#usernameRegistrationPage {
+    margin-left: 12px;
+    width: 50%;
+    background-color: white;
     
-    input::placeholder{
-        opacity: 0.5;
-    }
-    
-    .eyeIcon{
-        color: var(--donkergrijs);
-        font-size: 18px;
-        margin-left: -6%;
-        margin-bottom: 15px;
-        opacity: .5;
-        cursor: pointer;
-    }
+}
 
-    .forgot-password{
-        margin: 2%;
-        color: var(--lichtgrijs);
-        font-family: "Arial";
-        font-size: 12px;
-        margin-left: 60%;
-        text-decoration: none;
-    }
+#passwordRegistrationPage {
+    width: 50%;
+    background-color: white;
+
     
-    .forgot-password:hover{
-        color: var(--hemelsblauw);
-    }
-    
-    button {
-        height: 40px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 8px;
-        background: linear-gradient(135deg, var(--goudgeel), var(--lichtgrijs));
-        color: white;
-        font-size: 16px;
-        font-weight: bold;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto;
-    }
-    
-    button:hover {
-        background: linear-gradient(135deg, var(--lichtgrijs), var(--goudgeel));
-        transform: scale(1.05);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-    
-    button:active {
-        transform: scale(0.95);
-    }
-    .footer-registration{
-        position: fixed;
-        color: var(--goudgeel);
-        text-align: center;
-        top: 600;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        font-size: 13px;
-    }
+}
+
+input::placeholder{
+    opacity: 0.5;
+}
+
+.eyeIcon{
+    color: var(--donkergrijs);
+    font-size: 18px;
+    margin-left: -6%;
+    margin-bottom: 0px;
+    opacity: .5;
+    cursor: pointer;
+}
+
+
+button {
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--goudgeel), var(--lichtgrijs));
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+button:hover {
+    background: linear-gradient(135deg, var(--lichtgrijs), var(--goudgeel));
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+/* css for forgotPassword.html */
+.forgotPassword-page{
+    color: var(--goudgeel);
+    font-family: 'Ringbearer Medium';
+    text-align: center;
+    min-height:100vh;
+}
+form{
+    width: 30%;
+    background: var(--donkergrijs);
+    margin-left: 30%;
+    padding: 5%;
+    border-radius: 10px;
+    margin-top: 80px;
+    align-items: center;
+    margin-bottom: 100px;
+}
+
+.form-forgotPassword{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+label{
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 16px;
+    width: 80%;
+    margin: 0 0 0 0;
+    margin-right: 15px;
+    margin-left: 30px;
+    color: var(--parelwit);
+    align-items: center;
+    inline-size: 200px;
+}
+
+#forgotPassword1{
+    margin-left: 12px;
+    width: 50%;
+    background-color: white;
+}
+
+input::placeholder{
+    opacity: 0.5;
+}
+
+
+#submitForgetPassword {
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--goudgeel), var(--lichtgrijs));
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3% auto;
 }
 
 
 /* css for resetPassword.html */
-.resetPassword{
-    form{
-        width: 50%;
-        background: var(--donkergrijs);
-        margin-left: 20%;
-        padding: 5%;
-        border-radius: 10px;
-        margin-top: 100px;
-        align-items: center;
-    }
-    
-    label{
-        margin-right: 25%;
-        color: var(--parelwit);
-    }
-    
-    input{
-        margin-top: -15px;
-        margin-left: 60%;
-    }
-    
-    input::placeholder{
-        opacity: 0.5;
-    }
-    
-    .eyeIcon{
-        color: var(--donkergrijs);
-        font-size: 18px;
-        margin-left: -5%;
-        opacity: 0.5;
-        cursor: pointer;
-    }
-    
-    button {
-        height: 40px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 8px;
-        background: linear-gradient(135deg, var(--goudgeel), var(--lichtgrijs));
-        color: white;
-        font-size: 16px;
-        font-weight: bold;
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: all 0.3s ease-in-out;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 3% auto;
-    }
-    
-    button:hover {
-        background: linear-gradient(135deg, var(--lichtgrijs), var(--goudgeel));
-        transform: scale(1.05);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-    
-    button:active {
-        transform: scale(0.95);
-    }
-    .footer-resetPassword{
-        position: fixed;
-        color: var(--goudgeel);
-        text-align: center;
-        top: 600;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        font-size: 13px;
-    }
+.resetPassword-page{
+    color: var(--goudgeel);
+    font-family: 'Ringbearer Medium';
+    text-align: center;
+    min-height:100vh;
+}
+
+form{
+    width: 30%;
+    background: var(--donkergrijs);
+    margin-left: 30%;
+    padding: 5%;
+    border-radius: 10px;
+    margin-top: 80px;
+    align-items: center;
+    margin-bottom: 100px;
+}
+.form-resetPassword{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+label{
+    font-family: 'Georgia', 'Times New Roman', Times, serif;
+    font-size: 16px;
+    width: 80%;
+    margin: 0 0 0 0;
+    margin-right: 15px;
+    margin-left: 30px;
+    color: var(--parelwit);
+    align-items: center;
+    inline-size: 200px;
+}
+#resetPassword1{
+    margin-left: 12px;
+    width: 50%;
+    background-color: white;
+}
+input{
+    margin-top: -15px;
+    margin-left: 60%;
+}
+
+input::placeholder{
+    opacity: 0.5;
+}
+
+.eyeIcon{
+    color: var(--donkergrijs);
+    font-size: 18px;
+    margin-left: -5%;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+button {
+    height: 40px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--goudgeel), var(--lichtgrijs));
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3% auto;
+}
+
+button:hover {
+    background: linear-gradient(135deg, var(--lichtgrijs), var(--goudgeel));
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:active {
+    transform: scale(0.95);
 }
 
 /* css for login.html */
 .login-page{
-
-    height: 100vh;
-   
+    color: var(--goudgeel);
 }
 .login-clean {
     background:#000;
     padding:80px 0;
+    min-height:60vh;
 }
   
 .login-clean form {
@@ -429,7 +508,7 @@ h3{
     margin:0 auto;
     background-color:#2c2c2c;
     padding:40px;
-    border-radius:4px;
+    border-radius:8px;
     color:#2c2c2c;
     box-shadow:1px 1px 5px rgba(0,0,0,0.1);
 }
@@ -437,8 +516,8 @@ h3{
 .login-clean .illustration {
     text-align:center;
     padding:0 0 20px;
-    font-size:100px;
-   color: #ffd700;
+
+    color: #ffd700;
 }
   
 .login-clean form .form-control {
@@ -446,30 +525,27 @@ h3{
     border:none;
     border-bottom:1px solid #f5f5dc;
     border-radius:4px;
-    box-shadow:none;
-    outline:none;
-    color:inherit;
     text-indent:8px;
-    height:42px;
+    height:30px;
     font-family: 'Ringbearer Medium';
 }
   
-.login-clean form .btn-primary {
-    background:#ffd700;
-    border:none;
+ .login-button {
+    font-family:'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    border: none;
+    width: 515px;
+    background: linear-gradient(135deg, var(--goudgeel), var(--lichtgrijs));
     border-radius:4px;
-    padding:11px;
-    box-shadow:none;
-    margin-top:26px;
-    text-shadow:none;
-    outline:none !important;
-    
+    padding:8px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    cursor: pointer;
 }
-  
-.login-clean form .btn-primary:hover, .login-clean form .btn-primary:active {
-    background:#808080;
-}
-  
+
 .login-clean form .btn-primary:active {
     transform:translateY(1px);
 }
@@ -477,11 +553,12 @@ h3{
 .login-clean form .register , .forgot {
     display:block;
     text-align:center;
-    font-size:12px;
+    font-size:16px;
     color:#ffd700;
-    opacity:0.9;
+    margin-bottom: 5px;
     text-decoration:underline;
-    font-size: 16px;
+
+    
 }
   
 .login-clean form .forgot:hover .register, .login-clean form .forgot:active{
@@ -494,8 +571,6 @@ h3{
     font-size: x-large;
     font-family: 'Ringbearer Medium';
 }
-
-
 
 /* einde styling login.html */
 
@@ -877,52 +952,50 @@ h3{
 
 
 /* css for favorites.html */
-.favorites{
-    main {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-    
-        section {
-            border: 2px solid #000;
-            padding: 10px;
-            border-radius: 10px;
-            background-color: var(--grijs);
-        }
 
-        a{
-            transition: transform 0.3s ease;
-        }
-
-        a:hover{
-            opacity: 0.75;
-            box-shadow: 0 4px 8px 0 rgb(255, 255, 255), 0 6px 20px 0 rgb(255, 255, 255);
-            
-            h3,
-            figure,
-            p{
-                transition: transform .3s ease ease-out;
-                transform: scale(1.03);
-            }
-        }
-
-        h3, p{
-            padding: 0.5em;
-            text-align: center;
-        }
-
-        figure{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        p{
-            color: var(--goudgeel);
-        }
-    }
+.main-favorites {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
 }
+section {
+    border: 2px solid #000;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+a{
+    transition: transform 0.3s ease;
+}
+
+a:hover{
+    opacity: 0.75;
+    box-shadow: 0 4px 8px 0 rgb(255, 255, 255), 0 6px 20px 0 rgb(255, 255, 255);
+}
+h3,figure, p{
+    transition: transform .3s ease ease-out;
+    transform: scale(1.03);
+}
+    
+
+h3, p{
+    padding: 0.5em;
+    text-align: center;
+}
+
+figure{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+p{
+    color: var(--goudgeel);
+}
+
 
 
 /* css for favoriteCharacter.html */
@@ -1050,24 +1123,29 @@ h3{
 
 
 /* css for blacklist.html */
-.main-blacklist {
+.blacklist{
 
+    background-color: var(--donkergrijs);
+    color: var(--goudgeel);
+    font-family: 'gotham', sans-serif;
+}
+.main-blacklist {
     display: flex; 
     flex-direction: column; 
     padding: 20px; 
     margin-bottom: 120px;
     background-color: var(--donkergrijs);
-
 }
 
 .title-blacklist {
+    font-family: 'Ringbearer Medium';
     text-align: center;   
-    margin: 20px 0;      
+    padding-top: 15px;
+    margin-bottom: 100px;
+    margin: 30px 0;      
     font-size: 24px;      
     color:var(--goudgeel); 
 }
-
-
 
 .blacklist-item {
     display: flex;
@@ -1347,7 +1425,6 @@ nav ul {
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
-    transition: background-color 0.3s, color 0.3s;
     margin-top: 20px;
 }
 

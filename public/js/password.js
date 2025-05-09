@@ -123,7 +123,7 @@ function ResetPassword() {
   // });
 }
 
-// showing message of success or failure
+// toont message van success of failure
 function showMessage(text, color) {
   let main = document.querySelector("main");
   let form = document.querySelector("form");

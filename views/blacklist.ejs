@@ -1,123 +1,122 @@
 <%- include('partials/head.ejs') %>
-<%- include('partials/nav.ejs') %>
+<body class="blacklist">
+    <%- include('partials/nav.ejs') %>
 
-<main class="main-blacklist">
-    <h2 class="title-blacklist">Zwartelijst</h2>
-    
-    <section class="blacklist-item">
-        <span>"One does not simply walk into Mordor."</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-     
+    <main class="main-blacklist">
+        <h2 class="title-blacklist">Zwartelijst</h2>
+        
+        <section class="blacklist-item">
+            <span>"One does not simply walk into Mordor."</span>
+            <section class="icon-edit">
+                <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
+                <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
+        
+            </section>
         </section>
-    </section>
-        <span>"Even the smallest person can change the course of the future."</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
+
+        <section class="blacklist-item">
+            <span>"Even the smallest person can change the course of the future."</span>
+            <section class="icon-edit"> 
+                <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
+                <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
+            </section>
         </section>
-    </section>
-    <section class="blacklist-item">
-        <span>"There is some good in this world, and it's worth fighting for."</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
 
-        </section>     
+        <section class="blacklist-item">
+            <span>"There is some good in this world, and it's worth fighting for."</span>
+            <section class="icon-edit">
+                <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
+                <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
 
-
-    </section>
-    <section class="blacklist-item">
-        <span>"A single dream is more powerful than a thousand realities."</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
+            </section>     
 
 
+        </section>
+        <section class="blacklist-item">
+            <span>"A single dream is more powerful than a thousand realities."</span>
+            <section class="icon-edit">
+                <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
+                <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
+
+
+            </section>
+        </section>
+        <section class="blacklist-item">
+            <span>"We wants it, we needs it. Must have the precious!"</span>
+            <section class="icon-edit">
+                <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
+                <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
+            </section>
+        </section>
+
+        <section class="blacklist-item">
+            <span>"We wants it, we needs it. Must have the precious!"</span>
+            <section class="icon-edit">
+                <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
+                <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
+            </section>
+
+        </section>
+
+        <section class="blacklist-item">
+            <span>"We wants it, we needs it. Must have the precious!"</span>
+            <section class="icon-edit">
+                <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
+                <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
+
+            </section>     
+
+        </section>
+
+        <section class="blacklist-item">
+            <span>"We wants it, we needs it. Must have the precious!"</span>
+            <section class="icon-edit">
+                <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
+                <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
+
+            </section>     
+
+        </section>
+
+        <section class="blacklist-item">
+            <span>"We wants it, we needs it. Must have the precious!"</span>
+            <section class="icon-edit">
+                <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
+                <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
+
+            </section>     
+
+        </section>
+
+        <section class="blacklist-item">
+            <span>"We wants it, we needs it. Must have the precious!"</span>
+            <section class="icon-edit">
+                <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
+                <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
+
+            </section>     
+
+        </section>
+        <section id="quoteModal" class="modal-1">
+            <article class="modal-blacklist">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h2 id="quoteTitle">Quote Info</h2>
+                <p id="quoteText" class="quote-text"></p>
+                <input type="text" id="editQuote" placeholder="Voer nieuwe quote in" class="edit-input">
+                <button id="saveQuote" onclick="saveQuote()" class="save-button">Opslaan</button>
+            </article>
         </section>
         
- 
-
-    </section>
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-
+        <section id="confirmDeleteModal" class="modal-1">
+            <article class="modal-blacklist">
+                <span class="close" onclick="closeConfirmDeleteModal()">&times;</span>
+                <h2>Bevestiging</h2>
+                <p>Ben je zeker dat je de quote wilt verwijderen?</p>
+                <button id="confirmDelete" class="confirm-button">Ja</button>
+                <button id="cancelDelete" class="cancel-button" onclick="closeConfirmDeleteModal()">Nee</button>
+            </article>
         </section>
-    </section>
-
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-        </section>
-
-    </section>
-
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-        </section>     
-
-    </section>
-
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-        </section>     
-
-    </section>
-
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-        </section>     
-
-    </section>
-
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-        </section>     
-
-    </section>
-    <section id="quoteModal" class="modal-1">
-        <article class="modal-blacklist">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="quoteTitle">Quote Info</h2>
-            <p id="quoteText" class="quote-text"></p>
-            <input type="text" id="editQuote" placeholder="Voer nieuwe quote in" class="edit-input">
-            <button id="saveQuote" onclick="saveQuote()" class="save-button">Opslaan</button>
-        </article>
-    </section>
-    
-    <section id="confirmDeleteModal" class="modal-1">
-        <article class="modal-blacklist">
-            <span class="close" onclick="closeConfirmDeleteModal()">&times;</span>
-            <h2>Bevestiging</h2>
-            <p>Ben je zeker dat je de quote wilt verwijderen?</p>
-            <button id="confirmDelete" class="confirm-button">Ja</button>
-            <button id="cancelDelete" class="cancel-button" onclick="closeConfirmDeleteModal()">Nee</button>
-        </article>
-    </section>
-    
-</main>
+        
+    </main>
+</body>
 <%- include('partials/footer.ejs') %>
