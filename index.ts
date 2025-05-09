@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import path from "path";
 import open from "open";
 import { error } from "console";
-
 dotenv.config();
 
 const app : Express = express();
@@ -49,6 +48,7 @@ app.get("/favoriteCharacter", (req, res) => {
     res.render("favoriteCharacter", {
         title: "favoriteCharacter",
         message: "favoritCharacter"
+        
     });
 });
 
