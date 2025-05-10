@@ -56,7 +56,6 @@ app.get("/favoriteCharacter", (req, res) => {
         
     });
 });
-
 app.get("/favorites", (req, res) => {
     res.render("favorites", {
         title: "favorites",

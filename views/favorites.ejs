@@ -4,25 +4,16 @@
 <main class="main-favorites">
     <h2>Je favoriete karakters</h2>
     <section class="quotes-favorites">
-        <% if (favoriete.length ==0) { %>
-            <p>Je hebt nog geen favoriete karakters.</p>
-        <% } else { %>
-            <% favorietes.forEach(favoriet => { %>
-                <section class="favoriet">
-                    <h3><%= favorietes.character %></h3>
-                    <p><%= favorietes.quote %></p>
-                    <button class="favoriete-delete" onclick="deleteQuote('<%= favoriet._id %>')">Verwijderen</button>
-                </section>
-            <% }) %>
-        <% } %>
         <section class="favoriet">
             <h3>Favoriete quotes</h3>
             <p>Hieronder staan je favoriete quotes.</p>
+            <% quotesData.docs.forEach(function(quote) { %>
+                <p><strong>Character ID <%= quote.character %>:</strong> <%= quote.dialog %></p>
+            <% }); %>
         <section class="favorites-buttons">
             <button class="favoriete-delete" onclick="deleteQuotes">Verwijderen</button>
             <button class="favoriete-print" onclick="printQuotes"> afprinten</button>
         </section>
     </section>
 </main>
-<script src="js/listAllCharacters.js"></script>
-<%- include('partials/footer.ejs') %>
+<%- include('partials/footer.ejs') %>*
