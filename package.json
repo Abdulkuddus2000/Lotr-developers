@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "test": "jest",
-    "start": "nodemon index.ts"
+    "build": "tsc",
+    "start": "nodemon index.ts",
+    "start:prod": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "dotenv": "^16.5.0",
     "ejs": "^3.1.9",
     "express": "^4.21.2",
+    "node-fetch": "^3.3.2",
     "open": "^10.1.1"
   }
 }

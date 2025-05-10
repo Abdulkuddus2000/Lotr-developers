@@ -3,6 +3,9 @@ import dotenv from "dotenv";
 import path from "path";
 import open from "open";
 import { error } from "console";
+import {getQuotes, getCharacter} from "./data";
+import { title } from "process";
+// import { apiCall } from "./data";
 
 dotenv.config();
 
@@ -38,6 +41,26 @@ app.get("/account", (req, res) => {
     });
 });
 
+app.get("/quotes", async (req, res) => {
+    try {
+        let characters = await getCharacter();
+        let quotes = await getQuotes();
+        
+        res.render("quotes", {
+            title: "quotes",
+            message: "quotes",
+            characters,
+            quotes
+        });
+        console.log("Aantal karakters: ", characters.length);
+        console.log("Eerste karakter: ", characters[0]);
+    } catch (error) {
+        console.error("Fout bij ophalen data: ", error);
+        res.status(500).send("Er is iets misgegaan.")
+    }
+
+});
+
 app.get("/blacklist", (req, res) => {
     res.render("blacklist", {
         title: "blacklist",
@@ -45,19 +68,20 @@ app.get("/blacklist", (req, res) => {
     });
 });
 
+
 app.get("/favoriteCharacter", (req, res) => {
     res.render("favoriteCharacter", {
         title: "favoriteCharacter",
         message: "favoritCharacter"
     });
 });
-
 app.get("/favorites", (req, res) => {
     res.render("favorites", {
         title: "favorites",
         message: "favorites"
     });
 });
+
 
 app.get("/index", (req, res) => {
     res.render("index", {
