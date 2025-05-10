@@ -671,16 +671,27 @@ footer {
 
 /* css for quiz.html */
 
-
-#quizItem,
-.quizItem,
-.quizAnswer,
-#questioncounter {
-    text-align: center;
+#quizMain {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    border-radius: 10px;
+    padding: 50px;
+    gap: 20px;
+    background: var(--donkergrijs);
+}
+
+#quizLeft{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 75%;
+    background-color: var(--donkergrijs);
+    border-left: 4px solid var(--goudgeel);
+    border-right: 4px solid var(--goudgeel);
+    border-top: 4px solid var(--goudgeel);
+    border-bottom: 4px solid var(--goudgeel);
+    
 }
 
 #suddenH1 {
@@ -691,35 +702,68 @@ footer {
     margin-bottom: 20px;
 }
 
-#quizMain {
-    grid-area: 'main';
-    display: flex;
-}
-
-#quizLeft {
-    width: 75%;
-    background-color: var(--donkergrijs);
-    border-left: 4px solid var(--goudgeel);
-    border-right: 4px solid var(--goudgeel);
-
-}
-
-#quizRight {
-    width: 25%;
-    background-image: url(../assets/images/character_gollum.png);
-    background-size: cover;
-    background-position: -150px 0;
-    border-right: 4px solid var(--goudgeel);
-}
-
-#quizflex {
+#quizQuestionsflex {
+    list-style: none;
+    padding: auto;   
+    margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    justify-content: center;
     align-items: center;
 }
 
-.quizItem,
+#suddenH1 {
+    font-family: 'Ringbearer Medium';
+    font-size: 45px;
+    color: var(--goudgeel);
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.quizQuestionsitem1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--donkergrijs);
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.quizFlex{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    
+}
+#quizLeft {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 200px;   
+}
+.quizAnswer{
+    display: flex;
+    align-items: center;
+    background-color: var(--donkergrijs);
+    margin-bottom: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
+}
+
+#quizRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+    background-color: var(--donkergrijs);
+}
+
 .quizQuestionsitem1 {
     background-color: var(--donkergrijs);
     border: 3px solid var(--goudgeel);
@@ -727,24 +771,44 @@ footer {
     display: flex;
     justify-content: space-evenly;
     list-style: none;
-    height: 125px;
+    height: 90px;
     width: 900px;
     margin-right: 40px;
+    margin: 30px;
+}
+.quizItem {
+    background-color: var(--donkergrijs);
+    border: 3px solid var(--goudgeel);
+    color: var(--goudgeel);
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    height: 90px;
+    width: 900px;
+    margin-right: 40px;
+    margin: 40px 0;
 }
 
 .quizQuestionsitem1 {
+    font-size: 20px;
+    background-color: #1e1e1e;
     height: fit-content;
-    width: fit-content;
+    width: revert;
     padding: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 130px;
+    padding-right: 130px;
     max-width: 900px;
+    margin: 20px 0;
 }
 
-.quizFlex {
-    display: flex;
-    gap: 65px;
-    margin-right: 45px;
+#quizButton{
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
 }
 
 #countButton {
@@ -759,13 +823,16 @@ footer {
 
 #questionCounter,
 #quizButton {
-    text-align: center;
-    background-color: var(--donkergrijs);
-    border: 3px solid var(--goudgeel);
-    color: var(--goudgeel);
-    border-radius: 25px;
-    width: 150px;
-    height: 80px;
+    font-size: 16px;
+    background-color: var(--goudgeel);
+    color: var(--donkergrijs);
+    border: 2px solid black;
+    padding: 10px 20px;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    
 }
 
 #quizButton {
@@ -781,17 +848,16 @@ button:active {
 .quiz-button {
     order: 3;
     display: block;
-    /* Zorg ervoor dat de knop een blok-element is, zodat het de volledige breedte van zijn container inneemt */
     margin: 0 auto;
-    /* Auto-marges aan de zijkanten zorgen ervoor dat de knop in het midden van zijn container wordt geplaatst */
     text-align: center;
-    /* Centreer de tekst binnen de knop */
+
 }
 
 .thumbsButton {
     display: flex;
-    gap: 10px;
-    /* Ruimte tussen de knoppen */
+    gap: 20px;
+    margin-bottom: 30px;
+
 }
 
 .thumbsButton form {
@@ -801,12 +867,12 @@ button:active {
 
 #thumbsUp {
     order: 1;
-    /* Volgorde voor de duim omhoog knop */
+
 }
 
 #thumbsDown {
     order: 2;
-    /* Volgorde voor de duim omlaag knop */
+
 }
 
 
@@ -816,15 +882,6 @@ button:active {
     height: 25px;
 }
 
-.quizAnswer {
-    width: 200px;
-    height: 65px;
-    border: 2px solid var(--donkergrijs);
-}
-
-.quizAnswer:hover {
-    background-color: brown;
-}
 
 
 /*quizQuestions - thumbs*/
