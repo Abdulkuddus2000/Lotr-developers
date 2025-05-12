@@ -1,5 +1,7 @@
 <%- include('partials/head.ejs') %>
+<%- include('partials/head.ejs') %>
 <body class="sudden-death">
+     <%- include('partials/nav.ejs') %>
      <%- include('partials/nav.ejs') %>
     <main id="quizMain">
         <section id="quizLeft">
@@ -13,15 +15,18 @@
                             <li class="quizAnswer">
                                 <input type="radio" id="answer1" name="nameAnswer" value="">
                                 <label for="answer1" class="radio">Gandalf</label>
+                                <label for="answer1" class="radio">Gandalf</label>
                                 <img src="" alt="">
                             </li>
                             <li class="quizAnswer">
                                 <input type="radio" id="answer2" name="nameAnswer" value="">
                                 <label for="answer2" class="radio">Aragorn</label>
+                                <label for="answer2" class="radio">Aragorn</label>
                                 <img src="" alt="">
                             </li>
                             <li class="quizAnswer">
                                 <input type="radio" id="answer3" name="nameAnswer" value="">
+                                <label for="answer3" class="radio">Frodo</label>
                                 <label for="answer3" class="radio">Frodo</label>
                                 <img src="" alt="">
                             </li>
@@ -45,7 +50,9 @@
                     </li>
                 </ul>
                 <button type="submit" id="quizButton" class="quiz-button">stop</button>
+                <button type="submit" id="quizButton" class="quiz-button">stop</button>
                 <button type="submit" id="quizButton" class="quiz-button">volgende vraag</button>
+
 
             </form>
                 <article class="thumbsButton">
@@ -69,5 +76,7 @@
     </main>
 </body>
 </html>
+<%- include('partials/chevronUp.ejs') %>
+<%- include('partials/footer.ejs') %>
 <%- include('partials/chevronUp.ejs') %>
 <%- include('partials/footer.ejs') %>
