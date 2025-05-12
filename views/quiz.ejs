@@ -1,54 +1,28 @@
-<!DOCTYPE html>
-<html lang="nl-BE">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/logo.png" />
-    <title>Lord Of The Rings - Quiz</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script defer src="js/quiz.js"></script>
-</head>
-
+<%- include('partials/head.ejs') %>
 <body class="sudden-death">
-    <header>
-        <figure>
-            <a href="index">
-                <img src="assets/images/logo.png" alt="logo Lord Of The Rings" height="100px">
-            </a>
-        </figure>
-        <nav>
-            <ul>
-                <li><a href="index">Home</a></li>
-                <li><a href="favorites">Favorieten</a></li>
-                <li><a href="blacklist">Zwarte lijst</a></li>
-            </ul>
-        </nav>
-    </header>
+     <%- include('partials/nav.ejs') %>
     <main id="quizMain">
         <section id="quizLeft">
             <form action="suddenMode" method="POST">
                 <input type="hidden" name="randomQuote" value=''>
                 <ul id="quizQuestionsflex">
-                    <h1 id="suddenH1">Sudden Death</h1>
-                    <li class="quizQuestionsitem1">HALLO</li>
+                    <h1 id="suddenH1">Quiz</h1>
+                    <li class="quizQuestionsitem1">"A day may come when the courage of men fails..."</li>
                     <li class="quizItem">
                         <ul class="quizFlex">
                             <li class="quizAnswer">
                                 <input type="radio" id="answer1" name="nameAnswer" value="">
-                                <label for="answer1" class="radio"></label>
+                                <label for="answer1" class="radio">Gandalf</label>
                                 <img src="" alt="">
                             </li>
                             <li class="quizAnswer">
                                 <input type="radio" id="answer2" name="nameAnswer" value="">
-                                <label for="answer2" class="radio"></label>
+                                <label for="answer2" class="radio">Aragorn</label>
                                 <img src="" alt="">
                             </li>
                             <li class="quizAnswer">
                                 <input type="radio" id="answer3" name="nameAnswer" value="">
-                                <label for="answer3" class="radio"></label>
+                                <label for="answer3" class="radio">Frodo</label>
                                 <img src="" alt="">
                             </li>
                         </ul>
@@ -70,10 +44,10 @@
                         </ul>
                     </li>
                 </ul>
+                <button type="submit" id="quizButton" class="quiz-button">stop</button>
                 <button type="submit" id="quizButton" class="quiz-button">volgende vraag</button>
+
             </form>
-            <ul id="countButton">
-                <li id="questionCounter"></li>
                 <article class="thumbsButton">
                     <form action="/thumbsAction" method="POST" style="display: inline;">
                         <input type="hidden" name="thumbsUp" value="favoriet">
@@ -93,10 +67,7 @@
         </section>
         <section id="quizRight"></section>
     </main>
-
-    <footer>
-        &copy; Copyright WPL Projects 2024-2025
-    </footer>
 </body>
-
 </html>
+<%- include('partials/chevronUp.ejs') %>
+<%- include('partials/footer.ejs') %>
