@@ -1,5 +1,6 @@
 <%- include('partials/head.ejs') %>
 <%- include('partials/nav.ejs') %>
+
 <main class="main-account">
     <section class="profile-container">
         <section class="profile-photo" onclick="openAvatarSelection();">
@@ -19,8 +20,8 @@
                 <p>Ten rounds: <span id="ten-rounds-wins">1</span></p>
             </section>
 
-            <section class="save-button">
-                <button onclick="save()">save</button>
+            <section id="save-button">
+                <button class="account-button" onclick="save()">save</button>
             </section>
         <section>
     </section>
@@ -128,10 +129,10 @@
                 <section class="avatar-item">
                     <img src="../assets/images/imageC/character_treebeard-Photoroom.png" alt="Treebeard" onclick="selectAvatar('/assets/images/imageC/character_treebeard-Photoroom.png')" />
                     <p>Treebeard</p>
-
                 </section>
             <section>
         <section>
     <section>
 </main>
+<script src="/js/account.js"></script>
 <%- include('partials/footer.ejs') %>

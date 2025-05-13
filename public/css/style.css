@@ -62,6 +62,13 @@ a{
     text-decoration: none;
 }
 
+.account-icon{
+    position: fixed;
+    left: 670px;
+    top: 70px;
+    width: 100%;
+    text-align: center;
+}
 h2{
     grid-area: title;
     text-align: center;
@@ -79,16 +86,12 @@ h3{
 }
 
 .footer {
-    position: fixed;
+    position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
     text-align: center;
-    background: black; 
     color:var(--goudgeel);
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .back-to-top {
@@ -110,6 +113,7 @@ h3{
     background-color: rgba(0, 0, 0, 0.8); 
 
 }
+
 
 /* css for landing.html */
 
@@ -1123,6 +1127,7 @@ button:active {
     margin: 30px 0;      
     font-size: 24px;      
     color:var(--goudgeel); 
+    margin-bottom: 20px;
 }
 
 .blacklist-item {
@@ -1334,14 +1339,10 @@ nav ul {
     justify-content: center;
     background-color: rgba(20, 20, 20, 0.8);
     padding: 20px;
-    border-bottom: 100px;
     padding-top: 90px;
     padding-bottom: 100px;
-    border-radius: 10px;
-    box-sizing: content-box;
     color: white;
-    cursor: pointer;
-    margin-top: 100px;
+    gap: 30px;
 }
 
 .profile-photo {
@@ -1357,6 +1358,7 @@ nav ul {
     margin-right: 30px;
     margin-top: 10px;
     position: relative; 
+    cursor: pointer;
 }
 
 .avatar-text {
@@ -1367,20 +1369,21 @@ nav ul {
     color: #f0e68c; 
     font-weight: bold; 
     text-align: center; 
+    white-space: nowrap;
 }
-
-
-
 
 .profile-info {
     max-width: 400px; 
     margin-left: 20px; 
+    flex-direction: column;
 }
+
 
 .won-games {
     display: flex; 
     justify-content: space-between; 
     margin: 20px 0; 
+    gap: 20px;
 }
 
 .won-games p {
@@ -1390,23 +1393,20 @@ nav ul {
     color: var(--goudgeel);
 
 }
-
-.save-button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #000;
-    border: none;
-    padding: 10px;
+#save-button {
+    background-color: none;
+    padding: 12px 20px;
     border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.account-button {
+    color: #000;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
     text-transform: uppercase;
-    margin-top: 20px;
+    font-family: inherit;
 }
-
-
 
 .profile-photo img {
     width: 100%;
@@ -1425,14 +1425,6 @@ input, textarea {
     color: #d4c29a;
 }
 
-button {
-    background-color: var(--goudgeel);
-    color: #000;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
 
 
@@ -1457,13 +1449,17 @@ button {
     padding: 20px;
     border: 1px solid var(--goudgeel);
     width: 80%;
-    max-width: 600px;
+    max-width: 800px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: var(--goudgeel);
     font-family: 'Ringbearer Medium', sans-serif;
+    overflow-y: auto;
 }
-
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
 .avatar-item {
     display: inline-block; 
     text-align: center; 
@@ -1482,18 +1478,18 @@ button {
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
-
-.close:hover, .close:focus {
-    color: var(--parelwit);
-    text-decoration: none;
     cursor: pointer;
 }
 
+.close:hover {
+    color: var(--parelwit);
+}
+
 .avatar-list {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 30px;
+    justify-items: center;
 }
 
 .avatar-list img {
@@ -1505,8 +1501,47 @@ button {
     transition: transform 0.2s;
 }
 
-.avatar-list img:hover {
-    transform: scale(1.1);
+.avatar-item {
+    text-align: center;
+    color: var(--goudgeel);
+    font-family: 'Ringbearer Medium', sans-serif;
+    cursor: pointer;
 }
 
+.avatar-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    transition: transform 0.2s;
+    border: 2px solid transparent;
+}
 
+@media (max-width: 820px) {
+
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .profile-photo {
+        margin-bottom: 20px;
+    }
+
+    .profile-info {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .won-games {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .won-games p {
+        width: 100%;
+        text-align: center;
+    }
+
+    
+}
