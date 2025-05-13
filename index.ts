@@ -4,7 +4,7 @@ import path from "path";
 import open from "open";
 import { error } from "console";
 import { title } from "process";
-import { answerRandom, characterAnswers, getCharacter, getMovie, getQuotes, quotes } from "./data";
+import { answerRandom, characterAnswers, getCharacter, getMovies, getQuotes, quotes } from "./data";
 import { get, request } from "http";
 import { Request, Response } from 'express';
 
@@ -127,7 +127,7 @@ app.get("/ten_rounds", async (req, res) => {
 app.get("/sudden_death", async (req, res) => {
     res.render("sudden_death");
 });
-
+/*
 app.post("/ten_rounds", async (req, res) => {
     let randomQuote = JSON.parse(req.body.randomQuote);
     counterQuestions++;
@@ -135,7 +135,7 @@ app.post("/ten_rounds", async (req, res) => {
     const movieAnswer = req.body.movieAnswer;
     console.log("antwoorden", nameAnswer, movieAnswer);
 
-    if (movieAnswer === await getMovie(randomQuote.movie_id)) {
+    if (movieAnswer === await getMovies(randomQuote.movie_id)) {
         counterPoints++;
     } 
 
@@ -144,7 +144,7 @@ app.post("/ten_rounds", async (req, res) => {
 
     res.redirect("ten_rounds");
 });
-
+*/
 
         
     
