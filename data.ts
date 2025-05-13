@@ -21,7 +21,7 @@ export async function getQuotes(): Promise<Quote[]> {
                 method: "GET",
                 headers: {
                     Accept: 'application/json',
-                    Authorization: `Bearer ${process.env.TOKEN ?? ""}`
+                    Authorization: process.env.TOKEN ?? ""
                 }
             })
         );
@@ -58,7 +58,7 @@ export async function getCharacter(): Promise<Character[]> {
             method: "GET",
             headers: {
                 Accept: 'application/json',
-                Authorization: `Bearer ${process.env.TOKEN ?? ""}`
+                Authorization: process.env.TOKEN ?? ""
             }
         });
 
@@ -97,7 +97,7 @@ export async function getMovies(): Promise<any[]> {
             method: "GET",
             headers: {
                 Accept: 'application/json',
-                Authorization: `Bearer ${process.env.TOKEN ?? ""}`
+                Authorization: process.env.TOKEN ?? ""
             }
         });
 
@@ -157,3 +157,4 @@ export async function answerRandom(answerArray: string[]) {
 
 
 }
+
