@@ -3,13 +3,20 @@ import dotenv from "dotenv";
 import path from "path";
 import open from "open";
 import { error } from "console";
-import {getQuotes, getCharacter} from "./data";
 import { title } from "process";
-// import { apiCall } from "./data";
+import { answerRandom, characterAnswers, getCharacter, getMovie, getQuotes, quotes } from "./data";
+import { get, request } from "http";
+import { Request, Response } from 'express';
+
 
 dotenv.config();
 
-const app : Express = express();
+
+let counterQuestions: number = 1;
+let counterPoints: number = 0;
+
+
+const app: Express = express();
 
 app.use(express.static("public"))
 app.set("view engine", "ejs");
@@ -17,6 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "views"));
+app.use(express.urlencoded({extended:true}))
 
 app.set("port", process.env.PORT ?? 3000);
 
@@ -112,19 +120,76 @@ app.get("/resetPassword", (req, res) => {
     });
 });
 
-app.get("/sudden_death", (req, res) => {
-    res.render("sudden_death", {
-        title: "sudden_death",
-        message: "sudden_death"
-    });
+app.get("/ten_rounds", async (req, res) => {
+    res.render("ten_rounds");
 });
 
-app.get("/ten_rounds", (req, res) => {
-    res.render("ten_rounds", {
-        title: "ten_rounds",
-        message: "ten_rounds"
-    });
+app.get("/sudden_death", async (req, res) => {
+    res.render("sudden_death");
 });
+
+app.post("/ten_rounds", async (req, res) => {
+    let randomQuote = JSON.parse(req.body.randomQuote);
+    counterQuestions++;
+    const nameAnswer = req.body.nameAnswer;
+    const movieAnswer = req.body.movieAnswer;
+    console.log("antwoorden", nameAnswer, movieAnswer);
+
+    if (movieAnswer === await getMovie(randomQuote.movie_id)) {
+        counterPoints++;
+    } 
+
+    if (counterQuestions !== 11) {
+    }
+
+    res.redirect("ten_rounds");
+});
+
+
+        
+    
+    
+
+    
+
+
+ 
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.get("/spelregels", (req, res) => {
+    res.render("spelregels", {
+        title: "spelregels",
+        message: "spelregels"
+
+    }
+
+    );
+});
+
 
 // post-route
 app.post("/login", (req, res) => {
@@ -147,7 +212,7 @@ app.post("/login", (req, res) => {
 
     // Voeg nieuwe username toe (tijdelijk)
     usernames.push(username);
-    
+
     // Login is succesvol → render login pagina
     return res.render("login", { title: "login", message: `Welkom, ${username}!` });
 });
@@ -161,3 +226,11 @@ app.listen(app.get("port"), () => {
 
     console.log("Server started on http://localhost:" + app.get("port"));
 });
+
+function updateHighscore(arg0: number) {
+    throw new Error("Function not implemented.");
+}
+function checkAnswers(nameAnswer: any, movieAnswer: any) {
+    throw new Error("Function not implemented.");
+}
+
