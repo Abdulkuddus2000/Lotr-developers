@@ -19,3 +19,14 @@ export interface Character {
     realm: string;
     spouse: string;
 }
+
+export interface Movie {
+    _id: string;
+    name: string;
+    runtimeInMinutes: number;
+    budgetInMillions: number;
+    boxOfficeRevenueInMillions: number;
+    academyAwardNominations: number;
+    academyAwardWins: number;
+    rottenTomatoesScore: number;
+}

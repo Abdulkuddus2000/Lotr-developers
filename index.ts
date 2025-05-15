@@ -1,19 +1,35 @@
-import express, { Express } from "express";
+import express, { Express, Request, response, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import open from "open";
 import { error } from "console";
 import { title } from "process";
-import { answerRandom, characterAnswers, getCharacter, getMovie, getQuotes, quotes } from "./data";
+import { getCharacter, getMovies, getQuotes,characterAnswers,answerRandom, quotes } from "./data";
 import { get, request } from "http";
-import { Request, Response } from 'express';
+import bodyParser from 'body-parser';
+import { Quote } from "./interfaces";
+ 
 
 
 dotenv.config();
 
 
+
 let counterQuestions: number = 1;
 let counterPoints: number = 0;
+
+interface user {
+    username: string;
+    password: string;
+    highScoreTenRounds: number;
+    highScoreSuddenDeath: number;
+    favorites: string[];
+    blacklist: { quoteId: string; reason: string }[];
+}
+
+const users: Map<string, user> = new Map();
+let currentUser: string | null = null;
+
 
 
 const app: Express = express();
@@ -25,6 +41,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({extended:true}))
+
+app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended:true}))
+
 
 app.set("port", process.env.PORT ?? 3000);
 
@@ -49,25 +69,6 @@ app.get("/account", (req, res) => {
     });
 });
 
-app.get("/quotes", async (req, res) => {
-    try {
-        let characters = await getCharacter();
-        let quotes = await getQuotes();
-        
-        res.render("quotes", {
-            title: "quotes",
-            message: "quotes",
-            characters,
-            quotes
-        });
-        console.log("Aantal karakters: ", characters.length);
-        console.log("Eerste karakter: ", characters[0]);
-    } catch (error) {
-        console.error("Fout bij ophalen data: ", error);
-        res.status(500).send("Er is iets misgegaan.")
-    }
-
-});
 
 app.get("/blacklist", (req, res) => {
     res.render("blacklist", {
@@ -120,33 +121,49 @@ app.get("/resetPassword", (req, res) => {
     });
 });
 
-app.get("/ten_rounds", async (req, res) => {
-    res.render("ten_rounds");
-});
 
-app.get("/sudden_death", async (req, res) => {
-    res.render("sudden_death");
-});
-
-app.post("/ten_rounds", async (req, res) => {
-    let randomQuote = JSON.parse(req.body.randomQuote);
-    counterQuestions++;
-    const nameAnswer = req.body.nameAnswer;
-    const movieAnswer = req.body.movieAnswer;
-    console.log("antwoorden", nameAnswer, movieAnswer);
-
-    if (movieAnswer === await getMovie(randomQuote.movie_id)) {
-        counterPoints++;
-    } 
-
-    if (counterQuestions !== 11) {
-    }
-
-    res.redirect("ten_rounds");
-});
-
+app.get("/tenRounds", async (req, res) => {
+    try {
+        let characters = await getCharacter();
+        let quotes = await getQuotes();
+        let movies = await getMovies();
+      
 
         
+        res.render("tenRounds", {
+            title: "tenRounds",
+            message: "tenRounds",
+            characters,
+            quotes,
+            movies
+        });
+        console.log("Aantal karakters: ", characters.length);
+        console.log("Eerste karakter: ", characters[0]);
+        console.log("aantal quotes", quotes.length);
+        console.log("aantal quotes", quotes[0]);
+        console.log("eerste movie", movies.length);
+        console.log("eerste movie", movies[0]);
+    } catch (error) {
+        console.error("Fout bij ophalen data: ", error);
+        res.status(500).send("Er is iets misgegaan.")
+    }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
 
@@ -233,4 +250,3 @@ function updateHighscore(arg0: number) {
 function checkAnswers(nameAnswer: any, movieAnswer: any) {
     throw new Error("Function not implemented.");
 }
-
