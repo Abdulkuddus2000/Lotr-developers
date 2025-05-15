@@ -1,31 +1,12 @@
-<!DOCTYPE html>
-<html lang="nl-BE">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/logo.png" />
-    <title>Lord Of The Rings - Registratie</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="js/password.js" defer></script>
-</head>
-
-<body class="registration">
-    <header>
-        <figure>
-            <a href="landing">
-                <img src="assets/images/logo.png" alt="logo Lord Of The Rings" height="100px">
-            </a>
-        </figure>
-    </header>
+<%- include("partials/head")%>
+<body class="registration-page">
+    <%- include("partials/logo") %>
     <main>
         <form action="/login" method="post">
             <h2>Registreer</h2>
             <section class="form-registration">
                 <label for="firstname">Gebruikersnaam</label>
-                <input type="text" id="username" name="username" placeholder="John123" required>
+                <input type="text" id="usernameRegistrationPage" name="username" placeholder="John123" required>
                 <br>
             </section>
             <section class="form-registration">
@@ -37,19 +18,13 @@
             </section>
             <section class="form-registration">
                 <label for="confirm-password">Bevestig uw wachtwoord</label>
-                <input type="password" id="confirm-passwordRegistrationPage" name="confirm-password" placeholder="*****" required>
+                <input type="password" id="passwordRegistrationPage" name="confirm-password" placeholder="*****" required>
                 <i class="fa fa-eye eyeIcon eyeIcon1" onmousedown="togglePasswordOnMouseDown(event)"
                     onmouseup="togglePasswordOnMouseUp(event)"></i>
                 <br>
-            </section>
-            
+            </section>           
             <button type="submit">Bevestigen</button>
-            
         </form>
     </main>
-    <footer class="footer-registration">
-        &copy; Copyright WPL Projects 2024-2025 - Abdul Kosimov, Hakki Turaç, Nabil Habrani en Hamse Mohammed
-    </footer>
 </body>
-
-</html>
+<%- include("partials/footer")%>

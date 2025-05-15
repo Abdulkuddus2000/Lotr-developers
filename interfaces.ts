@@ -20,6 +20,7 @@ export interface Character {
     spouse: string;
 }
 
+
 export interface Movie {
     _id: string;
     name: string;
@@ -29,4 +30,25 @@ export interface Movie {
     academyAwardNominations: number;
     academyAwardWins: number;
     rottenTomatoesScore: number;
+}
+
+export interface User {
+    username: string;
+    password: string;
+    favorites?: string[];
+    highScore?: number;
+}
+
+export interface QuizResult {
+    questionNumber: number;
+    quote: Quote;
+    userAnswer: {
+        character: string;
+        movie: string;
+    };
+    correctAnswer: {
+        character: string;
+        movie: string;
+    };
+    isCorrect: boolean;
 }

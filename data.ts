@@ -1,3 +1,4 @@
+
 import fetch from "node-fetch";
 import dotenv from 'dotenv';
 import { Quote, Character, Movie } from "./interfaces";
@@ -15,7 +16,11 @@ const movieIds = [
 ];
 
 
+<<<<<<< HEAD
 
+=======
+// Haal quotes op
+>>>>>>> d803de074a387cb236cf46fac5af7cd75eff5a4d
 export async function getQuotes(): Promise<Quote[]> {
     let quotes: Quote[] = [];
     try {
@@ -29,14 +34,22 @@ export async function getQuotes(): Promise<Quote[]> {
             })
         );
 
+<<<<<<< HEAD
         const responses = await Promise.all(fetches); // alle API's tegelijk fetchen
+=======
+        const responses = await Promise.all(fetches);
+>>>>>>> d803de074a387cb236cf46fac5af7cd75eff5a4d
         const dataArray = await Promise.all(responses.map(res => {
             if (!res.ok) throw new Error("Failed to fetch quotes-data");
             return res.json();
         }));
 
         for (const data of dataArray) {
+<<<<<<< HEAD
             const typedData = data as { docs: any[] }; // Explicitly type 'data'
+=======
+            const typedData = data as { docs: any[] };
+>>>>>>> d803de074a387cb236cf46fac5af7cd75eff5a4d
             const quotesFromData: Quote[] = typedData.docs.map((element: any): Quote => ({
                 _id: element._id,
                 dialog: element.dialog,
@@ -53,6 +66,10 @@ export async function getQuotes(): Promise<Quote[]> {
     return quotes;
 }
 
+<<<<<<< HEAD
+=======
+// Haal karakters op
+>>>>>>> d803de074a387cb236cf46fac5af7cd75eff5a4d
 export async function getCharacter(): Promise<Character[]> {
     const characters: Character[] = [];
     try {
@@ -66,6 +83,7 @@ export async function getCharacter(): Promise<Character[]> {
 
     if (!response.ok) throw new Error("Failed to fetch character-data");
 
+<<<<<<< HEAD
     const data: any = await response.json();
 
     const charactersFromData: Character[] = data.docs.map((element: any): Character => ({
@@ -86,21 +104,49 @@ export async function getCharacter(): Promise<Character[]> {
     }
     catch (error) {
         console.log(error);
-    }
+=======
+        const data: any = await response.json();
 
+        const charactersFromData: Character[] = data.docs.map((element: any): Character => ({
+            _id: element._id,
+            name: element.name,
+            wikiUrl: element.wikiUrl,
+            race: element.race,
+            birth: element.birth,
+            gender: element.gender,
+            death: element.death,
+            hair: element.hair,
+            height: element.height,
+            realm: element.realm,
+            spouse: element.spouse
+        }));
+        characters.push(...charactersFromData);
+>>>>>>> d803de074a387cb236cf46fac5af7cd75eff5a4d
+    }
+    catch (error) {
+        console.log(error);
+    }
     return characters;
 }
 
 // APi Movies
 
 export async function getMovies(): Promise<any[]> {
+<<<<<<< HEAD
     const movies: Movie[] = [];
+=======
+    const movies: any[] = [];
+>>>>>>> d803de074a387cb236cf46fac5af7cd75eff5a4d
     try {
         const response = await fetch("https://the-one-api.dev/v2/movie", {
             method: "GET",
             headers: {
                 Accept: 'application/json',
+<<<<<<< HEAD
                 Authorization: "Bearer HoaloVIwHdpWVRHFhuI0"
+=======
+                Authorization: process.env.TOKEN ?? ""
+>>>>>>> d803de074a387cb236cf46fac5af7cd75eff5a4d
             }
         });
 
