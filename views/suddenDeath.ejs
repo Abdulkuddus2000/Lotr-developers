@@ -1,0 +1,74 @@
+<%- include('partials/head') %>
+<body class="lotr-quiz">
+    <%- include('partials/nav') %>
+    <%- include('partials/rules') %>
+    <main id="quizMain">
+        <section id="quizContent">
+           <form action="/checkAnswerCard" method="POST">
+                <input type="hidden" name="randomQuote" value='<%= JSON.stringify(randomQuote) %>'>
+                <input type="hidden" name="currentRound" value='<%= counter %>'>
+                <input type="hidden" name="score" value='<%= counterPoints %>'>
+                <ul id="Questionsflex-section">
+                    <h1 id="tenRounds-suddenDeath">Sudden Death - Streak <%= counter %> </h1>
+                    <li class="quoteQuizItem">"<%= randomQuote.dialog%>"</li>
+                    <li class="quizQuestions">
+                        <h3>Wie zei deze quote?</h3>
+                        <%- include('partials/footer') %>
+                        <ul class="quizFlex">
+                            <li class="quizAnswer">
+                                <input type="quiz" id="answer1" name="nameAnswer" value="<%= A1.answer1 %>">
+                                <label for="answer1" class="film-label"><%= A1.answer1 %></label>
+                            </li>
+                            <li class="quizAnswer">
+                                <input type="radio" id="answer2" name="nameAnswer" value="<%= A2.answer2 %>">
+                                <label for="answer2" class="film-label"><%= A2.answer2 %></label>
+                            </li>
+                            <li class="quizAnswer">
+                                <input type="quiz" id="answer3" name="nameAnswer" value="<%= A3.answer3 %>">
+                                <label for="answer3" class="film-label"><%= A3.answer3 %></label>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="quizQuestions">
+                        <h3>In welke film komt deze quote voor?</h3>
+                        <ul class="quizFlex">
+                            <li class="quizAnswer">
+                                <input type="quiz" id="answer4" name="movieAnswer" value="The Fellowship of the Ring">
+                                <label for="answer4" class="film-label">The Fellowship of the Ring</label>
+                            </li>
+                            <li class="quizAnswer">
+                                <input type="quiz" id="answer5" name="movieAnswer" value="The Two Towers">
+                                <label for="answer5" class="film-label">The Two Towers</label>
+                            </li>
+                            <li class="quizAnswer">
+                                <input type="quiz" id="answer6" name="movieAnswer" value="The Return of the King">
+                                <label for="answer6" class="film-label">The Return of the King</label>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <button type="submit" id="quizButton" class="quiz-button">Volgende vraag</button>
+            </form>
+            <ul id="countButton">
+                <li id="questionCounter">Current streak:<%= counter %>/10</li>
+                <article class="thumbsButton">
+                    <form action="/thumbsAction" method="POST" style="display: inline;">
+                        <input type="hidden" name="thumbsUp" value="favoriet">
+                        <input type="hidden" name="username" value="<%= username %>">
+                        <input type="hidden" name="quoteData" value='<%= JSON.stringify(randomQuote) %>'>
+                        <button id="thumbsUp"></button>
+                    </form>
+                    <form action="/thumbsAction" method="POST" style="display: inline;">
+                        <input type="hidden" name="thumbsDown" value="blacklist">
+                        <input type="hidden" name="username" value="<%= username %>">
+                        <input type="hidden" name="quoteId" value='<%= randomQuote.id %>'>
+                        <input type="hidden" name="reason" value="Some reason">
+                        <button id="thumbsDown"></button>
+                    </form>
+                </article>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
+<%- include('partials/footer') %>

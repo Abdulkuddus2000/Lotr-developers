@@ -2,7 +2,7 @@
 <body class="registration-page">
     <%- include("partials/logo") %>
     <main>
-        <form action="/login" method="post">
+        <form method="post">
             <h2>Registreer</h2>
             <section class="form-registration">
                 <label for="firstname">Gebruikersnaam</label>
@@ -23,7 +23,7 @@
                     onmouseup="togglePasswordOnMouseUp(event)"></i>
                 <br>
             </section>           
-            <button type="submit">Bevestigen</button>
+            <button action="/login" type="submit">Bevestigen</button>
         </form>
     </main>
 </body>

@@ -1,14 +1,12 @@
-<%- include('partials/head.ejs') %>
+<%- include('partials/head') %>
 <body class="landing">
     <section class="customAlert">
         <section class="alert-content">
             <h2>Geen toegang!</h2>
-            <p>Dit spel is jammer genoeg niet beschikbaar. Maar LOTR is wel beschikbaar &#128522;</p>
+            <p>Dit spel is jammer genoeg niet beschikbaar (maar LOTR wel.....&#128522)</p>
             <button onclick="HideAlert()">Ow, Okidoki !</button>
         </section>
     </section>
-
-    <%- include("partials/logo")%>
     <main>
         <h2 class="gameChoice">Maak uw keuze</h2>
         <section class="games-list">
@@ -42,7 +40,7 @@
             </section>
         </section>
     </main>
-    <%- include('partials/footer.ejs') %>
-    <script src="/public/js/password.js"></script>
+    <%- include('partials/footer') %>
+    <script src="/js/general.js"></script>
 </body>
 </html>

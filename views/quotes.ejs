@@ -8,25 +8,12 @@
 <body>
     <h1>LOTR Quotes</h1>
 
-    <% 
-        const charMap = new Map();
-        if (Array.isArray(characters)) {
-            characters.forEach(c => charMap.set(c._id, c.name));
-        } else {
-            console.warn("Let op: 'characters' is niet beschikbaar of geen array.");
-        }
-    %>
+    
 
     <ul>
-        <% if (Array.isArray(quotes) && quotes.length > 0) { %>
-            <% quotes.forEach(q => { %>
-                <li>"<%= q.dialog %>" - 
-                    <em><%= charMap.get(q.character_id) || "Onbekend" %></em>
-                </li>
-            <% }) %>
-        <% } else { %>
+        
             <li>Geen quotes beschikbaar.</li>
-        <% } %>
+        
     </ul>
 </body>
 </html>

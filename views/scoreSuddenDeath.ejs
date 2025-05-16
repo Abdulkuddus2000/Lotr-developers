@@ -3,13 +3,33 @@
     <main id="scoreQuiz">
         <h1 id="scoreH1">Bedankt voor het meedoen!</h1>
         <ul id="scoreListFlex">
-            <li class="yourScore"> Jouw score is<br> </li>
-            <li id="result"> <img src="" alt="" id="passed"></li>
-            <li class="yourScore"> hoogste score<br></li>
+            <li class="yourScore">
+                Jouw score is<br>
+                <span class="score-number"><%= finalScore %></span>
+            </li>
+            <li id="result">
+                <% if (percentage >= 80) { %>
+                    <section class="gold-medal">🥇</section>
+                    <p class="medal-text">GOUD</p>
+                <% } else if (percentage >= 60) { %>
+                    <section class="silver-medal">🥈</section>
+                    <p class="medal-text">ZILVER</p>
+                <% } else if (percentage >= 40) { %>
+                    <section class="bronze-medal">🥉</section>
+                    <p class="medal-text">BRONS</p>
+                <% } else { %>
+                    <section class=" try-again">😩</section>
+                    <p class="medal-text">Probeer nog eens</p>
+                <% } %>
+            </li>
+            <li class="yourScore">
+                hoogste score<br>
+                <span class="score-number"><%= highScore %></span>
+            </li>
         </ul>
         <a href="index"> <button id="scoreButton">Terug naar hoofdmenu</button></a>
 
     </main>
-    
 <%- include ('partials/footer') %>
+
 

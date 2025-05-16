@@ -1,32 +1,35 @@
-import express, { Express } from "express";
+import express, { Express, Request, response, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
-import open from "open";
-import { error } from "console";
-import { title } from "process";
-import { answerRandom, characterAnswers, getCharacter, getMovies, getQuotes, quotes } from "./data";
-import { get, request } from "http";
-import { Request, Response } from 'express';
+import ejs from "ejs";
+import router from "./routers/routers"
+import { User } from "./interfaces";
+import  session from "./session";
+import {connect} from "./database"
+import { getQuotes } from "./quizAPI";
+import { middleWare } from "./middleWare/middleWare";
+import { Quote , Character , Movie} from "./interfaces";
+
+
 
 
 dotenv.config();
 
-
-let counterQuestions: number = 1;
-let counterPoints: number = 0;
-
-
 const app: Express = express();
 
-app.use(express.static("public"))
+
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use(express.json());
+app.set("port", 3000);
+
+
+app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-app.set("views", path.join(__dirname, "views"));
-app.use(express.urlencoded({extended:true}))
+app.use(session);
 
-app.set("port", process.env.PORT ?? 3000);
+app.use("/", router); 
+
 
 app.get("/", (req, res) => {
     res.render("landing", {
@@ -49,25 +52,6 @@ app.get("/account", (req, res) => {
     });
 });
 
-app.get("/quotes", async (req, res) => {
-    try {
-        let characters = await getCharacter();
-        let quotes = await getQuotes();
-        
-        res.render("quotes", {
-            title: "quotes",
-            message: "quotes",
-            characters,
-            quotes
-        });
-        console.log("Aantal karakters: ", characters.length);
-        console.log("Eerste karakter: ", characters[0]);
-    } catch (error) {
-        console.error("Fout bij ophalen data: ", error);
-        res.status(500).send("Er is iets misgegaan.")
-    }
-
-});
 
 app.get("/blacklist", (req, res) => {
     res.render("blacklist", {
@@ -81,15 +65,18 @@ app.get("/favoriteCharacter", (req, res) => {
     res.render("favoriteCharacter", {
         title: "favoriteCharacter",
         message: "favoritCharacter"
-        
+
     });
 });
+
+
 app.get("/favorites", (req, res) => {
     res.render("favorites", {
         title: "favorites",
         message: "favorites"
     });
 });
+
 
 
 app.get("/index", (req, res) => {
@@ -120,77 +107,8 @@ app.get("/resetPassword", (req, res) => {
     });
 });
 
-app.get("/ten_rounds", async (req, res) => {
-    res.render("ten_rounds");
-});
 
-app.get("/sudden_death", async (req, res) => {
-    res.render("sudden_death");
-});
 /*
-app.post("/ten_rounds", async (req, res) => {
-    let randomQuote = JSON.parse(req.body.randomQuote);
-    counterQuestions++;
-    const nameAnswer = req.body.nameAnswer;
-    const movieAnswer = req.body.movieAnswer;
-    console.log("antwoorden", nameAnswer, movieAnswer);
-
-    if (movieAnswer === await getMovies(randomQuote.movie_id)) {
-        counterPoints++;
-    } 
-
-    if (counterQuestions !== 11) {
-    }
-
-    res.redirect("ten_rounds");
-});
-*/
-
-        
-    
-    
-
-    
-
-
- 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.get("/spelregels", (req, res) => {
-    res.render("spelregels", {
-        title: "spelregels",
-        message: "spelregels"
-
-    }
-
-    );
-});
-
-
 // post-route
 app.post("/login", (req, res) => {
     const { username, password, confirmPassword } = req.body;
@@ -218,19 +136,11 @@ app.post("/login", (req, res) => {
 });
 
 
+*/
 
-app.listen(app.get("port"), () => {
-    // const url = `http://localhost:${app.get("port")}/landing`;
-    // console.log("Server started on ", url);
-    // open(url);
 
-    console.log("Server started on http://localhost:" + app.get("port"));
+app.listen(app.get("port"), async () => {
+    await getQuotes()
+    await connect()
+  console.log("[server] on http://localhost:" + app.get("port"))
 });
-
-function updateHighscore(arg0: number) {
-    throw new Error("Function not implemented.");
-}
-function checkAnswers(nameAnswer: any, movieAnswer: any) {
-    throw new Error("Function not implemented.");
-}
-
