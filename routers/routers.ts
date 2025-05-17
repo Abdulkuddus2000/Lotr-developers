@@ -1,15 +1,21 @@
 import {Router} from 'express';
+import { Request, Response } from 'express';
 import dotenv from "dotenv";
-import { Quote , Character , Movie} from "../interfaces";
+import { Quote , Character , Movie  , Profile} from "../interfaces";
 import { getCharacter, getmovie, getQuotes, characterAnswers , answerRandom, quotes } from "../quizAPI";
 
 
 dotenv.config();
+
+const User = require('../interfaces');
+
 const router = Router();
 
 
 let counterQuestions = 1;
 let counterPoints = 0;
+
+
 
 
 router.get("/tenRounds", async (req, res) => {
@@ -221,70 +227,80 @@ router.get("/scoreSuddenDeath", (req, res) => {
 
 
 router.post("/thumbsAction", async (req, res) => {
-    try {
-        const username = req.body.username;
-        
-        if (req.body.thumbsUp) {
+    const username = req.body.username;
 
-            //  favorites toevoegen pagina (moet nog iets komen)
+    let user = await User.findOne({ username: username });
+    if (!user) {
+            
+        user = new User({ username: username });
+        await user.save();
+    } 
+
+    if (req.body.thumbsUp) {
 
 
-            const quoteData = JSON.parse(req.body.quoteData);
+    const quoteData = JSON.parse(req.body.quoteData);
+
+        await User.findOneAndUpdate(
+            { username: username },
+            { $addToSet: { favorites: quoteData._id } }
+            );
 
             console.log("Added quote to favorites");
         } else if (req.body.thumbsDown) {
 
 
-            // quote naar blacklist pagina toevoegen (moet nog iets komen)
-
-
             const quoteId = req.body.quoteId;
             const reason = req.body.reason;
-
+            await User.findOneAndUpdate(
+                { username: username },
+                { $addToSet: { blacklist: { quoteId, reason } } }
+            );
 
             console.log("Added quote to blacklist");
-        }
-        
-       
-        res.redirect("/tenRounds");
-    } catch (error) {
-        console.error("Error in thumbsAction route:", error);
-        res.status(500).send("Error processing thumbs action");
     }
+
+    res.redirect("/tenRounds");
 });
+
+
 
 
 router.post("/thumbsAction", async (req, res) => {
-    try {
-        const username = req.body.username;
-        
-        if (req.body.thumbsUp) {
-            
-            //  favorites toevoegen pagina (moet nog iets komen)
 
+    const username = req.body.username;
+    let user = await User.findOne({ username: username });
+    if (!user) {
+    user = new User({ username: username });
+    await user.save();
 
-            const quoteData = JSON.parse(req.body.quoteData);
-
-            console.log("Added quote to favorites");
-        } else if (req.body.thumbsDown) {
-            
-            // quote naar blacklist pagina toevoegen (moet nog iets komen)
-
-
-            const quoteId = req.body.quoteId;
-            const reason = req.body.reason;
-   
-            console.log("Added quote to blacklist");
-        }
-        
-       
-        res.redirect("/suddenDeath");
-    } catch (error) {
-        console.error("Error in thumbsAction route:", error);
-        res.status(500).send("Error processing thumbs action");
     }
-});
 
+
+    if (req.body.thumbsUp) {
+
+    const quoteData = JSON.parse(req.body.quoteData);
+
+    await User.findOneAndUpdate(
+    { username: username },
+    { $addToSet: { favorites: quoteData._id } }
+        );
+
+        console.log("Added quote to favorites");
+    } else if (req.body.thumbsDown) {
+            
+        const quoteId = req.body.quoteId;
+        const reason = req.body.reason;
+
+        await User.findOneAndUpdate(
+            { username: username },
+            { $addToSet: { blacklist: { quoteId, reason } } }
+        );
+            console.log("Added quote to blacklist");
+    }
+        
+    res.redirect("/suddenDeath");
+});
 
 
 

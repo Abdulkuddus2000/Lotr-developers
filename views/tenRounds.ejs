@@ -1,10 +1,26 @@
 <%- include('partials/head') %>
 <body class="lotr-quiz">
     <%- include('partials/nav') %>
-    <%- include('partials/rules') %>
+    <section id="rules">
+        <h1 id="rules-section">Spelregels</h1>
+        <h3>Quiz</h3>
+        <p>Raad welk karakter de quote zei en in welke film. Kies uit 3 karakters en films</p>
+        <p>👍 Favoriet toevoegen | 👎 Quote blacklisten (komt niet meer voor)</p>
+        <h3>Ten rounds</h3>
+        <p>10 rondes, 1 punt per correcte combinatie, 0.5 punt als één stukje juist is.</p>
+            
+        <h3>Sudden-death</h3>
+        <p>Speel door tot een fout. 1 punt per correcte combinatie. Bij fout zie je je score en de high score</p>
+            
+        <h3>Favorites</h3>
+        <p>Bekijk en beheer favoriete quotes. Filter per karakter. Exporteer naar tekstbestand.</p>
+            
+        <h3>Blacklists</h3>
+        <p>Bekijk en beheer geblackliste quotes. Pas redenen aan of verwijder uit blacklist.</p>
+    </section>
     <main id="quizMain">
         <section id="quizContent">
-           <form action="/checkAnswerCard" method="POST">
+           <form action="/checkAnswerCard" method="POST" class="checkAnswerCard-form">
                 <input type="hidden" name="randomQuote" value='<%= JSON.stringify(randomQuote) %>'>
                 <input type="hidden" name="currentRound" value='<%= counter %>'>
                 <input type="hidden" name="score" value='<%= counterPoints %>'>
@@ -55,6 +71,7 @@
                         <input type="hidden" name="thumbsUp" value="favoriet">
                         <input type="hidden" name="username" value="<%= username %>">
                         <input type="hidden" name="quoteData" value='<%= JSON.stringify(randomQuote) %>'>
+                        <input type="hidden" name="thumbsUp" value="true">
                         <button id="thumbsUp"></button>
                     </form>
                     <form action="/thumbsAction" method="POST" style="display: inline;">
@@ -62,6 +79,7 @@
                         <input type="hidden" name="username" value="<%= username %>">
                         <input type="hidden" name="quoteId" value='<%= randomQuote.id %>'>
                         <input type="hidden" name="reason" value="Some reason">
+                        <input type="hidden" name="thumbsDown" value="true">
                         <button id="thumbsDown"></button>
                     </form>
                 </article>

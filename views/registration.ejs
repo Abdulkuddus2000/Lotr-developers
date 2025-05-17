@@ -3,7 +3,7 @@
     <%- include("partials/logo") %>
     <main>
         <form method="post">
-            <h2>Registreer</h2>
+            <h2 class="h2-Registration">Registreer</h2>
             <section class="form-registration">
                 <label for="firstname">Gebruikersnaam</label>
                 <input type="text" id="usernameRegistrationPage" name="username" placeholder="John123" required>
@@ -26,5 +26,5 @@
             <button action="/login" type="submit">Bevestigen</button>
         </form>
     </main>
+    <%- include("partials/footer")%>
 </body>
-<%- include("partials/footer")%>

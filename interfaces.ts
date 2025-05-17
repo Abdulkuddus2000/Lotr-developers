@@ -35,10 +35,10 @@ export interface Movie {
 }
 
 export interface User{
-    _id?:ObjectId
-    username:string,
-    password?:string,
-    highscore: number,
+    _id?:ObjectId;
+    username:string;
+    password?:string;
+    highscore: number;
     favorite_character?: string;
     favorite_movie?: string; 
     favoriteQuotesId: string[];
@@ -59,12 +59,12 @@ export interface QuizResult {
     isCorrect: boolean;
 }
 
-export interface Quiz {
-    _id?: ObjectId;
-    userId: string;
-    startTime: Date;
-    endTime?: Date;
-    score: number;
-    completed: boolean;
-    results: QuizResult[];
+
+export interface Profile {
+    username: string;
+    bio: string;
+    avatar: string;
+    quizWins?: string;
+    suddenDeathWins?: string;
+    tenRoundsWins?: string;
 }
