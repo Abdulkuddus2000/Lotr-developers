@@ -34,7 +34,7 @@ router.get("/tenRounds", async (req, res) => {
             counterPoints = 0;
         }
         
-        res.render("tenRounds", { randomQuote: obj1, A1: {answer1}, A2: {answer2}, A3: {answer3}, counter: counterQuestions,counterPoints: counterPoints,username: username
+        res.render("tenRounds", { randomQuote: obj1, A1: answer1, A2: answer2, A3: answer3, counter: counterQuestions, counterPoints: counterPoints, username: username
         });
     } catch (error) {
         console.error("Error in tenRounds route:", error);
@@ -43,39 +43,6 @@ router.get("/tenRounds", async (req, res) => {
 });
 
 
-router.post("/tenRounds", async(req, res) => {
-    try {
-        let randomQuote = JSON.parse(req.body.randomQuote);
-        
-        const nameAnswer = req.body.nameAnswer;
-        const movieAnswer = req.body.movieAnswer;
-        console.log("antwoorden", nameAnswer, movieAnswer);
-        
-        if (movieAnswer === await getmovie(randomQuote.movie_id)) {
-            counterPoints++;
-        }
-        
-        if (nameAnswer === await getCharacter(randomQuote.character_id)) {
-            counterPoints++;
-        }
-        
-        counterQuestions++;
-        
-        if (counterQuestions <= 10) {
-            res.redirect("/tenRounds");
-        } else {
-
-            const currentScore = Math.floor(counterPoints / 2);
-            if (req.session.user && currentScore > (req.session.user.highscore || 0)) {
-                await updateHighscore(currentScore);
-            }
-            res.redirect("/scoreTenRounds");
-        }
-    } catch (error) {
-        console.error("Error in tenRounds route:", error);
-        res.status(500).send("Error processing quiz answer");
-    }
-});
 
 
 router.get("/suddenDeath", async (req, res) => {
@@ -94,7 +61,7 @@ router.get("/suddenDeath", async (req, res) => {
             counterPoints = 0;
         }
         
-        res.render("suddenDeath", { randomQuote: obj1, A1: {answer1}, A2: {answer2}, A3: {answer3}, counter: counterQuestions,counterPoints: counterPoints,username: username
+        res.render("suddenDeath", { randomQuote: obj1, A1: answer1, A2: answer2, A3: answer3, counter: counterQuestions,counterPoints: counterPoints, username: username
         });
     } catch (error) {
         console.error("Error in sudden death route:", error);
@@ -102,40 +69,6 @@ router.get("/suddenDeath", async (req, res) => {
     }
 });
 
-
-router.post("/suddeDeath", async(req, res) => {
-    try {
-        let randomQuote = JSON.parse(req.body.randomQuote);
-        
-        const nameAnswer = req.body.nameAnswer;
-        const movieAnswer = req.body.movieAnswer;
-        console.log("antwoorden", nameAnswer, movieAnswer);
-        
-        if (movieAnswer === await getmovie(randomQuote.movie_id)) {
-            counterPoints++;
-        }
-        
-        if (nameAnswer === await getCharacter(randomQuote.character_id)) {
-            counterPoints++;
-        }
-        
-        counterQuestions++;
-        
-        if (counterQuestions <= 10) {
-            res.redirect("/suddenDeath");
-        } else {
-
-            const currentScore = Math.floor(counterPoints / 2);
-            if (req.session.user && currentScore > (req.session.user.highscore || 0)) {
-                await updateHighscore(currentScore);
-            }
-            res.redirect("/scoreSuddenDeath");
-        }
-    } catch (error) {
-        console.error("Error in sudden death  route:", error);
-        res.status(500).send("Error processing quiz answer");
-    }
-});
 
 router.post("/checkAnswerCard", async(req, res) => {
     let randomQuote = JSON.parse(req.body.randomQuote);
@@ -160,20 +93,26 @@ router.post("/checkAnswerCard", async(req, res) => {
 
 router.post("/checkAnswerCard", async(req, res) => {
     let randomQuote = JSON.parse(req.body.randomQuote);
-    counterQuestions++
+    counterQuestions++;
     const nameAnswer = req.body.nameAnswer;
     const movieAnswer = req.body.movieAnswer;
-    console.log( "antwoorden", nameAnswer, movieAnswer);
-    if (movieAnswer === await getmovie(randomQuote.movie_id)) {
-        counterPoints++;
-    }if (nameAnswer === await getCharacter(randomQuote.character_id)) {
+    console.log("antwoorden", nameAnswer, movieAnswer);
+    
+    const correctMovie = await getmovie(randomQuote.movie_id);
+    const correctCharacter = await getCharacter(randomQuote.character_id);
+    
+    if (movieAnswer === correctMovie) {
         counterPoints++;
     }
-    if (counterQuestions !== 11) {
-        res.redirect("scoreSuddenDeath")
+    if (nameAnswer === correctCharacter) {
+        counterPoints++;
+    }
+    
+    if (movieAnswer === correctMovie && nameAnswer === correctCharacter) {
+        res.redirect("");
     } else {
-        if (counterPoints > req.session.user!.highscore) {
-            updateHighscore(counterPoints/2)
+        if (req.session.user && counterPoints > (req.session.user.highscore || 0)) {
+            await updateHighscore(Math.floor(counterPoints/2));
         }
         res.redirect("scoreSuddenDeath");
     }

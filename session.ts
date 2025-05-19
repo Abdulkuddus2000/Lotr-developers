@@ -1,21 +1,21 @@
-import dotenv from "dotenv"
+import { MONGODB_URI  } from "../Lotr-developers/database";
 import session, { MemoryStore } from "express-session";
+import {  FlashMessage, User } from "../Lotr-developers/interfaces";
 import mongoDbSession from "connect-mongodb-session";
-import { User } from "./interfaces";
 
 
 const MongoDBStore = mongoDbSession(session);
+
 const mongoStore = new MongoDBStore({
-    uri: process.env.MONGODB_URI ?? "mongodb+srv://lotr_DevelopersAP:lotr_Developers2425@hamsemy445.dlpid9n.mongodb.net/",
+    uri: MONGODB_URI,
     collection: "sessions",
     databaseName: "lotr_Developer",
-
-    expires: 1000 * 60 * 60 * 24 * 365, //1jaar
 });
 
 declare module 'express-session' {
     export interface SessionData {
-        user?: User
+        user?: User,
+        message?: FlashMessage
     }
 }
 
@@ -25,6 +25,6 @@ export default session({
     resave: true,
     saveUninitialized: true,
     cookie: {
-        //maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
+        maxAge: 1000 * 60 * 60 * 24 * 7, // 1 week
     }
 });

@@ -35,9 +35,11 @@ export interface Movie {
 }
 
 export interface User{
+    username: any;
     _id?:ObjectId;
-    username:string;
+    email:string;
     password?:string;
+    role: "ADMIN" | "USER";
     highscore: number;
     favorite_character?: string;
     favorite_movie?: string; 
@@ -67,4 +69,9 @@ export interface Profile {
     quizWins?: string;
     suddenDeathWins?: string;
     tenRoundsWins?: string;
+}
+
+export interface FlashMessage {
+    type: "error" | "success" | "info"
+    message: string;
 }

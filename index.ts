@@ -1,13 +1,14 @@
 import express, { Express, Request, response, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
-import ejs from "ejs";
-import router from "./routers/routers"
 import { User } from "./interfaces";
-import  session from "./session";
+import  session from "../Lotr-developers/session";
 import {connect} from "./database"
 import { getQuotes } from "./quizAPI";
-import { middleWare } from "./middleWare/middleWare";
+import { secureMiddleware } from "./middleWare/secureMiddleware";
+import { flashMiddleware } from "./middleWare/flashMiddleware";
+import  loginRouter  from "./routers/logRouter";
+import  routers  from "./routers/routers";
 import { Quote , Character , Movie} from "./interfaces";
 
 
@@ -20,23 +21,41 @@ const app: Express = express();
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.set("port", 3000);
+app.set("port", process.env.PORT || 3000);
 
 
 app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(session);
+app.use(flashMiddleware);
 
-app.use("/", router); 
-
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
 
 app.get("/", (req, res) => {
-    res.render("landing", {
-        title: "landing",
-        message: "landing"
-    });
+  res.render("landing", {
+    title: "Landing Page",
+    message: "Welcome to our application"
+  });
 });
+
+app.use("/",loginRouter); 
+
+app.use("/", secureMiddleware , routers);
+
+app.get("/", (req, res) => {
+  if (!req.session.user) {
+    return res.render("landing", {
+      title: "Landing Page",
+      message: "Welcome to our application"
+    });
+  }
+  return res.redirect("/index");
+});
+
 
 app.get("/registration", (req, res) => {
     res.render("registration", {
@@ -79,11 +98,12 @@ app.get("/favorites", (req, res) => {
 
 
 
-app.get("/index", (req, res) => {
-    res.render("index", {
-        title: "index",
-        message: "index"
-    });
+app.get("/index", secureMiddleware, (req, res) => {
+  res.render("index", {
+    title: "Dashboard",
+    message: `Welcome, ${req.session.user?.email ?? "Guest"}!`,
+    user: req.session.user
+  });
 });
 
 app.get("/login", (req, res) => {
@@ -107,6 +127,12 @@ app.get("/resetPassword", (req, res) => {
     });
 });
 
+app.get("/login", (req, res) => {
+    res.render("login", {
+        title: "login",
+        message: "login"
+    });
+});
 
 /*
 // post-route
@@ -139,8 +165,12 @@ app.post("/login", (req, res) => {
 */
 
 
-app.listen(app.get("port"), async () => {
-    await getQuotes()
-    await connect()
-  console.log("[server] on http://localhost:" + app.get("port"))
+app.listen(app.get("port"), async() => {
+    try {
+        await connect();
+        console.log("Server started on http://localhost:" + app.get('port'));
+    } catch (error) {
+        console.error(error);
+        process.exit(1);
+    }
 });
