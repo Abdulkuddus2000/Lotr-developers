@@ -1,4 +1,5 @@
 import express, { Express, Request, response, Response } from "express";
+import express, { Express, Request, response, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { User } from "./interfaces";
