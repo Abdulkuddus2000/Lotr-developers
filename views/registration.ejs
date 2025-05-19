@@ -2,8 +2,8 @@
 <body class="registration-page">
     <%- include("partials/logo") %>
     <main>
-        <form action="/login" method="post">
-            <h2>Registreer</h2>
+        <form method="post">
+            <h2 class="h2-Registration">Registreer</h2>
             <section class="form-registration">
                 <label for="firstname">Gebruikersnaam</label>
                 <input type="text" id="usernameRegistrationPage" name="username" placeholder="John123" required>
@@ -23,8 +23,8 @@
                     onmouseup="togglePasswordOnMouseUp(event)"></i>
                 <br>
             </section>           
-            <button type="submit">Bevestigen</button>
+            <button action="/login" type="submit">Bevestigen</button>
         </form>
     </main>
+    <%- include("partials/footer")%>
 </body>
-<%- include("partials/footer")%>

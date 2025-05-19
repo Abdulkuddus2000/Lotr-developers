@@ -1,7 +1,56 @@
-<%- include('partials/head.ejs') %>
-<%- include('partials/nav.ejs') %>
+<%-include('partials/head')%>
+<body class="favorite-body">
+    <% include('partials/nav')%>
+    <main class="favorite-main">
+        <h6 favoritePage-title>Mijn favoriete Quotes</h6>
+        <section class="favoriteAction-section">
+            <button class="button-print" onclick="window.print()">
+                <i class="fas fa-print"></i>
+            </button>
+        </section>
 
-<main>
-    <h2>Je favoriete karakters</h2>
-</main>
-<%- include('partials/footer.ejs') %>
+        <section class="character-filter">
+            <% Object.entries(characterCounts).forEach(([character, count]) => { %>
+                <button class="filter-button" onclick="filterByCharacter('<%= character %>')">
+                    <%= character %> (<%= count %>)
+                </button>
+            <% }) %>
+            <button class="filter-btn filter-btn-all" onclick="showAllQuotes()" style="display: none;">
+                Alle quotes
+            </button>
+        </section>
+
+        <section quotes-lijst> 
+            <% if (favorireQuotes.length == 0)  { %>
+                <section class="no-quotes">
+                    <h2>Geen favoriete quotes gevonden</h2>
+                    <a href="/quiz" class="button-primarySection">Quiz starten</a>
+                </section>
+            <% } else { %>
+                <% favoriteQoutes.forEach(quote => { %>
+                    <section class="favoriteQuotes-card" data-character="<%= quote.character %>">
+                        <section class="favoriteQoutes-text">
+                            <% quote.dialog %>
+                        </section>
+                        <section class="quotes-footer">
+                            <button class="buttonDelete-section" onclick="removeFavorite('<%= quote._id %>')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            <span class="favorieteCharacter-name">
+                                <a  href="<%= quote.characterWikiUrl %>" target="_blank" class="wiki-link">
+                                    <%= quote.character %>: <%= quote.quoteCount %>
+                                </a>
+                            </span>
+                        </section>
+                    </section>
+                <% }) %>
+
+            <% } %>  
+
+        </section>
+
+    </main>
+</body>
+<%- include('partials/footer') %>
+<script src="/js/favoriteCharacter.js"></script>
+

@@ -1,9 +1,11 @@
-export interface Quote{
-    _id: string;
-    dialog: string;
-    movie_id: string;
-    character_id: string;
-    id: string;
+import { ObjectId } from "mongodb"
+
+export interface Quote {
+    _id: string,
+    dialog: string,
+    movie_id: string,
+    character_id: string,
+    id: string
 }
 
 export interface Character {
@@ -32,11 +34,17 @@ export interface Movie {
     rottenTomatoesScore: number;
 }
 
-export interface User {
-    username: string;
-    password: string;
-    favorites?: string[];
-    highScore?: number;
+export interface User{
+    username: any;
+    _id?:ObjectId;
+    email:string;
+    password?:string;
+    role: "ADMIN" | "USER";
+    highscore: number;
+    favorite_character?: string;
+    favorite_movie?: string; 
+    favoriteQuotesId: string[];
+    blacklistedQuotedId: string[];
 }
 
 export interface QuizResult {
@@ -51,4 +59,19 @@ export interface QuizResult {
         movie: string;
     };
     isCorrect: boolean;
+}
+
+
+export interface Profile {
+    username: string;
+    bio: string;
+    avatar: string;
+    quizWins?: string;
+    suddenDeathWins?: string;
+    tenRoundsWins?: string;
+}
+
+export interface FlashMessage {
+    type: "error" | "success" | "info"
+    message: string;
 }

@@ -1,34 +1,19 @@
 <%- include('partials/head') %>
 <body class="lotr-quiz">
     <%- include('partials/nav') %>
-    <section id="rules">
-        <h1 id="rules-section">Spelregels</h1>
-        <h3>Quiz</h3>
-        <p>Raad welk karakter de quote zei en in welke film. Kies uit 3 karakters en films</p>
-        <p>👍 Favoriet toevoegen | 👎 Quote blacklisten (komt niet meer voor)</p>
-        <h3>Ten rounds</h3>
-        <p>10 rondes, 1 punt per correcte combinatie, 0.5 punt als één stukje juist is.</p>
-            
-        <h3>Sudden-death</h3>
-        <p>Speel door tot een fout. 1 punt per correcte combinatie. Bij fout zie je je score en de high score</p>
-            
-        <h3>Favorites</h3>
-        <p>Bekijk en beheer favoriete quotes. Filter per karakter. Exporteer naar tekstbestand.</p>
-            
-        <h3>Blacklists</h3>
-        <p>Bekijk en beheer geblackliste quotes. Pas redenen aan of verwijder uit blacklist.</p>
-    </section>
+    <%- include('partials/rules') %>
     <main id="quizMain">
         <section id="quizContent">
-           <form action="/checkAnswerCard" method="POST" class="checkAnswerCard-form">
+           <form action="/checkAnswerCard" method="POST">
                 <input type="hidden" name="randomQuote" value='<%= JSON.stringify(randomQuote) %>'>
                 <input type="hidden" name="currentRound" value='<%= counter %>'>
                 <input type="hidden" name="score" value='<%= counterPoints %>'>
                 <ul id="Questionsflex-section">
-                    <h1 id="tenRounds-suddenDeath">10 ROUNDS - Vraag <%= counter %> of 10</h1>
+                    <h1 id="tenRounds-suddenDeath">Sudden Death - Streak <%= counter %> </h1>
                     <li class="quoteQuizItem">"<%= randomQuote.dialog%>"</li>
                     <li class="quizQuestions">
                         <h3>Wie zei deze quote?</h3>
+                        <%- include('partials/footer') %>
                         <ul class="quizFlex">
                             <li class="quizAnswer">
                                 <input type="quiz" id="answer1" name="nameAnswer" value="<%= A1.answer1 %>">
@@ -49,7 +34,7 @@
                         <ul class="quizFlex">
                             <li class="quizAnswer">
                                 <input type="quiz" id="answer4" name="movieAnswer" value="The Fellowship of the Ring">
-                                <label for="answer4" class="film-label">The Fellowship of the Ring</label>
+                                <label for="answer4" class="film-label"></label>
                             </li>
                             <li class="quizAnswer">
                                 <input type="quiz" id="answer5" name="movieAnswer" value="The Two Towers">
@@ -65,7 +50,7 @@
                 <button type="submit" id="quizButton" class="quiz-button">Volgende vraag</button>
             </form>
             <ul id="countButton">
-                <li id="questionCounter"><%= counter %>/10</li>
+                <li id="questionCounter">Current streak:<%= counter %>/10</li>
                 <article class="thumbsButton">
                     <form action="/thumbsAction" method="POST" style="display: inline;">
                         <input type="hidden" name="thumbsUp" value="favoriet">

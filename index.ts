@@ -1,59 +1,62 @@
 import express, { Express, Request, response, Response } from "express";
+import express, { Express, Request, response, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
-import open from "open";
-import { error } from "console";
-import { title } from "process";
-import { getCharacter, getMovies, getQuotes,characterAnswers,answerRandom, quotes } from "./data";
-import { get, request } from "http";
-import bodyParser from 'body-parser';
-import { Quote } from "./interfaces";
- 
+import { User } from "./interfaces";
+import  session from "../Lotr-developers/session";
+import {connect} from "./database"
+import { getQuotes } from "./quizAPI";
+import { secureMiddleware } from "./middleWare/secureMiddleware";
+import { flashMiddleware } from "./middleWare/flashMiddleware";
+import  loginRouter  from "./routers/logRouter";
+import  routers  from "./routers/routers";
+import { Quote , Character , Movie} from "./interfaces";
+
+
 
 
 dotenv.config();
 
-
-
-let counterQuestions: number = 1;
-let counterPoints: number = 0;
-
-interface user {
-    username: string;
-    password: string;
-    highScoreTenRounds: number;
-    highScoreSuddenDeath: number;
-    favorites: string[];
-    blacklist: { quoteId: string; reason: string }[];
-}
-
-const users: Map<string, user> = new Map();
-let currentUser: string | null = null;
-
-
-
 const app: Express = express();
 
-app.use(express.static("public"))
+
+app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-app.use(express.json());
+app.set("port", process.env.PORT || 3000);
+
+
+app.use(express.json({ limit: "2mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
-app.set("views", path.join(__dirname, "views"));
-app.use(express.urlencoded({extended:true}))
+app.use(session);
+app.use(flashMiddleware);
 
-app.use(express.json({ limit: "1mb" }));
-app.use(express.urlencoded({ extended:true}))
-
-
-app.set("port", process.env.PORT ?? 3000);
+app.use((req, res, next) => {
+  res.locals.user = req.session.user || null;
+  next();
+});
 
 app.get("/", (req, res) => {
-    res.render("landing", {
-        title: "landing",
-        message: "landing"
-    });
+  res.render("landing", {
+    title: "Landing Page",
+    message: "Welcome to our application"
+  });
 });
+
+app.use("/",loginRouter); 
+
+app.use("/", secureMiddleware , routers);
+
+app.get("/", (req, res) => {
+  if (!req.session.user) {
+    return res.render("landing", {
+      title: "Landing Page",
+      message: "Welcome to our application"
+    });
+  }
+  return res.redirect("/index");
+});
+
 
 app.get("/registration", (req, res) => {
     res.render("registration", {
@@ -82,9 +85,11 @@ app.get("/favoriteCharacter", (req, res) => {
     res.render("favoriteCharacter", {
         title: "favoriteCharacter",
         message: "favoritCharacter"
-        
+
     });
 });
+
+
 app.get("/favorites", (req, res) => {
     res.render("favorites", {
         title: "favorites",
@@ -93,11 +98,13 @@ app.get("/favorites", (req, res) => {
 });
 
 
-app.get("/index", (req, res) => {
-    res.render("index", {
-        title: "index",
-        message: "index"
-    });
+
+app.get("/index", secureMiddleware, (req, res) => {
+  res.render("index", {
+    title: "Dashboard",
+    message: `Welcome, ${req.session.user?.email ?? "Guest"}!`,
+    user: req.session.user
+  });
 });
 
 app.get("/login", (req, res) => {
@@ -121,93 +128,14 @@ app.get("/resetPassword", (req, res) => {
     });
 });
 
-
-app.get("/tenRounds", async (req, res) => {
-    try {
-        let characters = await getCharacter();
-        let quotes = await getQuotes();
-        let movies = await getMovies();
-      
-
-        
-        res.render("tenRounds", {
-            title: "tenRounds",
-            message: "tenRounds",
-            characters,
-            quotes,
-            movies
-        });
-        console.log("Aantal karakters: ", characters.length);
-        console.log("Eerste karakter: ", characters[0]);
-        console.log("aantal quotes", quotes.length);
-        console.log("aantal quotes", quotes[0]);
-        console.log("eerste movie", movies.length);
-        console.log("eerste movie", movies[0]);
-    } catch (error) {
-        console.error("Fout bij ophalen data: ", error);
-        res.status(500).send("Er is iets misgegaan.")
-    }
-
+app.get("/login", (req, res) => {
+    res.render("login", {
+        title: "login",
+        message: "login"
+    });
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-
-    
-
-
- 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.get("/spelregels", (req, res) => {
-    res.render("spelregels", {
-        title: "spelregels",
-        message: "spelregels"
-
-    }
-
-    );
-});
-
-
+/*
 // post-route
 app.post("/login", (req, res) => {
     const { username, password, confirmPassword } = req.body;
@@ -235,18 +163,15 @@ app.post("/login", (req, res) => {
 });
 
 
+*/
 
-app.listen(app.get("port"), () => {
-    // const url = `http://localhost:${app.get("port")}/landing`;
-    // console.log("Server started on ", url);
-    // open(url);
 
-    console.log("Server started on http://localhost:" + app.get("port"));
+app.listen(app.get("port"), async() => {
+    try {
+        await connect();
+        console.log("Server started on http://localhost:" + app.get('port'));
+    } catch (error) {
+        console.error(error);
+        process.exit(1);
+    }
 });
-
-function updateHighscore(arg0: number) {
-    throw new Error("Function not implemented.");
-}
-function checkAnswers(nameAnswer: any, movieAnswer: any) {
-    throw new Error("Function not implemented.");
-}

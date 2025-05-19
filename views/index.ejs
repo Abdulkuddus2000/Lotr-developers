@@ -1,60 +1,17 @@
-<!DOCTYPE html>
-<html lang="nl">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/logo.png" />
-    <title>Lord Of The Rings - Start pagina</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-
-
-</head>
-<body class="index">
-    <header>
-        <a class="logo" href="index">
-            <img src="assets/images/logo.png" alt="logo" width="100px" id="logo">
-        </a>
-        <nav class="nav-bar">
-            <ul>
-                <li><a href="index">Home</a></li>
-                <li><a href="favorites">Favorieten</a></li>
-                <li><a href="blacklist">Zwartelijst</a></li>
-                <li><a href="spelregels">Spelregels</a></li>
-
-                <li class="login-icon">
-                    <a href="account" class="login-icon">
-                    <a href="account" class="login-icon">
-                        <i class="fas fa-user-circle" style="font-size: 30px;"></i> 
-                    </a>
-
-                </li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
+<%- include('partials/head') %>
+<body class="index-body">
+    <%- include('partials/nav') %>
+    <main class="main-index">
         <section class="frontpage">
             <h1 class="h1-front">Welkom bij LOTR</h1>
             <h2>Start hier jouw avontuur !</h2>
-            <button class="start-quiz"><a href="quiz" class="quiz">Quiz</a></button>
+            <section class="start-quiz"><a class="quiz">Quiz</a></section>
             <button class="sudden"><a href="suddenDeath" class="sudden-death">Sudden death</a></button>
-            <button><a href="tenRounds" class="tenRounds">Ten rounds</a></button>
+            <button><a href="tenRounds" class="ten-rounds">Ten rounds</a></button>
         </section>
-
         <section class="banner"></section>
     </main>
-
-    <footer class="footer-index">
-        <p>&copy;2025 AP-Hogeschool | Kosimov Abdul, Habrani Nabil en Hamse Mohammed Yassin</p>
-        <a href="#" class="back-to-top">
-            <i class="fas fa-chevron-circle-up"></i>   
-        </a>
-    
-    </footer>
 </body>
-
 </html>
+<%- include('partials/footer') %>
+<%- include('partials/chevronUp') %>
