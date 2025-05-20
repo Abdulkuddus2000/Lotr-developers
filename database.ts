@@ -1,6 +1,6 @@
 import { Collection, MongoClient } from "mongodb";
 import dotenv from "dotenv";
-import { User } from "../Lotr-developers/interfaces"
+import { User } from "./interfaces"
 import bcrypt from "bcrypt";
 
 dotenv.config();
