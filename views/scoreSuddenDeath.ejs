@@ -1,35 +1,32 @@
-<%- include ('partials/header') %>
-<%_ include ('partials/nav') %>
+
+<%- include('partials/head') %>
+<body class="score-page">
     <main id="scoreQuiz">
         <h1 id="scoreH1">Bedankt voor het meedoen!</h1>
         <ul id="scoreListFlex">
-            <li class="yourScore">
-                Jouw score is<br>
-                <span class="score-number"><%= finalScore %></span>
-            </li>
-            <li id="result">
-                <% if (percentage >= 80) { %>
+            <section class="yourScore">
+                Jouw streak is<br>
+                <span class="score-number"><%= streak %></span>
+            </section>
+            <section id="result">
+                <% if (finalScore >= 8) { %>
                     <section class="gold-medal">🥇</section>
                     <p class="medal-text">GOUD</p>
-                <% } else if (percentage >= 60) { %>
+                <% } else if (finalScore >= 5) { %>
                     <section class="silver-medal">🥈</section>
                     <p class="medal-text">ZILVER</p>
-                <% } else if (percentage >= 40) { %>
+                <% } else if (finalScore >= 3) { %>
                     <section class="bronze-medal">🥉</section>
                     <p class="medal-text">BRONS</p>
                 <% } else { %>
-                    <section class=" try-again">😩</section>
+                    <section class="try-again">😩</section>
                     <p class="medal-text">Probeer nog eens</p>
                 <% } %>
-            </li>
-            <li class="yourScore">
-                hoogste score<br>
-                <span class="score-number"><%= highScore %></span>
-            </li>
+            </section>
+            <li class="yourScore">hoogste score<br><span class="score-number"><%= highScore %></span></li>
         </ul>
-        <a href="index"> <button id="scoreButton">Terug naar hoofdmenu</button></a>
-
+        <a href="/index"><button id="scoreButton">Hoofdmenu</button></a>
     </main>
-<%- include ('partials/footer') %>
-
-
+    <%- include('partials/footer') %>
+</body>
+</html>
