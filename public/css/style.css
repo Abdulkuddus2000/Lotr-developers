@@ -1,4 +1,18 @@
-@import url("variables.css");
+:root{
+    /* gebruikte kleuren: */
+    --lichtgroen: #90ee90;
+    --goudgeel: #ffd700;
+    --hemelsblauw: #87ceeb;
+}
+
+
+/*fonts*/
+@font-face {
+    font-family: 'Ringbearer Medium';
+    src: url("../assets/fonts/RingbearerMedium-51mgZ.ttf");
+}
+
+
 /* general css */
 body{
     background-color: black;
@@ -34,6 +48,7 @@ header figure img {
     cursor: pointer;
     transition: color 0.3s;
 }
+
 nav ul {
     list-style-type: none; 
     display: flex; 
@@ -69,6 +84,12 @@ a{
     width: 100%;
     text-align: center;
 }
+
+h1{
+    color: var(--goudgeel);
+    font-size: 20px;
+}
+
 h2{
     grid-area: title;
     text-align: center;
@@ -86,10 +107,6 @@ h3{
 }
 
 .footer {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
     text-align: center;
     color:var(--goudgeel);
 }
@@ -117,7 +134,7 @@ h3{
 
 /* css for landing.html */
 
-.landing{
+.landingPage{
     color: var(--goudgeel);
     text-align: center;
     min-height:55vh;
@@ -166,7 +183,9 @@ h3{
     font-family: 'Ringbearer Medium' , sans-serif;
     text-align: center;
     font-weight: bold;
+    padding-top: 2em;
 }
+
 .games-list{
     margin-bottom: 150px;
      margin-top: 200px;
@@ -299,8 +318,6 @@ label{
 #passwordRegistrationPage {
     width: 50%;
     background-color: white;
-
-    
 }
 
 input::placeholder{
@@ -498,6 +515,12 @@ button:active {
 }
 
 /* css for login.html */
+
+input::placeholder{
+    color: var(--goudgeel);
+}
+
+
 .login-page{
     color: var(--goudgeel);
 }
@@ -597,7 +620,6 @@ button:active {
 
 /* css for index.html */
 .index {
-    
     header {
         background:black; 
         color: #d4c29a; 
@@ -670,15 +692,6 @@ button:active {
     button:hover {
         background: #f1c40f; 
         color: #3e3b32; 
-    }
-    
-    .footer-index {
-        text-align: center;
-        background: black; 
-        color:var(--goudgeel); 
-        font-size: 14px;
-        padding-top: 15px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
     
     .back-to-top {
@@ -783,9 +796,9 @@ button:active {
         padding: 20px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
     }
-    footer{
+    /* footer{
        background: rgba(0,0,0,0.0);
-    }
+    } */
     h2{
         font-family: 'Ringbearer Medium';
         color: #ffd700; 
@@ -1078,13 +1091,13 @@ button:active {
     font-style: italic;
 }
 
-.quotes-footer {
+/* .quotes-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-top: 1rem;
     border-top: 2px solid #f0f0f0;
-}
+} */
 
 .buttonDelete-section {
     background: none;
@@ -1686,12 +1699,12 @@ input, textarea {
 
 
 
-.footer-blacklist {
-text-align: center;
-padding: 5px;
-color: var(--goudgeel);
-font-size: 14px;
-}
+/* .footer-blacklist {
+    text-align: center;
+    padding: 5px;
+    color: var(--goudgeel);
+    font-size: 14px;
+} */
 
 .back-to-top {
 position: fixed;
