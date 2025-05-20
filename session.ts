@@ -1,6 +1,6 @@
-import { MONGODB_URI  } from "../Lotr-developers/database";
+import { MONGODB_URI  } from "./database";
 import session, { MemoryStore } from "express-session";
-import {  FlashMessage, User } from "../Lotr-developers/interfaces";
+import {  FlashMessage, User } from "./interfaces";
 import mongoDbSession from "connect-mongodb-session";
 
 

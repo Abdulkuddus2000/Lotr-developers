@@ -2,7 +2,7 @@ import express, { Express, Request, response, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { User } from "./interfaces";
-import  session from "../Lotr-developers/session";
+import  session from "./session";
 import {connect} from "./database"
 import { getQuotes } from "./quizAPI";
 import { secureMiddleware } from "./middleWare/secureMiddleware";
