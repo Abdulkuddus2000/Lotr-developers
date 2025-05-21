@@ -137,58 +137,18 @@ h3{
 .landingPage{
     color: var(--goudgeel);
     text-align: center;
-    /* min-height:55vh; */
+    height:100vh;
     background-image: url("../assets/images/sfeerbeeld1_landing.png");
-    /* background-image: url("../assets/images/sfeerbeeld2_landing.png"); */
-    /* background-image: url("../assets/images/sfeerbeeld3_landing.png"); */
-    /* background-image: url("../assets/images/sfeerbeeld4_landing.png"); */
-    /* background-image: url("../assets/images/sfeerbeeld5_landing.png"); */
     background-size: cover;
     background-repeat: no-repeat;
 }
 
-
-.customAlert{
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    align-items: center;
-    text-align: center;
-    border: 5px solid var(--goudgeel);
-    height: 300px;
-    width: 600px;
-    background-color: var(--grijs);
-    z-index: 1000;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.landingPage main{
+    z-index: 998;
 }
 
-.alert-content{
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: grey;
 
-    p{
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 30px;
-    }
-    button#confirmBtn{
-        margin: 30px ;
-        height: 120px ;
-        width: auto;
-        color: var(--goudgeel);
-        font-family: "Ringbearer Medium";
-        margin: 20px;
-        padding: 20px 40px;
-        font-size: 24px ;
-        border: none;
-        background: gray;
-        cursor: pointer;
-        border-radius: 10px;
-    }
-}
+
 .gameChoice{
     font-family: 'Ringbearer Medium' , sans-serif;
     text-align: center;
@@ -264,7 +224,6 @@ h3{
                 0 0 2.8rem #bc13fe,
                 inset 0 0 1.3rem #bc13fe;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-
     
     h2{
         font-size: 6.2rem;
@@ -273,12 +232,89 @@ h3{
     p{
         font-size: 50px;
     }
+
+    .customAlert{
+        width: 200px;
+        background-color: green;
+
+        .alert-content{
+            background-color: red;
+        }
+
+        h2{
+            font-size: 20px;
+        }
+    }
 }
 
 .gameChoice{
     background: rgba(42, 0, 63, 0.7);
     background: linear-gradient(135deg, rgba(42,0,63,0.7), rgba(0,0,0,0.7));
 }
+
+.customAlert {
+    position: absolute;
+    display: none;
+    left: 40%;
+    top: 40%;
+    width: 35vh;
+    height: 20vh;
+    margin: 2rem auto;
+    background: rgba(42, 0, 63, 1); /* zelfde paarse transparante achtergrond */
+    padding: 2rem;
+    border-radius: 1.5rem;
+    box-shadow: 
+        0 0 0.2rem #fff,
+        0 0 0.2rem #fff,
+        0 0 2rem #bc13fe,
+        0 0 0.8rem #bc13fe,
+        0 0 2.8rem #bc13fe,
+        inset 0 0 1.3rem #bc13fe;
+    border: 0.15rem solid #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    color: white;
+
+    z-index: 999;
+}
+
+.customAlert .alert-content {
+    background-color: transparent; /* geen extra achtergrond */
+    padding: 1rem;
+}
+
+.customAlert h2 {
+    font-size: 1.8rem;
+    color: #fff;
+    text-shadow:
+        0 0 5px #fff,
+        0 0 10px #fff,
+        0 0 20px #bc13fe,
+        0 0 40px #bc13fe;
+}
+
+.customAlert p {
+    font-size: 1.3rem;
+    margin: 1rem 0;
+}
+
+.customAlertButton {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    background-color: #bc13fe;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 1rem #bc13fe;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.customAlertButton:hover {
+    background-color: #d94eff;
+    box-shadow: 0 0 1.5rem #d94eff;
+}
+
 
 
 
@@ -1279,9 +1315,6 @@ input[type='password']{
     }
 }
 
-
-
-
 /* css for favoriteCharacter.html */
 .main-favoriteCharacter{
     padding: 10%;
@@ -1377,7 +1410,6 @@ input[type='password']{
     font-style: italic;
     background-color: 1px solid gray;
     text-align: center;
-
 }
 
 #quotes-characters section:nth-child(even){
@@ -1387,7 +1419,6 @@ input[type='password']{
     background-color: rgba(255, 255, 255, 0,1);
     color: var(--goudgeel);
     border-radius: 5px;
-
 }
 
 #quotes-characters section:nth-child(odd){
@@ -1445,7 +1476,6 @@ input[type='password']{
     text-decoration: none;
     cursor: pointer;
     padding: 1px;
-    
 }
 
 .icon-edit:hover{
@@ -1529,8 +1559,6 @@ input[type='password']{
     cursor: pointer; 
     transition: background-color 0.3s, color 0.3s; 
     font-size: 15px; 
-
-
 }
 
 .cancel-button{
@@ -1542,20 +1570,17 @@ input[type='password']{
     border-radius: 5px; 
     cursor: pointer; 
     transition: background-color 0.3s, color 0.3s; 
-    font-size: 15px; 
-
+    font-size: 15px;
 }
 
 .cancel-button:hover{
     background-color: brown; 
-    color: var(--parelwit); 
-
+    color: var(--parelwit);
 }
 
 .confirm-button:hover {
     background-color: brown; 
     color: var(--parelwit); 
-
 }
 
 
@@ -1622,8 +1647,6 @@ input[type='password']{
         padding: 10px;
     }
 }
-
-
 
 /* css for account.html */
 
