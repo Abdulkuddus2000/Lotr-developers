@@ -40,7 +40,7 @@ export async function saveBlacklistedQuoteToDatabase(username: string, quoteId: 
 
 
 
- // deze functie zorgt ervoor dat de quotes uit de quiz worden
+ // deze functie zorgt ervoor dat de quotes uit de quiz  verwijderd
 
 
 let quizQuestions: Quote[] = [];
@@ -48,7 +48,7 @@ export async function removeQuoteFromQuiz(quoteId: string) {
     try {
         const index = quizQuestions.findIndex(quote => quote._id === quoteId);
         if (index > -1) {
-            // Verwijder de quote uit de array
+            
             quizQuestions.splice(index, 1);
             console.log("Quote succesvol verwijderd uit de quizvragen.");
         } else {
