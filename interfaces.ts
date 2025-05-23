@@ -44,7 +44,12 @@ export interface User{
     favorite_character?: string;
     favorite_movie?: string; 
     favoriteQuotesId: string[];
-    blacklistedQuotedId: string[];
+    blacklistedQuotes: BlacklistedQuote[];
+}
+
+export interface BlacklistedQuote{
+    blacklistedQuoteId:string,
+    blacklistReason:string
 }
 
 export interface QuizResult {
@@ -75,3 +80,5 @@ export interface FlashMessage {
     type: "error" | "success" | "info"
     message: string;
 }
+
+

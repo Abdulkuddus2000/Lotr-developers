@@ -966,6 +966,123 @@ button:active {
 
 
 /* css for favorites page*/
+.favoriteQuotes{
+    background-image: url; 
+    margin: 0;
+    padding: 20px;
+    background-image: url(../assets/images/achtergrond.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed ;
+    background-size: cover;
+    
+    }
+    
+    .favoritesH1{
+        color: #8B572A;
+        font-family: 'Ringbearer Medium';
+        text-align: center;
+        font-size: 2.5rem;
+    
+    }
+    
+    hr{
+        border: 1px solid #8B572A;
+        margin-bottom: 20px;
+    }
+    
+    
+    .favoritesButton  {
+    font-family: arial ,sans-serif;
+    margin: 10px 0; 
+    background:#8B572A; 
+    color: var(--parelwit); 
+    border: none;
+    padding: 10px 15px;
+    font-size: 0.9em;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+    display: flex;
+    gap: 10px;
+    display: inline-block;
+    margin-left: 75%;
+    
+    }
+    
+    
+    .quotes{
+    padding-left: 15px;
+    margin-bottom: 15px;
+    }
+    
+    .quoteDetail {
+        background-color: #fff;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        margin-bottom: 20px;
+    }
+    
+    .quoteContent {
+        border-left: 4px solid #8B572A;
+        padding-left: 15px;
+    }
+    
+    .quoteCharacter {
+        margin: 0 0 5px 0;
+        color: #8B572A;
+    }
+    
+    .quoteCharacter a {
+        color: #8B572A;
+        text-decoration: none;
+    }
+    
+    .quoteHeader {
+        margin-bottom: 10px;
+    }
+    
+    .quoteMovie {
+        margin: 0;
+        color: #666;
+        font-size: 0.9rem;
+    }
+    .quoteText {
+        font-style: italic;
+        margin: 15px 0;
+        font-size: 1.1rem;
+    }
+    
+    
+    .deleteFavorite{
+        font-family: arial ,sans-serif;
+        margin: 10px 0; 
+        background:#8B572A; 
+        color: var(--parelwit); 
+        border: none;
+        padding: 10px 15px;
+        font-size: 0.9em;
+        cursor: pointer;
+        border-radius: 4px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+        display: flex;
+        gap: 10px;
+        display: inline-block;
+            
+    }
+    
+    
+    
+    
+    
+    
+    button:hover {
+    background: #f1c40f; 
+    color: #3e3b32; 
+    }
+    
+    
 
 /* Favorites Page Styles */
 

@@ -182,3 +182,5 @@ async function updateHighscore(score: number) {
     console.log(`Updating highscore to ${score}`);
 }
 export default router;
+
+
