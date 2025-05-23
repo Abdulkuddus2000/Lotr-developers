@@ -14,18 +14,26 @@
 
 
 /* general css */
-body{
-    background-color: black;
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
 }
 
 header {
-    background: black; 
-    color: #d4c29a; 
+    margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
     padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
+    /* background: #000; */
 }
+
 
 header figure img {
     margin-left: 0px;
@@ -59,22 +67,29 @@ nav ul {
 }
 
 nav ul li {
-    margin-left: 20px; 
+    margin-left: 20px;
+    color: var(--goudgeel);
 }
+
+nav ul li.login-icon{
+    position: absolute;
+    right: 5%;
+}
+
+/* bigger effect: */
 
 nav ul li a {
     font-family: 'Ringbearer Medium';
-    color: var(--goudgeel); 
+    color: var(--goudgeel);
     text-decoration: none; 
     font-weight: bold; 
+    transition: all .3s ease-in-out;
+    display: inline-block;
 }
 
 nav ul li a:hover {
     color: var(--goudgeel); 
-}
-
-a{
-    text-decoration: none;
+    transform: scale(1.25);
 }
 
 .account-icon{
@@ -106,24 +121,40 @@ h3{
     font-weight: bold;
 }
 
-.footer {
-    text-align: center;
+.footer, .image_source p {
     color:var(--goudgeel);
     padding: 0;
-    margin: 0;
+    margin-top: -2%;
+}
+
+.image_source a{
+    position: relative;
+    text-align: center;
+    margin-top: 0;
+    color: var(--goudgeel);
+}
+
+.image_source a {
+    color: var(--goudgeel);
+    margin-left: 0;
+}
+
+.footer{
+    position: relative;
+    text-align: center;
 }
 
 .back-to-top {
-    position: fixed; 
-    bottom: 20px;    
-    right: 20px;     
-    border-radius: 5px; 
-    padding: 10px; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    cursor: pointer; 
-    transition: background-color 0.3s; 
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
     color: var(--goudgeel);
     text-decoration: none;
 }
@@ -131,6 +162,7 @@ h3{
 .back-to-top:hover {
     background-color: rgba(0, 0, 0, 0.8); 
 }
+
 
 /* css for landing.html */
 
@@ -146,8 +178,6 @@ h3{
 .landingPage main{
     z-index: 998;
 }
-
-
 
 .gameChoice{
     font-family: 'Ringbearer Medium' , sans-serif;
@@ -315,10 +345,6 @@ h3{
     box-shadow: 0 0 1.5rem #d94eff;
 }
 
-
-
-
-
 @keyframes pulsate {
   100% {
       text-shadow:
@@ -430,7 +456,6 @@ label{
     margin-left: 12px;
     width: 50%;
     background-color: white;
-    
 }
 
 #passwordRegistrationPage {
@@ -527,7 +552,6 @@ label{
 input::placeholder{
     opacity: 0.5;
 }
-
 
 #submitForgetPassword {
     height: 40px;
@@ -654,23 +678,35 @@ input[type='password']{
     color: var(--goudgeel);
 }
 
+.login_logo{
+    position: absolute;
+    margin: 1%;
+    z-index: 1;
+}
+
 .login-clean {
-    padding:80px 0;
-    min-height:60vh;
-    background-image: url("../assets/images/dwarf.png");
-    margin: 1.5% 4.5%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+     height: 100vh;
+    background-image: url("../assets/images/lotr_landscape.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
-  
+
 .login-clean form {
-    max-width:500px;
-    width:90%;
-    margin:0 auto;
-    background-color:#2c2c2c;
-    padding:40px;
-    border-radius:8px;
-    color:#2c2c2c;
-    box-shadow:1px 1px 5px rgba(0,0,0,0.1);
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    background-color: #2c2c2c;
+    padding: 40px;
+    margin-top: -1%; 
+    border-radius: 8px;
+    color: #2c2c2c;
+    box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
 }
+
   
 .login-clean .illustration {
     text-align:center;
@@ -744,19 +780,15 @@ input[type='password']{
 }
 
 
-
-
 /* einde styling login.html */
 
 /* css for index.html */
 .index-body {
     header {
-        background:black; 
-        color: #d4c29a; 
+        color: var(--goudgeel);
         display: flex;
         align-items: center;
         padding: 20px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
         position: sticky;
     }
 
@@ -766,13 +798,10 @@ input[type='password']{
         align-items: center; 
         justify-content: center; 
         height: 120vh; 
-        /* background-image: url(../assets/images/boy_exiting.png);  */
         background-image: url(../assets/images/lotr_ring_on_map.png); 
         background-position: center;
         background-size: cover;
         overflow: hidden;
-
-        /* background-color: red; */
     }
     
     .h1-front {
@@ -807,7 +836,7 @@ input[type='password']{
         color: var(--donkergrijs);
     }
 
-    .sudden-death, a{
+    .sudden-death{
         text-decoration: none;
         color: black;
     }
@@ -859,6 +888,10 @@ input[type='password']{
     .back-to-top:hover {
         background-color: rgba(0, 0, 0, 0.8); 
 
+    }
+
+    footer{
+        margin-top: -2%;
     }
 
     @media (max-width: 412px) {
@@ -927,12 +960,10 @@ input[type='password']{
 }
 
 
+
 /* css for quiz.html */
 .quiz{
     body{
-        /* background-image: url(../assets/images/banner.png);
-        background-size: cover;
-        background-position: center; */
         background-color:var(--darkgrey);
         font-family: 'Ringbearer Medium';    
     }
@@ -1601,7 +1632,8 @@ input[type='password']{
     }
 
     nav ul li {
-        margin: 5px 0; 
+        margin: 5px 0;
+        color: var(--goudgeel);
     }
 
     .main-blacklist {
