@@ -1,136 +1,108 @@
 import { ObjectId } from "mongodb";
-import { userCollection, quotesCollection, favoritesCollection, client } from "./database";
-import { Quote, User, FavoriteQuote } from "./interfaces";
+import { favoritesCollection } from "./database";
+import { Quote } from "./interfaces";
+import { getCharacter, getmovie } from "./quizAPI";
 
-export async function updateFavoriteQuotes(user: User, quoteId: string) {
-    try {
-        let currentFavoriteQuotes: string[] = user.favoriteQuotesId || [];
-
-        if (!currentFavoriteQuotes.includes(quoteId)) {
-            currentFavoriteQuotes.push(quoteId);
-        }
-
-        await userCollection.updateOne(
-            { username: user.username },
-            { $set: { favoriteQuotesId: currentFavoriteQuotes } }
-        );
-    } catch (error) {
-        console.error("Fout bij bijwerken van favoriete quotes:", error);
-    }
-}
-
+// Quote toevoegen aan favorites
 export async function saveFavoriteQuoteToDatabase(quoteData: Quote, sessionId: string) {
     try {
-        const characterName = await getCharacterNameById(quoteData.character_id);
-        const movieName = await getMovieNameById(quoteData.movie_id);
+        const characterName = await getCharacter(quoteData.character_id);
+        const movieName = await getmovie(quoteData.movie_id);
 
-        const favoriteEntry: FavoriteQuote = {
+        const entry = {
             quote_id: new ObjectId(quoteData._id),
-            character_name: characterName,
-            movie_name: movieName,
+            character_name: characterName || "Unknown Character",
+            movie_name: movieName || "Unknown Movie",
             dialog: quoteData.dialog,
             added_at: new Date(),
             user_id: sessionId
         };
 
-        const result = await favoritesCollection.insertOne(favoriteEntry);
-        return { _id: result.insertedId, ...favoriteEntry };
+        const result = await favoritesCollection.insertOne(entry);
+        return { _id: result.insertedId, ...entry };
     } catch (error) {
         console.error('Error saving favorite quote:', error);
+        return null;
     }
 }
 
+// Favorites ophalen
 export async function getFavoriteQuotes(sessionId: string) {
     try {
         return await favoritesCollection
             .find({ user_id: sessionId })
             .sort({ added_at: -1 })
-            .toArray() as FavoriteQuote[];
+            .toArray();
     } catch (error) {
         console.error('Error getting favorite quotes:', error);
         return [];
     }
 }
 
-export async function deleteFavoriteQuote(favoriteId: string, sessionId: string) {
+// Favorites per character
+export async function getFavoriteQuotesForCharacter(sessionId: string, characterName: string) {
     try {
-        const deleteResult = await favoritesCollection.deleteOne({
-            _id: new ObjectId(favoriteId),
-            user_id: sessionId
-        });
-
-        return deleteResult.deletedCount > 0;
-    } catch (error) {
-        console.error('Error deleting favorite quote:', error);
-        return false;
-    }
-}
-
-export async function exportFavoriteQuotesToText(sessionId: string) {
-    try {
-        const favoriteQuotes = await getFavoriteQuotes(sessionId);
-        
-        if (favoriteQuotes.length === 0) {
-            return 'Je hebt nog geen favoriete quotes.';
-        }
-        
-        let textOutput = '';
-        favoriteQuotes.forEach((quote) => {
-            textOutput += `${quote.dialog} - ${quote.character_name}\n`;
-        });
-        
-        return textOutput;
-    } catch (error) {
-        console.error('Error exporting favorite quotes:', error);
-        return 'Fout bij exporteren.';
-    }
-}
-
-export async function getFavoriteQuotesByCharacter(username: string) {
-    try {
-        const favoriteQuotes = await getFavoriteQuotes(username);
-        const groupedQuotes: {[characterName: string]: {quotes: FavoriteQuote[], count: number}} = {};
-        
-        favoriteQuotes.forEach((quote) => {
-            if (!groupedQuotes[quote.character_name]) {
-                groupedQuotes[quote.character_name] = { quotes: [], count: 0 };
-            }
-            groupedQuotes[quote.character_name].quotes.push(quote);
-            groupedQuotes[quote.character_name].count++;
-        });
-        
-        return groupedQuotes;
-    } catch (error) {
-        console.error('Error getting favorite quotes by character:', error);
-        return {};
-    }
-}
-
-export async function getFavoriteQuotesForCharacter(username: string, characterName: string) {
-    try {
-        const favoriteQuotes = await getFavoriteQuotes(username);
-        return favoriteQuotes.filter(quote => quote.character_name === characterName);
+        return await favoritesCollection
+            .find({ user_id: sessionId, character_name: characterName })
+            .sort({ added_at: -1 })
+            .toArray();
     } catch (error) {
         console.error('Error getting favorite quotes for character:', error);
         return [];
     }
 }
 
-export async function findQuoteById(quoteId: string) {
+// Character stats
+export async function getCharacterStats(sessionId: string) {
     try {
-        return await quotesCollection.findOne({ _id: new ObjectId(quoteId) }) as unknown as Quote;
+        const pipeline = [
+            { $match: { user_id: sessionId } },
+            { $group: { _id: "$character_name", quote_count: { $sum: 1 } } },
+            { $sort: { quote_count: -1 } }
+        ];
+        
+        const stats = await favoritesCollection.aggregate(pipeline).toArray();
+        return stats.map(stat => ({
+            character_name: stat._id,
+            quote_count: stat.quote_count
+        }));
     } catch (error) {
-        console.error('Error finding quote by ID:', error);
-        return null;
+        console.error('Error getting character stats:', error);
+        return [];
     }
 }
 
-async function getCharacterNameById(characterId: string) {
-    const character = await client.db("lotr_Developer").collection("characters").findOne({ _id: new ObjectId(characterId) });
-    return character?.name || "Unknown Character";
+// Quote verwijderen
+export async function deleteFavoriteQuote(favoriteId: string, sessionId: string) {
+    try {
+        const result = await favoritesCollection.deleteOne({
+            _id: new ObjectId(favoriteId),
+            user_id: sessionId
+        });
+        return result.deletedCount > 0;
+    } catch (error) {
+        console.error('Error deleting favorite quote:', error);
+        return false;
+    }
 }
 
-async function getMovieNameById(movieId: string) {
-    const movie = await client.db("lotr_Developer").collection("movies").findOne({ _id: new ObjectId(movieId) });
-    return movie?.name || "Unknown Movie";
+// Export naar tekst
+export async function exportFavoriteQuotesToText(sessionId: string) {
+    try {
+        const quotes = await getFavoriteQuotes(sessionId);
+        
+        if (quotes.length === 0) {
+            return 'Je hebt nog geen favoriete quotes.';
+        }
+        
+        let output = '';
+        quotes.forEach(quote => {
+            output += `${quote.dialog} - ${quote.character_name}\n`;
+        });
+        
+        return output;
+    } catch (error) {
+        console.error('Error exporting favorite quotes:', error);
+        return 'Fout bij exporteren.';
+    }
 }

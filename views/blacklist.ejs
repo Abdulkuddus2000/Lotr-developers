@@ -1,14 +1,11 @@
-
 <%- include('partials/head') %>
 <%- include('partials/nav') %>
-
 <main class="main-blacklist">
     <h2 class="title-blacklist">Zwartelijst</h2>
-    
     <% if (blacklistedQuotes && blacklistedQuotes.length > 0) { %>
         <% blacklistedQuotes.forEach(entry => { %>
             <section class="blacklist-item">
-                <span>"<%= entry.quote.dialog %>" - <%= entry.quote.character_name || 'Unknown Character' %></span>
+                <span>"<%= entry.quote.dialog %>" - <%= entry.quote.character_name || 'Character' %></span>
                 <section class="icon-edit">
                     <a href="#" class="icon-edit" onclick="openEditModal('<%= entry.blacklistId %>', '<%= entry.reason %>', '<%= entry.quote.dialog %>')">
                         <i class="fa fa-cog"></i>
@@ -21,11 +18,9 @@
         <% }); %>
     <% } else { %>
         <section class="blacklist-item">
-            <span>Je hebt nog geen quotes geblacklist. Ga naar de quiz en gebruik de thumbs down button!</span>
+            <span>Je hebt nog geen quotes geblacklist. Ga naar de quiz en gebruik de thumbs down button.</span>
         </section>
     <% } %>
-
-
     <section id="quoteModal" class="modal-1">
         <article class="modal-blacklist">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -44,7 +39,7 @@
         <article class="modal-blacklist">
             <span class="close" onclick="closeConfirmDeleteModal()">&times;</span>
             <h2>Bevestiging</h2>
-            <p>Ben je zeker dat je de quote wilt verwijderen uit de blacklist?</p>
+            <p>Ben je zeker dat je de quote wilt verwijderen uit blacklist?</p>
             
             <form id="deleteForm" action="/removeFromBlacklist" method="POST">
                 <input type="hidden" id="deleteBlacklistId" name="blacklistId" value="">
@@ -54,3 +49,4 @@
         </article>
     </section>
 </main>
+<script src="/js/blacklist.js"></script>

@@ -2,9 +2,12 @@ import {Router} from 'express';
 import { Request, Response } from 'express';
 import dotenv from "dotenv";
 import { getCharacter, getmovie, getQuotes, characterAnswers, answerRandom, quotes } from "../quizAPI";
-import { updateFavoriteQuotes, saveFavoriteQuoteToDatabase } from "../FavoriteQuote";
 import {User} from "../interfaces"
-import { removeQuoteFromQuiz } from "../BlacklistQuote";
+import { blacklistCollection, favoritesCollection } from '../database';
+import { ObjectId } from 'mongodb';
+import { saveFavoriteQuoteToDatabase } from "../FavoriteQuote";
+import { saveBlacklistedQuoteToDatabase } from "../BlacklistQuote";
+
 
 
 dotenv.config();
@@ -14,7 +17,7 @@ const router = Router();
 let counterQuestions = 1;
 let counterPoints = 0;
 
-function getRandomSubsetOfQuotes(allQuotes: any[], maxItems: number = 50) {
+function getRandomLenghtOfQuotes(allQuotes: any[], maxItems: number = 50) {
     if (allQuotes.length <= maxItems) {
         return allQuotes;
     }
@@ -28,11 +31,10 @@ router.get("/", (req: Request, res: Response) => {
     });
 });
 
-
 //tenRounds router
 router.get("/tenRounds", async (req: Request, res: Response) => {
     await getQuotes();
-    const limitedQuotes = getRandomSubsetOfQuotes(quotes, 50);
+    const limitedQuotes = getRandomLenghtOfQuotes(quotes, 50);
 
     let obj1 = limitedQuotes[Math.floor(Math.random() * limitedQuotes.length)];
     let answerArray1 = await characterAnswers(obj1);
@@ -42,9 +44,6 @@ router.get("/tenRounds", async (req: Request, res: Response) => {
     let answer2 = String(await getCharacter(A2));
     let answer3 = String(await getCharacter(A3));
     
-    console.log("Character Namen:", answer1, answer2, answer3);
-    console.log("Types:", typeof answer1, typeof answer2, typeof answer3);
-    
     const movies = [
         { id: "5cd95395de30eff6ebccde5d", title: "The Fellowship of the Ring" },
         { id: "5cd95395de30eff6ebccde5c", title: "The Two Towers" },
@@ -52,17 +51,23 @@ router.get("/tenRounds", async (req: Request, res: Response) => {
     ];
     
     const username = req.session.user ? req.session.user.username : "Guest";
-    if (counterQuestions === 1) { counterPoints = 0; } const characterOptions = [ { id: A1, name: answer1 }, { id: A2, name: answer2 }, { id: A3, name: answer3 } ];
-    console.log("Character Options:", JSON.stringify(characterOptions));
+    if (counterQuestions === 1) { counterPoints = 0; } 
+    const characterOptions = [ { id: A1, name: answer1 }, { id: A2, name: answer2 }, { id: A3, name: answer3 } ];
     
-    res.render("tenRounds", { randomQuote: obj1, characterOptions: characterOptions, movies: movies, counter: counterQuestions,  score: Math.floor(counterPoints/2),  username: username });
+    res.render("tenRounds", { 
+        randomQuote: obj1, 
+        characterOptions: characterOptions, 
+        movies: movies, 
+        counter: counterQuestions,  
+        score: Math.floor(counterPoints/2),  
+        username: username 
+    });
 });
-
 
 //suddenDeath router
 router.get("/suddenDeath", async (req: Request, res: Response) => {
     await getQuotes();
-    const limitedQuotes = getRandomSubsetOfQuotes(quotes, 50);
+    const limitedQuotes = getRandomLenghtOfQuotes(quotes, 50);
 
     let obj1 = limitedQuotes[Math.floor(Math.random() * limitedQuotes.length)];
     let answerArray1 = await characterAnswers(obj1);
@@ -84,10 +89,17 @@ router.get("/suddenDeath", async (req: Request, res: Response) => {
     
     const username = req.session.user ? req.session.user.username : "Guest";
     if (counterQuestions === 1) { counterPoints = 0; }
-    res.render("suddenDeath", { randomQuote: obj1, A1: answer1, A2: answer2, A3: answer3, movies: movies, counter: counterQuestions, counterPoints: counterPoints, username: username });
+    res.render("suddenDeath", { 
+        randomQuote: obj1, 
+        A1: answer1, 
+        A2: answer2, 
+        A3: answer3, 
+        movies: movies, 
+        counter: counterQuestions, 
+        counterPoints: counterPoints, 
+        username: username 
+    });
 });
-
-
 
 //quiz router
 router.post("/checkAnswerCard", async (req: Request, res: Response) => {
@@ -97,7 +109,6 @@ router.post("/checkAnswerCard", async (req: Request, res: Response) => {
     
     const nameAnswer = req.body.nameAnswer;
     const movieAnswer = req.body.movieAnswer;
-    console.log("antwoorden", nameAnswer, movieAnswer);
     
     const correctMovie = String(await getmovie(randomQuote.movie_id));
     const correctCharacter = String(await getCharacter(randomQuote.character_id));
@@ -112,7 +123,6 @@ router.post("/checkAnswerCard", async (req: Request, res: Response) => {
             if (req.session.user && Math.floor(counterPoints/2) > (req.session.user.highscore || 0)) {
                 await updateHighscore(Math.floor(counterPoints/2));
             }
-            
             res.redirect("/scoreTenRounds");
         }
     } else {
@@ -122,12 +132,10 @@ router.post("/checkAnswerCard", async (req: Request, res: Response) => {
             if (req.session.user && Math.floor(counterPoints/2) > (req.session.user.highscore || 0)) {
                 await updateHighscore(Math.floor(counterPoints/2));
             }
-            
             res.redirect("/scoreSuddenDeath");
         }
     }
 });
-
 
 //scoretenRounds router
 router.get("/scoreTenRounds", (req: Request, res: Response) => {
@@ -147,7 +155,6 @@ router.get("/scoreTenRounds", (req: Request, res: Response) => {
     counterQuestions = 1;
 });
 
-
 //scoreSuddenDeath router
 router.get("/scoreSuddenDeath", (req: Request, res: Response) => {
     const finalScore = Math.floor(counterPoints / 2);
@@ -165,32 +172,47 @@ router.get("/scoreSuddenDeath", (req: Request, res: Response) => {
     counterQuestions = 1;
 });
 
-//thumbs up en down router
+//thumbUpDown router
 router.post("/thumbsUpDown", async (req: Request, res: Response) => {
     try {
-        const quoteData = JSON.parse(req.body.quoteData);
-        const mode = req.body.mode;
+        const { mode, action } = req.body;
         const sessionId = req.sessionID;
-        const action = req.body.action; // 'up' or 'down'
-        
-        if (action === 'up') {
-            // Thumbs up - add to favorites
-            await saveFavoriteQuoteToDatabase(quoteData, sessionId);
-            console.log("Quote added to favorites");
-        } else if (action === 'down') {
-            // Thumbs down - add to blacklist
-            const reason = req.body.reason || "User disliked quote";
-            await removeQuoteFromQuiz(quoteData._id, sessionId, reason);
-            console.log("Quote added to blacklist");
+        let quote;
+        try {
+            quote = JSON.parse(req.body.quoteData);
+        } catch {
+            return res.redirect(mode === 'tenRounds' ? "/tenRounds" : "/suddenDeath");
+        }
+        const collection = action === 'up' ? favoritesCollection : blacklistCollection;
+        const existing = await collection.findOne({ 
+            quote_id: new ObjectId(quote._id), 
+            user_id: sessionId 
+        });
+        if (!existing) {
+            if (action === 'up') {
+                await saveFavoriteQuoteToDatabase(quote, sessionId);
+            } else {
+                await saveBlacklistedQuoteToDatabase(quote, sessionId, "Aanpassen");
+            }
+            console.log(`Added to ${action === 'up' ? 'favorites' : 'blacklist'}`);
         }
         
         res.redirect(mode === 'tenRounds' ? "/tenRounds" : "/suddenDeath");
     } catch (error) {
-        console.error("Error in thumbsUpDown:", error);
+        if (error instanceof Error) {
+            console.error("Thumbs error:", error.message);
+        } else {
+            console.error("Thumbs error:", error);
+        }
         res.redirect("/");
     }
 });
+
+
 async function updateHighscore(score: number) {
     console.log(`Updating highscore to ${score}`);
 }
+
 export default router;
+
+

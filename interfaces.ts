@@ -53,28 +53,19 @@ export interface FavoriteQuote {
     movie_name: string;
     dialog: string;
     added_at: Date;
-    user_id?: string;
+    user_id: string;
 }
 
-export interface BlacklistedQuote{
-    blacklistedQuoteId:string,
-    blacklistReason:string
+export interface BlacklistedQuote {
+    _id?: ObjectId;
+    quote_id: ObjectId;
+    character_name: string;
+    movie_name: string;
+    dialog: string;
+    reason: string;
+    blacklisted_at: Date;
+    user_id: string;
 }
-
-export interface QuizResult {
-    questionNumber: number;
-    quote: Quote;
-    userAnswer: {
-        character: string;
-        movie: string;
-    };
-    correctAnswer: {
-        character: string;
-        movie: string;
-    };
-    isCorrect: boolean;
-}
-
 
 export interface Profile {
     username: string;

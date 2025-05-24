@@ -1,4 +1,4 @@
-import { Collection, MongoClient , ObjectId} from "mongodb";
+import { Collection, MongoClient} from "mongodb";
 import dotenv from "dotenv";
 import { User, BlacklistedQuote, FavoriteQuote, Quote , } from "./interfaces"
 import bcrypt from "bcrypt";
@@ -14,64 +14,66 @@ export const client = new MongoClient(MONGODB_URI);
 
 export const userCollection:Collection = client.db("lotr_Developer").collection("user");
 export const quotesCollection: Collection = client.db("lotr_Developer").collection("quotes");
-export const favoritesCollection: Collection = client.db("lotr_Developer").collection("favorite_quotes");
-export const blacklistCollection: Collection = client.db("lotr_Developer").collection("blacklisted_quotes");
+export const blacklistCollection: Collection<BlacklistedQuote> = client.db("BlacklistedQuote").collection('blacklist');
+export const favoritesCollection: Collection<FavoriteQuote> = client.db("FavoriteQuote").collection('favorites');
+
+
 
 async function createDefaultUsers() {
   try {
     const userCount = await userCollection.countDocuments({});
     
     if (userCount === 0) {
-      console.log("Aanmaken van standaard gebruikers...");
-      
-      await registerUser("admin@example.com", "admin123", "ADMIN");
-      await registerUser("user@exampe.com", "user123", "USER");            
-      console.log("Standaard gebruikers succesvol aangemaakt");
+      console.log("Aanmaken van standaard admin gebruiker...");
+      await registerUser("admin", "admin123", "ADMIN");
+      console.log("Standaard admin gebruiker succesvol aangemaakt");
     }
   } catch (error) {
-      console.error("Fout bij het aanmaken van standaard gebruikers:", error);
+    console.error("Fout bij het aanmaken van standaard admin:", error);
   }
 }
 
 
-export async function registerUser(username: string, password: string, role: "ADMIN" | "USER") {
+export async function registerUser(username: string, password: string, role: "ADMIN" | "USER" = "USER") {
   if (!username || !password) {
     throw new Error("username and password are required");
   }
-  const existingUser = await userCollection.findOne({ email: username });
+  const existingUser = await userCollection.findOne({ username: username });
   if (existingUser) {
-    throw new Error("User met dit username bestaat al");
+    throw new Error("User met deze username bestaat al");
   }
-
+  
   const hashedPassword = await bcrypt.hash(password, saltRounds);
   
   await userCollection.insertOne({
-    email: username,
+    username: username,
     password: hashedPassword,
     role
   });
   
-  return { email: username, role };
+  console.log(`Nieuwe gebruiker geregistreerd: ${username} met rol: ${role}`);
+  return { username: username, role, message: "Registratie succesvol! Je wordt doorgestuurd naar de login pagina." };
 }
 
 
 
+
 export async function loginUser(username: string, password: string) {
-  console.log(`Inlogpoging voor email: ${username}`);
+  console.log(`Inlogpoging voor username: ${username}`);
   
   if (!username || !password) {
     console.log('username of wachtwoord ontbreekt');
     throw new Error("username and password are required");
   }
   
-  const user = await userCollection.findOne<User>({ email: username });
+  const user = await userCollection.findOne<User>({ username: username });
   
   if (!user) {
     console.log(`Gebruiker met username ${username} niet gevonden`);
     throw new Error("Invalid credentials");
   }
   
-  console.log(`Gebruiker gevonden: ${user.email}`);
+  console.log(`Gebruiker gevonden: ${user.username}`);
   console.log(`Stored password hash: ${user.password?.substring(0, 20)}...`);
   console.log(`Attempting to compare with provided password (length: ${password.length})`);
   
@@ -85,8 +87,7 @@ export async function loginUser(username: string, password: string) {
   
     const safeUser = { ...user };
     delete safeUser.password;
-  
-    console.log(`Inloggen gelukt voor: ${safeUser.email}`);
+    console.log(`Inloggen gelukt voor: ${safeUser.username}`);
     return safeUser;
   } catch (error) {
     console.error('Fout bij wachtwoordvergelijking:', error);
@@ -104,8 +105,8 @@ async function debugUsers() {
     if (users.length > 0) {
       console.log('Gedetailleerde gebruikersinformatie:');
       users.forEach(user => {
-      console.log('Gebruiker object:', JSON.stringify(user));
-      console.log('Beschikbare sleutels:', Object.keys(user));
+        console.log('Gebruiker object:', JSON.stringify(user));
+        console.log('Beschikbare sleutels:', Object.keys(user));
       });
     } else {
       console.log('Geen gebruikers gevonden in de database!');
@@ -114,8 +115,6 @@ async function debugUsers() {
     console.error('Fout bij ophalen gebruikers:', error);
   }
 }
-
-
 
 
 
@@ -134,7 +133,7 @@ export async function connect() {
     try {
         await client.connect();
         await debugUsers();
-        await createDefaultUsers();        
+        await createDefaultUsers();
         console.log("Connected to database");
         process.on("SIGINT", exit);
     } catch (error) {
