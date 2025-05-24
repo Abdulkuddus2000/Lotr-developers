@@ -1,18 +1,31 @@
-<%- include("partials/head")%>
-<body class="login-page">
-    <%- include("partials/logo")%>
+<!-- <%- include("partials/head")%> -->
+ <head>
+
+     <link rel="stylesheet" href="css/reset.css">
+     <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <figure class="login_logo">
+        <a href="/">
+            <img src="assets/images/logo.png" alt="logo Lord Of The Rings" height="100px">
+        </a>
+    </figure>
+    
     <main>
         <section class="login-clean">
             <form method="post">
                 <h2 class="sr-only">Login Form</h2>
                 <section class="illustration">
-                    <h1 class="L">LOGİN</h1> 
+                    <h1 class="L">LOGİN</h1>
                 </section>
                 <section class="form-group">
-                    <input id="username" type="username" name="username" placeholder="Username">
+                    <input id="username" type="text" name="username" placeholder="Gebruikersnaam">
                 </section>
                 <section class="form-group">
-                    <input id="password" type="password" name="password" placeholder="Password">
+                    <input id="password" type="password" name="password" placeholder="Wachtwoord">
                 </section>
                 <section class="form-group">
                     <button class="btn btn-primary btn-block" type="submit">Login</button>
@@ -24,5 +37,10 @@
             </form>
         </section>
     </main>
-</body>
+    <section class="image_source">
+        <p>    
+            <a href="https://hdqwalls.com/wallpaper/2560x1600/the-lord-of-the-rings-the-rings-of-power" target="_blank">(Bron: HDQ walls)</a>
+        </p>
+    </section>
+
 <%- include("partials/footer")%>
