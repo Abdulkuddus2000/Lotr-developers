@@ -36,15 +36,29 @@ export interface Movie {
 
 export interface User{
     username: any;
-    _id?:ObjectId;
-    email:string;
-    password?:string;
+    _id?: ObjectId; 
+    email: string;
+    password?: string;
     role: "ADMIN" | "USER";
     highscore: number;
     favorite_character?: string;
     favorite_movie?: string; 
     favoriteQuotesId: string[];
     blacklistedQuotedId: string[];
+}
+export interface FavoriteQuote {
+    _id?: ObjectId;
+    quote_id: ObjectId;
+    character_name: string;
+    movie_name: string;
+    dialog: string;
+    added_at: Date;
+    user_id?: string;
+}
+
+export interface BlacklistedQuote{
+    blacklistedQuoteId:string,
+    blacklistReason:string
 }
 
 export interface QuizResult {
@@ -75,3 +89,5 @@ export interface FlashMessage {
     type: "error" | "success" | "info"
     message: string;
 }
+
+

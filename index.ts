@@ -9,9 +9,8 @@ import { secureMiddleware } from "./middleWare/secureMiddleware";
 import { flashMiddleware } from "./middleWare/flashMiddleware";
 import  loginRouter  from "./routers/logRouter";
 import  routers  from "./routers/routers";
-import { Quote , Character , Movie} from "./interfaces";
-
-
+import {getFavoriteQuotes, deleteFavoriteQuote , exportFavoriteQuotesToText} from "./FavoriteQuote"
+import { getUserBlacklistedQuotesWithDetails, updateBlacklistReason, removeQuoteFromBlacklistById, removeQuoteFromQuiz} from "./BlacklistQuote";
 
 
 dotenv.config();
@@ -56,6 +55,13 @@ app.get("/", (req, res) => {
   return res.redirect("/index");
 });
 
+app.get("/index", secureMiddleware, (req, res) => {
+  res.render("index", {
+    title: "Dashboard",
+    message: `Welcome, ${req.session.user?.email ?? "Guest"}!`,
+    user: req.session.user
+  });
+});
 
 app.get("/registration", (req, res) => {
     res.render("registration", {
@@ -64,20 +70,7 @@ app.get("/registration", (req, res) => {
     });
 });
 
-app.get("/account", (req, res) => {
-    res.render("account", {
-        title: "account",
-        message: "account"
-    });
-});
 
-
-app.get("/blacklist", (req, res) => {
-    res.render("blacklist", {
-        title: "blacklist",
-        message: "blacklist"
-    });
-});
 
 
 app.get("/favoriteCharacter", (req, res) => {
@@ -89,80 +82,53 @@ app.get("/favoriteCharacter", (req, res) => {
 });
 
 
-app.get("/favorites", (req, res) => {
-    res.render("favorites", {
-        title: "favorites",
-        message: "favorites"
-    });
+app.get("/favorites", async (req, res) => {
+    const sessionId = req.sessionID; 
+    const favoriteQuotes = await getFavoriteQuotes(sessionId);
+    res.render("favorites", { favoriteQuotes });
+});
+
+app.post("/deleteFavorite", async (req, res) => {
+    const quoteId = req.body.quoteId;
+    const sessionId = req.sessionID;
+    
+    await deleteFavoriteQuote(quoteId, sessionId);
+    res.redirect("/favorites");
+});
+
+app.get("/exportFavorites", async (req, res) => {
+    const sessionId = req.sessionID;
+    const textContent = await exportFavoriteQuotesToText(sessionId);
+    res.setHeader('Content-Type', 'text/plain');
+    res.setHeader('Content-Disposition', 'attachment; filename="favorites.txt"');
+    res.send(textContent);
+});
+
+
+app.get("/blacklist", async (req, res) => {
+    const sessionId = req.sessionID;
+    const blacklistedQuotes = await getUserBlacklistedQuotesWithDetails(sessionId);
+    res.render("blacklist", { blacklistedQuotes });
+});
+
+
+app.post("/updateBlacklistReason", async (req, res) => {
+    const { blacklistId, newReason } = req.body;
+    const sessionId = req.sessionID;
+    await updateBlacklistReason(blacklistId, sessionId, newReason);
+    res.redirect("/blacklist");
+});
+
+
+app.post("/removeFromBlacklist", async (req, res) => {
+    const { blacklistId } = req.body;
+    const sessionId = req.sessionID;
+    await removeQuoteFromBlacklistById(blacklistId, sessionId);
+    res.redirect("/blacklist");
 });
 
 
 
-app.get("/index", secureMiddleware, (req, res) => {
-  res.render("index", {
-    title: "Dashboard",
-    message: `Welcome, ${req.session.user?.email ?? "Guest"}!`,
-    user: req.session.user
-  });
-});
-
-app.get("/login", (req, res) => {
-    res.render("login", {
-        title: "login",
-        message: "login"
-    });
-});
-
-app.get("/quiz", (req, res) => {
-    res.render("quiz", {
-        title: "quiz",
-        message: "quiz"
-    });
-});
-
-app.get("/resetPassword", (req, res) => {
-    res.render("resetPassword", {
-        title: "resetPassword",
-        message: "resetPassword"
-    });
-});
-
-app.get("/login", (req, res) => {
-    res.render("login", {
-        title: "login",
-        message: "login"
-    });
-});
-
-/*
-// post-route
-app.post("/login", (req, res) => {
-    const { username, password, confirmPassword } = req.body;
-    const usernames: string[] = [];
-
-    // Simpele checks (je kan eventueel dit naar een aparte functie/module verplaatsen)
-    if (!username || username.length < 3) {
-        return res.render("registration", { message: "Gebruikersnaam is te kort." });
-    }
-
-    if (password !== confirmPassword) {
-        return res.render("registration", { message: "Wachtwoorden komen niet overeen." });
-    }
-
-    // Simulatie van username-check
-    if (usernames.includes(username)) {
-        return res.render("registration", { message: "Gebruikersnaam is al in gebruik." });
-    }
-
-    // Voeg nieuwe username toe (tijdelijk)
-    usernames.push(username);
-
-    // Login is succesvol → render login pagina
-    return res.render("login", { title: "login", message: `Welkom, ${username}!` });
-});
-
-
-*/
 
 
 app.listen(app.get("port"), async() => {

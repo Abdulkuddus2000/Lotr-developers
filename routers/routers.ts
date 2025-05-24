@@ -2,10 +2,13 @@ import {Router} from 'express';
 import { Request, Response } from 'express';
 import dotenv from "dotenv";
 import { getCharacter, getmovie, getQuotes, characterAnswers, answerRandom, quotes } from "../quizAPI";
+import { updateFavoriteQuotes, saveFavoriteQuoteToDatabase } from "../FavoriteQuote";
+import {User} from "../interfaces"
+import { removeQuoteFromQuiz } from "../BlacklistQuote";
+
 
 dotenv.config();
 
-const User = require('../interfaces');
 const router = Router();
 
 let counterQuestions = 1;
@@ -164,20 +167,29 @@ router.get("/scoreSuddenDeath", (req: Request, res: Response) => {
 
 //thumbs up en down router
 router.post("/thumbsUpDown", async (req: Request, res: Response) => {
-    const username = req.session.user?.username || "Guest";
-    const quoteData = JSON.parse(req.body.quoteData);
-    const mode = req.body.mode;
-    
-    let user = await User.findOne({ username }) || 
-    await new User({ username }).save();
-    
-    await User.findOneAndUpdate(
-        { username },
-        { $addToSet: { favorites: quoteData._id } }
-    );
-    res.redirect(mode === 'tenRounds' ? "/tenRounds" : "/suddenDeath");
+    try {
+        const quoteData = JSON.parse(req.body.quoteData);
+        const mode = req.body.mode;
+        const sessionId = req.sessionID;
+        const action = req.body.action; // 'up' or 'down'
+        
+        if (action === 'up') {
+            // Thumbs up - add to favorites
+            await saveFavoriteQuoteToDatabase(quoteData, sessionId);
+            console.log("Quote added to favorites");
+        } else if (action === 'down') {
+            // Thumbs down - add to blacklist
+            const reason = req.body.reason || "User disliked quote";
+            await removeQuoteFromQuiz(quoteData._id, sessionId, reason);
+            console.log("Quote added to blacklist");
+        }
+        
+        res.redirect(mode === 'tenRounds' ? "/tenRounds" : "/suddenDeath");
+    } catch (error) {
+        console.error("Error in thumbsUpDown:", error);
+        res.redirect("/");
+    }
 });
-
 async function updateHighscore(score: number) {
     console.log(`Updating highscore to ${score}`);
 }

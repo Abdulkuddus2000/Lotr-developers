@@ -1,7 +1,8 @@
-import { Collection, MongoClient } from "mongodb";
+import { Collection, MongoClient , ObjectId} from "mongodb";
 import dotenv from "dotenv";
-import { User } from "./interfaces"
+import { User, BlacklistedQuote, FavoriteQuote, Quote , } from "./interfaces"
 import bcrypt from "bcrypt";
+
 
 dotenv.config();
 
@@ -12,7 +13,9 @@ export const client = new MongoClient(MONGODB_URI);
 
 
 export const userCollection:Collection = client.db("lotr_Developer").collection("user");
-
+export const quotesCollection: Collection = client.db("lotr_Developer").collection("quotes");
+export const favoritesCollection: Collection = client.db("lotr_Developer").collection("favorite_quotes");
+export const blacklistCollection: Collection = client.db("lotr_Developer").collection("blacklisted_quotes");
 
 async function createDefaultUsers() {
   try {
@@ -112,6 +115,10 @@ async function debugUsers() {
   }
 }
 
+
+
+
+
 async function exit() {
   try {
     await client.close();
@@ -134,3 +141,5 @@ export async function connect() {
         console.error(error);
     }
 }
+
+export { Collection };

@@ -3,42 +3,36 @@
 <main class="favoriteQuotes">
     <h1 class="favoritesH1">Favorieten quotes</h1>
     <hr>
-    <!--  %-- 
-    if (favoriteQuotes && favoriteQuotes.length > 0) { 
-        favoriteQuotes.forEach(quote => { --%>  
-        
-          }); 
-    } : -->
-        
+    <% if (favoriteQuotes && favoriteQuotes.length > 0) { %>
         <section class="buttons">
-            <button class="favoritesButton">Exporteren naar tekstbestand</button>
-        </section> <!-- hier moet quote._id komen-->
-     
-    
-    
+            <a href="/exportFavorites" class="favoritesButton">Exporteren naar tekstbestand</a>
+        </section>
+        
         <section class="quotes">
-            <section class="quoteDetail">
-                <article class="quoteContent">
-                    <article class="quoteHeader">
-
-                        <h3 class="quoteCharacter">
-                            <a href="https://lotr.fandom.com/wiki/Gandalf" target="_blank">
-                                Gandalf  <!--in de link moet de naam veranderen naar quote.character.replace worden en quote.character_name bij toevoegen-->
-                            </a>
-                        </h3>
-                        <p class="quoteMovie">Uit de film: The Fellowship of the Ring</p> <!-- hier moet quote.movie_name komen-->
+            <% favoriteQuotes.forEach(quote => { %>
+                <section class="quoteDetail">
+                    <article class="quoteContent">
+                        <article class="quoteHeader">
+                            <h3 class="quoteCharacter">
+                                <a href="https://lotr.fandom.com/wiki/<%= quote.character_name.replace(/\s+/g, '_') %>" target="_blank">
+                                    <%= quote.character_name %>
+                                </a>
+                            </h3>
+                            <p class="quoteMovie">Uit de film: <%= quote.movie_name %></p>
+                        </article>
+                        <blockquote class="quoteText">
+                            "<%= quote.dialog %>"
+                        </blockquote>
+                        <form action="/deleteFavorite" method="POST">
+                            <input type="hidden" name="quoteId" value="<%= quote._id %>">
+                            <button type="submit" class="deleteFavorite">Verwijderen</button>
+                        </form>
                     </article>
-                    <blockquote class="quoteText">
-                        "Not all those who wander are lost." <!-- hier moet quote.dialog  komen-->
-                    </blockquote>
-                    <button class="deleteFavorite">Verwijderen</button>
-                </article>
-            </section>
+                </section>
+            <% }); %>
         </section>
-                
-                
-            </article>
-        </section>
-    </section>
+    <% } else { %>
+        <p class="noFavorites">Je hebt nog geen favoriete quotes. Ga naar de quiz om quotes te ontdekken!</p>
+    <% } %>
 </main>
 <%- include('partials/footer') %>
