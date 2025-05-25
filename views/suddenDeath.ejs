@@ -84,14 +84,14 @@
                     <textarea name="quoteData" style="display: none;"><%- JSON.stringify(randomQuote) %></textarea>
                     <input type="hidden" name="mode" value="suddenDeath">
                     <input type="hidden" name="action" value="up">
-                    <button type="submit" class="fas fa-thumbs-up" title="voeg favorites">👍</button>
+                    <button type="submit" class="fas fa-thumbs-up" title="voeg favorites"></button>
                 </form>
                 
                 <form action="/thumbsUpDown" method="POST" style="display: inline;">
                     <textarea name="quoteData" style="display: none;"><%- JSON.stringify(randomQuote) %></textarea>
                     <input type="hidden" name="mode" value="suddenDeath">
                     <input type="hidden" name="action" value="down">
-                    <button type="submit" class="fas fa-thumbs-down" title="voeg blacklist">👎</button>
+                    <button type="submit" class="fas fa-thumbs-down" title="voeg blacklist"></button>
                 </form>
             </section>
     </section> 
