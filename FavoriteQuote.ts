@@ -1,79 +1,108 @@
-import { User, Quote } from "./interfaces";
-import bcrypt from "bcrypt"
-import { Collection, MongoClient, ObjectId } from "mongodb";
-import dotenv from "dotenv"
-import { userCollection, connect } from "./database";
-import { getQuotes, quotes } from "./quizAPI";
-import { updateFavoriteQuotes, updateBlacklistedQuotes } from "./account";
+import { ObjectId } from "mongodb";
+import { favoritesCollection } from "./database";
+import { Quote } from "./interfaces";
+import { getCharacter, getmovie } from "./quizAPI";
 
-
-dotenv.config();
-
-// dit moet de favoriete quotes doen opslaan in de db
-export async function saveFavoriteQuoteToDatabase(username: string, quoteId: string) {
+// Quote toevoegen aan favorites
+export async function saveFavoriteQuoteToDatabase(quoteData: Quote, sessionId: string) {
     try {
-        const result = await userCollection.updateOne(
-            { username: username },
-            { $addToSet: { favoriteQuotesId: quoteId } }
-        );
+        const characterName = await getCharacter(quoteData.character_id);
+        const movieName = await getmovie(quoteData.movie_id);
 
-        console.log("Favoriete quote toegevoegd aan de database:", quoteId);
+        const entry = {
+            quote_id: new ObjectId(quoteData._id),
+            character_name: characterName || "Unknown Character",
+            movie_name: movieName || "Unknown Movie",
+            dialog: quoteData.dialog,
+            added_at: new Date(),
+            user_id: sessionId
+        };
+
+        const result = await favoritesCollection.insertOne(entry);
+        return { _id: result.insertedId, ...entry };
     } catch (error) {
-        console.error("Fout bij toevoegen van favoriete quote aan database:", error);
+        console.error('Error saving favorite quote:', error);
+        return null;
     }
 }
 
-
-// dit moet de blacklisted quotes doen opslaan in de db
-export async function saveBlacklistedQuoteToDatabase(username: string, quoteId: string, reason: string) {
+// Favorites ophalen
+export async function getFavoriteQuotes(sessionId: string) {
     try {
-        const result = await userCollection.updateOne(
-            { username: username },
-            { $addToSet: { blacklistedQuotes: { blacklistedQuoteId: quoteId, blacklistReason: reason } } }
-        );
-
-        console.log("Quote succesvol geblacklist in de database:", quoteId);
+        return await favoritesCollection
+            .find({ user_id: sessionId })
+            .sort({ added_at: -1 })
+            .toArray();
     } catch (error) {
-        console.error("Fout bij blacklisten van quote in database:", error);
+        console.error('Error getting favorite quotes:', error);
+        return [];
     }
 }
 
-
-
- // deze functie zorgt ervoor dat de quotes uit de quiz  verwijderd
-
-
-let quizQuestions: Quote[] = [];
-export async function removeQuoteFromQuiz(quoteId: string) {
+// Favorites per character
+export async function getFavoriteQuotesForCharacter(sessionId: string, characterName: string) {
     try {
-        const index = quizQuestions.findIndex(quote => quote._id === quoteId);
-        if (index > -1) {
-            
-            quizQuestions.splice(index, 1);
-            console.log("Quote succesvol verwijderd uit de quizvragen.");
-        } else {
-            console.error("Quote met ID", quoteId, "niet gevonden in de quizvragen.");
+        return await favoritesCollection
+            .find({ user_id: sessionId, character_name: characterName })
+            .sort({ added_at: -1 })
+            .toArray();
+    } catch (error) {
+        console.error('Error getting favorite quotes for character:', error);
+        return [];
+    }
+}
+
+// Character stats
+export async function getCharacterStats(sessionId: string) {
+    try {
+        const pipeline = [
+            { $match: { user_id: sessionId } },
+            { $group: { _id: "$character_name", quote_count: { $sum: 1 } } },
+            { $sort: { quote_count: -1 } }
+        ];
+        
+        const stats = await favoritesCollection.aggregate(pipeline).toArray();
+        return stats.map(stat => ({
+            character_name: stat._id,
+            quote_count: stat.quote_count
+        }));
+    } catch (error) {
+        console.error('Error getting character stats:', error);
+        return [];
+    }
+}
+
+// Quote verwijderen
+export async function deleteFavoriteQuote(favoriteId: string, sessionId: string) {
+    try {
+        const result = await favoritesCollection.deleteOne({
+            _id: new ObjectId(favoriteId),
+            user_id: sessionId
+        });
+        return result.deletedCount > 0;
+    } catch (error) {
+        console.error('Error deleting favorite quote:', error);
+        return false;
+    }
+}
+
+// Export naar tekst
+export async function exportFavoriteQuotesToText(sessionId: string) {
+    try {
+        const quotes = await getFavoriteQuotes(sessionId);
+        
+        if (quotes.length === 0) {
+            return 'Je hebt nog geen favoriete quotes.';
         }
+        
+        let output = '';
+        quotes.forEach(quote => {
+            output += `${quote.dialog} - ${quote.character_name}\n`;
+        });
+        
+        return output;
     } catch (error) {
-        console.error("Fout bij het verwijderen van de quote uit de quizvragen:", error);
-        throw error;
+        console.error('Error exporting favorite quotes:', error);
+        return 'Fout bij exporteren.';
     }
 }
-
-
-// deze functie zoekt de quotes op met hun id
-export async function findQuoteById(quoteId: string) {
-    try {
-        const quote = await userCollection.findOne({ _id: new ObjectId(quoteId) });
-        console.log("Gevonden quote in database:", quote);
-        return quote;
-    } catch (error) {
-        console.error("Fout bij het ophalen van de quote:", error);
-        throw error;
-    }
-
-
-
-}
-
-

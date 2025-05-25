@@ -20,6 +20,7 @@ router.post('/login', async (req, res) => {
       console.log('Login successful, user:', { username: user.email, role: user.role });
       
       req.session.user = {
+        _id: user._id,
         email: user.email,
         role: user.role,
         username: user.username,

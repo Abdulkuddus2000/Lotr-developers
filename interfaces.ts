@@ -36,36 +36,36 @@ export interface Movie {
 
 export interface User{
     username: any;
-    _id?:ObjectId;
-    email:string;
-    password?:string;
+    _id?: ObjectId; 
+    email: string;
+    password?: string;
     role: "ADMIN" | "USER";
     highscore: number;
     favorite_character?: string;
     favorite_movie?: string; 
     favoriteQuotesId: string[];
-    blacklistedQuotes: BlacklistedQuote[];
+    blacklistedQuotedId: string[];
+}
+export interface FavoriteQuote {
+    _id?: ObjectId;
+    quote_id: ObjectId;
+    character_name: string;
+    movie_name: string;
+    dialog: string;
+    added_at: Date;
+    user_id: string;
 }
 
-export interface BlacklistedQuote{
-    blacklistedQuoteId:string,
-    blacklistReason:string
+export interface BlacklistedQuote {
+    _id?: ObjectId;
+    quote_id: ObjectId;
+    character_name: string;
+    movie_name: string;
+    dialog: string;
+    reason: string;
+    blacklisted_at: Date;
+    user_id: string;
 }
-
-export interface QuizResult {
-    questionNumber: number;
-    quote: Quote;
-    userAnswer: {
-        character: string;
-        movie: string;
-    };
-    correctAnswer: {
-        character: string;
-        movie: string;
-    };
-    isCorrect: boolean;
-}
-
 
 export interface Profile {
     username: string;

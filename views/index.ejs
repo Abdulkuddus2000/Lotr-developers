@@ -1,17 +1,32 @@
+
+
 <%- include('partials/head') %>
+<%- include('partials/nav') %>
+
 <body class="index-body">
-    <%- include('partials/nav') %>
+    <!-- Navigation will be included here -->
+    <!-- <%- include('partials/nav') %> -->
+    
     <main class="main-index">
         <section class="frontpage">
-            <h1 class="h1-front">Welkom bij LOTR</h1>
-            <h2>Start hier jouw avontuur !</h2>
-            <section class="start-quiz"><a class="quiz">Quiz</a></section>
-            <button class="sudden"><a href="suddenDeath" class="sudden-death">Sudden death</a></button>
-            <button><a href="tenRounds" class="ten-rounds">Ten rounds</a></button>
+            <section class="welcome-text">
+                <h1 class="h1-front">Welkom bij LOTR</h1>
+                <h2 class="frontpageH2">Start hier uw avontuur!</h2>
+            </section>
+            
+            <section class="two-mode-buttons">
+                <button class="game-mode-button">
+                    <a href="/suddenDeath" class="sudden-death">⚔️ Sudden Death</a>
+                </button>
+                <button class="game-mode-button">
+                    <a href="/tenRounds" class="ten-rounds">🎯 Ten Rounds</a>
+                </button>
+            </section>
         </section>
-        <section class="banner"></section>
     </main>
+
+
+    <%- include('partials/chevronUp') %>
+    <%- include('partials/footer') %> 
 </body>
 </html>
-<%- include('partials/footer') %>
-<%- include('partials/chevronUp') %>

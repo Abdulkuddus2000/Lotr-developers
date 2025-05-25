@@ -1,75 +1,22 @@
 
-let currentQuoteItem = null; 
-let currentAction = null;
 
-
-function openModal(quote) {
-    currentAction = 'edit';
-    document.getElementById('quoteText').innerText = quote;
-    document.getElementById('editQuote').value = quote; 
-    document.getElementById('quoteModal').style.display = "block";
+//voor Blacklist 
+function openEditModal(blacklistId, reason, dialog) {
+    document.getElementById('editBlacklistId').value = blacklistId;
+    document.getElementById('editQuote').value = reason;
+    document.getElementById('quoteText').textContent = '"' + dialog + '"';
+    document.getElementById('quoteModal').style.display = 'flex';
 }
-
 
 function closeModal() {
-    document.getElementById('quoteModal').style.display = "none";
-    currentAction = null;
+    document.getElementById('quoteModal').style.display = 'none';
 }
 
-
-function saveQuote() {
-    const newQuote = document.getElementById('editQuote').value;
-    if (currentQuoteItem && currentAction === 'edit') {
-        currentQuoteItem.querySelector('span').innerText = newQuote;
-    }
-    closeModal(); 
-    currentQuoteItem = null;
+function openDeleteModal(blacklistId) {
+    document.getElementById('deleteBlacklistId').value = blacklistId;
+    document.getElementById('confirmDeleteModal').style.display = 'flex';
 }
-
-
-function openConfirmDeleteModal() {
-    currentAction = 'delete';
-    document.getElementById('confirmDeleteModal').style.display = 'block';
-}
-
 
 function closeConfirmDeleteModal() {
-    currentAction = 'delete';
     document.getElementById('confirmDeleteModal').style.display = 'none';
-    currentQuoteItem = null;
 }
-
-// Klik handler voor save button
-document.querySelectorAll('.icon-edit').forEach((button) => {
-    button.addEventListener('click', (event) => {
-        event.preventDefault(); 
-        const quoteText = button.closest('.blacklist-item').querySelector('span').innerText;
-        currentQuoteItem = button.closest('.blacklist-item'); 
-        openModal(quoteText);
-    });
-});
-
-
-document.querySelectorAll('.fa-trash').forEach((trashIcon) => {
-    trashIcon.addEventListener('click', function (event) {
-        event.preventDefault(); 
-        event.stopPropagation();
-        currentQuoteItem = this.closest('.blacklist-item');
-        openConfirmDeleteModal(); 
-    });
-});
-
-
-document.getElementById('confirmDelete').addEventListener('click', function () {
-    if (currentQuoteItem && currentAction === 'delete') {
-        currentQuoteItem.remove(); 
-        closeConfirmDeleteModal();
-        currentQuoteItem = null; 
-    }
-});
-
-document.getElementById('cancelDelete').addEventListener('click', function () {
-    closeConfirmDeleteModal();
-    currentQuoteItem = null; 
-}
-);

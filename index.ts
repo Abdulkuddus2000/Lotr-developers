@@ -8,10 +8,10 @@ import { getQuotes } from "./quizAPI";
 import { secureMiddleware } from "./middleWare/secureMiddleware";
 import { flashMiddleware } from "./middleWare/flashMiddleware";
 import  loginRouter  from "./routers/logRouter";
-import  routers  from "./routers/routers";
-import { Quote , Character , Movie} from "./interfaces";
-
-
+import registerRouter from "./routers/registerRouter";
+import  gameRouter  from "./routers/gameRouters";
+import favoriteRouter from './routers/favoriteRouter';
+import blacklistedRouter from './routers/blacklistedRouter';
 
 
 dotenv.config();
@@ -44,7 +44,7 @@ app.get("/", (req, res) => {
 
 app.use("/",loginRouter); 
 
-app.use("/", secureMiddleware , routers);
+app.use("/", secureMiddleware , gameRouter);
 
 app.get("/", (req, res) => {
   if (!req.session.user) {
@@ -57,27 +57,16 @@ app.get("/", (req, res) => {
 });
 
 
-app.get("/registration", (req, res) => {
-    res.render("registration", {
-        title: "registration",
-        message: "registration"
-    });
-});
-
-app.get("/account", (req, res) => {
-    res.render("account", {
-        title: "account",
-        message: "account"
-    });
+app.get("/index", secureMiddleware, (req, res) => {
+  res.render("index", {
+    title: "Dashboard",
+    message: `Welcome, ${req.session.user?.email ?? "Guest"}!`,
+    user: req.session.user
+  });
 });
 
 
-app.get("/blacklist", (req, res) => {
-    res.render("blacklist", {
-        title: "blacklist",
-        message: "blacklist"
-    });
-});
+app.use("/registration", registerRouter);
 
 
 app.get("/favoriteCharacter", (req, res) => {
@@ -88,81 +77,9 @@ app.get("/favoriteCharacter", (req, res) => {
     });
 });
 
+app.use('/', favoriteRouter);
+app.use('/', blacklistedRouter);
 
-app.get("/favorites", (req, res) => {
-    res.render("favorites", {
-        title: "favorites",
-        message: "favorites"
-    });
-});
-
-
-
-app.get("/index", secureMiddleware, (req, res) => {
-  res.render("index", {
-    title: "Dashboard",
-    message: `Welcome, ${req.session.user?.email ?? "Guest"}!`,
-    user: req.session.user
-  });
-});
-
-app.get("/login", (req, res) => {
-    res.render("login", {
-        title: "login",
-        message: "login"
-    });
-});
-
-app.get("/quiz", (req, res) => {
-    res.render("quiz", {
-        title: "quiz",
-        message: "quiz"
-    });
-});
-
-app.get("/resetPassword", (req, res) => {
-    res.render("resetPassword", {
-        title: "resetPassword",
-        message: "resetPassword"
-    });
-});
-
-app.get("/login", (req, res) => {
-    res.render("login", {
-        title: "login",
-        message: "login"
-    });
-});
-
-/*
-// post-route
-app.post("/login", (req, res) => {
-    const { username, password, confirmPassword } = req.body;
-    const usernames: string[] = [];
-
-    // Simpele checks (je kan eventueel dit naar een aparte functie/module verplaatsen)
-    if (!username || username.length < 3) {
-        return res.render("registration", { message: "Gebruikersnaam is te kort." });
-    }
-
-    if (password !== confirmPassword) {
-        return res.render("registration", { message: "Wachtwoorden komen niet overeen." });
-    }
-
-    // Simulatie van username-check
-    if (usernames.includes(username)) {
-        return res.render("registration", { message: "Gebruikersnaam is al in gebruik." });
-    }
-
-    // Voeg nieuwe username toe (tijdelijk)
-    usernames.push(username);
-
-    // Login is succesvol → render login pagina
-    return res.render("login", { title: "login", message: `Welkom, ${username}!` });
-});
-
-
-*/
 
 
 app.listen(app.get("port"), async() => {
@@ -174,3 +91,4 @@ app.listen(app.get("port"), async() => {
         process.exit(1);
     }
 });
+

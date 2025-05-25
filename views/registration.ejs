@@ -1,7 +1,18 @@
-<%- include("partials/head")%>
+<head>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
 <body class="registration-page">
-    <%- include("partials/logo") %>
-    <main>
+   <figure class="regi_logo">
+       <a href="/">
+           <img src="assets/images/logo.png" alt="logo Lord Of The Rings" height="100px">
+       </a>
+   </figure>
+   <main class="mainRegistration">
         <form method="post">
             <h2 class="h2-Registration">Registreer</h2>
             <section class="form-registration">
@@ -23,8 +34,8 @@
                     onmouseup="togglePasswordOnMouseUp(event)"></i>
                 <br>
             </section>           
-            <button action="/login" type="submit">Bevestigen</button>
+            <button type="submit" class="regiButton">Bevestigen</button>
         </form>
     </main>
+
     <%- include("partials/footer")%>
-</body>

@@ -38,55 +38,56 @@
                         <p class="quote-text">"<%= randomQuote.dialog %>"</p>
                     </section>
                 </section>
-                    <section class="quizQuestions">
-                        <h3>Wie zei deze quote?</h3>
-                        <section class="quizFlex">
-                            <% characterOptions.forEach((character, index) => { %>
-                            <section class="character-option">
-                                    <input type="radio" id="character-<%= index %>" name="nameAnswer" value="<%= character.name %>" required>
-                                    <label for="character-<%= index %>" class="character-label">
-                                        <span class="character-name"><%= character.name %></span>
-                                    </label>
-                            </section>
-                            <% }) %>
+                
+                <section class="quizQuestions">
+                    <h3>Wie zei deze quote?</h3>
+                    <section class="quizFlex">
+                        <% characterOptions.forEach((character, index) => { %>
+                        <section class="character-option">
+                                <input type="radio" id="character-<%= index %>" name="nameAnswer" value="<%= character.name %>" required>
+                                <label for="character-<%= index %>" class="character-label">
+                                    <span class="character-name"><%= character.name %></span>
+                                </label>
                         </section>
+                        <% }) %>
                     </section>
+                </section>
 
-                    <section class="quizQuestions">
-                        <h3>In welke film komt deze quote voor?</h3>
-                        <section class="quizFlex">
-                            <% movies.forEach((movie, index) => { %>
-                                <section class="movie-option">
-                                    <input type="radio" id="movie-<%= index %>" name="movieAnswer" value="<%= movie.title %>" required>
-                                    <label for="movie-<%= index %>" class="movie-label">
-                                        <span class="movie-title"><%= movie.title %></span>
-                                    </label>
-                                </section>
-                            <% }) %>
-                        </section>
+                <section class="quizQuestions">
+                    <h3>In welke film komt deze quote voor?</h3>
+                    <section class="quizFlex">
+                        <% movies.forEach((movie, index) => { %>
+                            <section class="movie-option">
+                                <input type="radio" id="movie-<%= index %>" name="movieAnswer" value="<%= movie.title %>" required>
+                                <label for="movie-<%= index %>" class="movie-label">
+                                    <span class="movie-title"><%= movie.title %></span>
+                                </label>
+                            </section>
+                        <% }) %>
                     </section>
                 </section>
 
                 <section>
                     <button type="submit" id="quizButton" class="quiz-button">Volgende vraag</button>
                 </section>
-                    <section class="thumbs-actions">
-                        <form action="/thumbsUpDown" method="POST" class="thumbs-form">
-                            <input type="hidden" name="quoteData" value='<%= JSON.stringify(randomQuote) %>'>
-                            <input type="hidden" name="mode" value="tenRounds">
-                            <button type="submit" class="fas fa-thumbs-up" title="Favoriet-toevoegen"></button>
-                            <button type="button" class="fas fa-thumbs-down" title="Quote-blacklisten" onclick="openBlacklistModal()"></button>
-                        </form>
-                    </section>
-                </section>
             </form>
+            <section class="thumbs-section">
+                <form action="/thumbsUpDown" method="POST" style="display: inline;">
+                    <textarea name="quoteData" style="display: none;"><%- JSON.stringify(randomQuote) %></textarea>
+                    <input type="hidden" name="mode" value="tenRounds">
+                    <input type="hidden" name="action" value="up">
+                    <button type="submit" class="fas fa-thumbs-up" title="voeg favorites">👍</button>
+                </form>
+                
+                <form action="/thumbsUpDown" method="POST" style="display: inline;">
+                    <textarea name="quoteData" style="display: none;"><%- JSON.stringify(randomQuote) %></textarea>
+                    <input type="hidden" name="mode" value="tenRounds">
+                    <input type="hidden" name="action" value="down">
+                    <button type="submit" class="fas fa-thumbs-down" title="voeg blacklist">👎</button>
+                </form>
+            </section>
         </section> 
     </main>
 </body>
 </html>
 <%- include('partials/footer') %>
-
-
-
-
-  

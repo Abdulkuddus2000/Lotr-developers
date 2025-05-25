@@ -2,108 +2,36 @@
 <%- include('partials/nav') %>
 <main class="main-blacklist">
     <h2 class="title-blacklist">Zwartelijst</h2>
-    
-    <section class="blacklist-item">
-        <span>"One does not simply walk into Mordor."</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-     
+    <% if (blacklistedQuotes && blacklistedQuotes.length > 0) { %>
+        <% blacklistedQuotes.forEach(entry => { %>
+            <section class="blacklist-item">
+                <span>"<%= entry.quote.dialog %>" - <%= entry.quote.character_name || 'Character' %></span>
+                <section class="icon-edit">
+                    <a href="#" class="icon-edit" onclick="openEditModal('<%= entry.blacklistId %>', '<%= entry.reason %>', '<%= entry.quote.dialog %>')">
+                        <i class="fa fa-cog"></i>
+                    </a>
+                    <a href="#" class="icon-edit" onclick="openDeleteModal('<%= entry.blacklistId %>')">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </section>
+            </section>
+        <% }); %>
+    <% } else { %>
+        <section class="blacklist-item">
+            <span>Je hebt nog geen quotes geblacklist. Ga naar de quiz en gebruik de thumbs down button.</span>
         </section>
-    </section>
-    <section class="blacklist-item">
-        <span>"Even the smallest person can change the course of the future."</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-        </section>
-    </section>
-    <section class="blacklist-item">
-        <span>"There is some good in this world, and it's worth fighting for."</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-        </section>     
-    </section>
-    <section class="blacklist-item">
-        <span>"A single dream is more powerful than a thousand realities."</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-
-        </section>
-        
- 
-
-    </section>
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-
-        </section>
-    </section>
-
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-        </section>
-
-    </section>
-
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-        </section>     
-
-    </section>
-
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-        </section>     
-
-    </section>
-
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-        </section>     
-
-    </section>
-
-    <section class="blacklist-item">
-        <span>"We wants it, we needs it. Must have the precious!"</span>
-        <section class="icon-edit">
-            <a href="#" class="icon-edit"><i class="fa fa-cog"></i></a>
-            <a href="#" class="icon-edit"><i class="fas fa-trash"></i></a> 
-
-        </section>     
-
-    </section>
+    <% } %>
     <section id="quoteModal" class="modal-1">
         <article class="modal-blacklist">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="quoteTitle">Quote Info</h2>
+            <h2 id="quoteTitle">Quote Reden Aanpassen</h2>
             <p id="quoteText" class="quote-text"></p>
-            <input type="text" id="editQuote" placeholder="Voer nieuwe quote in" class="edit-input">
-            <button id="saveQuote" onclick="saveQuote()" class="save-button">Opslaan</button>
+            
+            <form id="editReasonForm" action="/updateBlacklistReason" method="POST">
+                <input type="hidden" id="editBlacklistId" name="blacklistId" value="">
+                <input type="text" id="editQuote" name="newReason" placeholder="Voer nieuwe reden in" class="edit-input">
+                <button type="submit" id="saveQuote" class="save-button">Opslaan</button>
+            </form>
         </article>
     </section>
     
@@ -111,12 +39,14 @@
         <article class="modal-blacklist">
             <span class="close" onclick="closeConfirmDeleteModal()">&times;</span>
             <h2>Bevestiging</h2>
-            <p>Ben je zeker dat je de quote wilt verwijderen?</p>
-            <button id="confirmDelete" class="confirm-button">Ja</button>
-            <button id="cancelDelete" class="cancel-button" onclick="closeConfirmDeleteModal()">Nee</button>
+            <p>Ben je zeker dat je de quote wilt verwijderen uit blacklist?</p>
+            
+            <form id="deleteForm" action="/removeFromBlacklist" method="POST">
+                <input type="hidden" id="deleteBlacklistId" name="blacklistId" value="">
+                <button type="submit" id="confirmDelete" class="confirm-button">Ja</button>
+                <button type="button" id="cancelDelete" class="cancel-button" onclick="closeConfirmDeleteModal()">Nee</button>
+            </form>
         </article>
     </section>
-    
 </main>
 <script src="/js/blacklist.js"></script>
-<%- include('partials/footer') %>
