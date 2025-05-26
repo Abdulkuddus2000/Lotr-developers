@@ -506,10 +506,26 @@ h3{
 /* css for registration.html */
 .registration-page{
     color: var(--goudgeel);
-    font-family: 'Ringbearer Medium';
     text-align: center;
     min-height:100vh;
-    background-image: url("../../public/assets/images/dwarf.png");
+    background-image: url("../assets/images/lotr_landscape.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.regi_logo{
+    position: relative;
+    margin-left: -90%;
+
+}
+
+
+.h2-Registration{
+    font-family: 'Ringbearer Medium';
+
 }
 
 form{
@@ -566,12 +582,12 @@ input::placeholder{
 }
 
 
-button {
+.regiButton {
+    font-family: Arial, Helvetica, sans-serif;
     height: 40px;
     padding: 10px 20px;
     border: none;
     border-radius: 8px;
-    background: linear-gradient(135deg, var(--goudgeel), var(--lichtgrijs));
     color: white;
     font-size: 16px;
     font-weight: bold;
@@ -582,17 +598,19 @@ button {
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+    background-color: var(--donkergrijs);
 }
 
-button:hover {
-    background: linear-gradient(135deg, var(--lichtgrijs), var(--goudgeel));
+.regiButton:hover {
+    background:  var(--goudgeel);
     transform: scale(1.05);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-button:active {
+.regiButton:active {
     transform: scale(0.95);
 }
+
 
 /* css for login.html */
 .login-page{
@@ -604,6 +622,17 @@ button:active {
     margin: 1%;
     z-index: 1;
 }
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #d4c29a;
+    border-radius: 5px;
+    background-color: #333;
+    color: #d4c29a;
+}
+
 
 .login-clean {
     display: flex;
@@ -628,14 +657,14 @@ button:active {
     box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
 }
 
-  
+
 .login-clean .illustration {
     text-align:center;
     padding:0 0 20px;
 
     color: #ffd700;
 }
-  
+
 .login-clean form .form-control {
     background:white;
     border:none;
@@ -645,27 +674,35 @@ button:active {
     height:30px;
     text-decoration: #000;
 }
-  
-.login-button {
+
+.logButton {
     font-family:'Arial', sans-serif;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: var(--text-light);
     border: none;
-    width: 515px;
+    width: 100px;
     background: linear-gradient(135deg, var(--goudgeel), var(--lichtgrijs));
     border-radius:4px;
     padding:8px;
     margin-top: 15px;
     margin-bottom: 15px;
     cursor: pointer;
+    margin-left: 40%;
 }
 
-.login-clean form .btn-primary:active {
+.logButton:hover{
+    background-color: var(--goudgeel);
+    color: #000;
+    
+
+}
+
+.login-clean form .logButton:active {
     transform:translateY(1px);
 }
-  
+
 .login-clean form .register , .forgot {
     display:block;
     text-align:center;
@@ -674,12 +711,12 @@ button:active {
     margin-bottom: 5px;
     text-decoration:underline;
 }
-  
+
 .login-clean form .forgot:hover .register, .login-clean form .forgot:active{
     opacity:1;
     text-decoration:none;
 }
-  
+
 .L{
     text-align: center;
     font-size: x-large;
@@ -700,122 +737,214 @@ button:active {
     cursor: pointer;
 }
 
+
 /* einde  login.html */
 
 /* einde styling login.html */
 
 /* css for index.html */
-.index-body {
-    header {
-        color: var(--goudgeel);
-        display: flex;
-        align-items: center;
-        padding: 20px;
-        position: sticky;
-    }
+.main-index {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url(../assets/images/lotr_ring_on_map.png);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    position: relative;
+}
 
-    main {
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-        justify-content: center; 
-        height: 120vh; 
-        background-image: url(../assets/images/lotr_ring_on_map.png); 
-        background-position: center;
-        background-size: cover;
-        overflow: hidden;
-    }
+.main-index::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.frontpage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--goudgeel);
+    z-index: 2;
+    position: relative;
+    padding: 40px 20px;
+    max-width: 800px;
+    width: 100%;
+}
+
+.welcome-text {
+    margin-bottom: 60px;
+    animation: fadeInUp 1.5s ease-out;
+}
+
+.h1-front {
+    font-family: 'Ringbearer Medium', serif;
+    font-size: 4.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, var(--goudgeel), #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.frontpageH2 {
+    font-family: 'Ringbearer Medium', serif;
+    font-size: 1.8rem;
+    color: var(--parelwit);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, var(--goudgeel), #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+
+
     
-    .h1-front {
-        font-family: 'Ringbearer Medium';
-        font-size: 4rem;
-        margin-bottom: 100px;
-        text-align: center;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-    }
-    
-    .frontpage {
-        padding-top: 10%;
-        display: flex;
-        flex-direction: column; 
-        align-items: center;
-        gap: 50%;
-        justify-content: center; 
-        color: var(--goudgeel);
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        margin-top: -25.5%;
-        height: 40%;
-    }
+}
 
-    .frontpage h2{
-        font-family: 'Ringbearer medium';
-        margin-top: -15%;
-    }
-    
-     
-    .quiz{
-        text-decoration: none;
-        color: var(--donkergrijs);
-    }
+.subtitle {
+    font-size: 1.1rem;
+    color: rgba(248, 248, 248, 0.9);
+    margin-top: 10px;
+    font-family: 'Ringbearer Medium';
+    background: linear-gradient(45deg, var(--goudgeel), #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 
-    .sudden-death{
-        text-decoration: none;
-        color: black;
-    }
 
-    .ten-rounds {
-        text-decoration: none;
-        color: black;
-    }
 
-    .two_mode_buttons{
-        display: flex;
-        flex-direction: column;
-        margin-top: -5%;
-    }
 
-    button {
-        font-family: 'Ringbearer Medium';
-        margin: 10px 0; 
-        background:var(--goudgeel); 
-        color: var(--donkergrijs); 
-        border: none;
-        padding: 15px 30px;
-        font-size: 1.2em;
-        cursor: pointer;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
-    }
-    
-    button:hover {
-        background: #f1c40f; 
-        color: #3e3b32; 
-    }
-    
-    .back-to-top {
-        position: fixed; 
-        bottom: 20px;
-        right: 20px;
-        border-radius: 5px;
-        padding: 10px; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        cursor: pointer; 
-        transition: background-color 0.3s; 
-        color: var(--goudgeel);
-        text-decoration: none;
-    }
-    
-    .back-to-top:hover {
-        background-color: rgba(0, 0, 0, 0.8); 
+}
 
-    }
+.two-mode-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 40px;
+    animation: fadeInUp 2s ease-out 0.5s both;
+}
 
-    footer{
-        margin-top: -2%;
-    }
+.game-mode-button {
+    font-family: 'Ringbearer Medium', serif;
+    background: linear-gradient(135deg, var(--goudgeel), #FFA500);
+    color: var(--donkergrijs);
+    border: none;
+    padding: 18px 40px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
 
+.game-mode-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.game-mode-button:hover::before {
+    left: 100%;
+}
+
+.game-mode-button:hover {
+    background: linear-gradient(135deg, #f1c40f, #e67e22);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.game-mode-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.game-mode-button a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(139, 87, 42, 0.9);
+    color: var(--goudgeel);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    font-size: 1.5rem;
+}
+
+.back-to-top:hover {
+    background: var(--lotr-brown);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Animatie index*/
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.game-mode-button:nth-child(1) {
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.game-mode-button:nth-child(2) {
+    animation: pulse 3s ease-in-out infinite 1.5s;
+}
     @media (max-width: 412px) {
         header {
             flex-direction: column;
@@ -879,7 +1008,7 @@ button:active {
             padding: 10px;
         }
     }
-}
+
 
 
 /* suddenDeath en tenRounds*/
@@ -1357,121 +1486,189 @@ input[type="radio"]:checked + label {
 }
 /* css for favorites page*/
 
-.favoriteQuotes{
-    background-image: url; 
-    margin: 0;
-    padding: 20px;
+.favoriteQuotes {
     background-image: url(../assets/images/achtergrond.jpg);
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed ;
+    background-attachment: fixed;
     background-size: cover;
-
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
 }
 
-.favoritesH1{
+.favoritesH1 {
     color: #8B572A;
-    font-family: 'Ringbearer Medium';
+    font-family: 'Ringbearer Medium', serif;
     text-align: center;
     font-size: 2.5rem;
-
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-hr{
+hr {
     border: 1px solid #8B572A;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    opacity: 0.7;
 }
 
+.buttons {
+    text-align: right;
+    margin-bottom: 25px;
+}
 
-.favoritesButton  {
-    font-family: arial ,sans-serif;
-    margin: 10px 0; 
-    background:#8B572A; 
-    color: var(--parelwit); 
+.favoritesButton {
+    font-family: Arial, sans-serif;
+    background: #8B572A;
+    color: #fff;
     border: none;
-    padding: 10px 15px;
-    font-size: 0.9em;
+    padding: 12px 20px;
+    font-size: 0.9rem;
     cursor: pointer;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
-    display: flex;
-    gap: 10px;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
     display: inline-block;
-    margin-left: 75%;
-
+    transition: all 0.3s ease;
 }
 
+.favoritesButton:hover {
+    background: #a0642f;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
 
-.quotes{
-    padding-left: 15px;
-    margin-bottom: 15px;
+.quotes {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .quoteDetail {
-    background-color: #fff;
-    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     margin-bottom: 20px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(139, 87, 42, 0.1);
 }
 
 .quoteContent {
     border-left: 4px solid #8B572A;
-    padding-left: 15px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.quoteHeader {
+    margin-bottom: 15px;
 }
 
 .quoteCharacter {
-    margin: 0 0 5px 0;
+    margin: 0 0 8px 0;
     color: #8B572A;
+    font-size: 1.3rem;
+    font-weight: 600;
 }
 
 .quoteCharacter a {
     color: #8B572A;
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.quoteHeader {
-    margin-bottom: 10px;
+.quoteCharacter a:hover {
+    color: #a0642f;
+    text-decoration: underline;
 }
 
 .quoteMovie {
-    margin: 0;
+    margin: 0 0 15px 0;
     color: #666;
     font-size: 0.9rem;
+    font-style: italic;
 }
+
 .quoteText {
     font-style: italic;
-    margin: 15px 0;
+    margin: 0 0 20px 0;
     font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+    padding: 10px 0;
 }
 
+.formDeleteFav {
+    margin: 0;
+    padding: 0;
+}
 
-.deleteFavorite{
-    font-family: arial ,sans-serif;
-    margin: 10px 0; 
-    background:#8B572A; 
-    color: var(--parelwit); 
+.deleteFavorite {
+    font-family: Arial, sans-serif;
+    background: #c25e5e;
+    color: #fff;
     border: none;
-    padding: 10px 15px;
-    font-size: 0.9em;
+    padding: 8px 16px;
+    font-size: 0.85rem;
     cursor: pointer;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); 
-    display: flex;
-    gap: 10px;
-    display: inline-block;
-        
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    float: left;
 }
 
-
-
-
-
-
-button:hover {
-background: #f1c40f; 
-color: #3e3b32; 
+.deleteFavorite:hover {
+    background:#8B572A;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
 }
+
+.noFavorites {
+    text-align: center;
+    color: #8B572A;
+    font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 50px auto;
+    line-height: 1.6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .favoriteQuotes {
+        padding: 15px;
+    }
+    
+    .favoritesH1 {
+        font-size: 2rem;
+    }
+    
+    .buttons {
+        text-align: center;
+    }
+    
+    .quoteDetail {
+        padding: 15px;
+    }
+    
+    .quoteContent {
+        padding-left: 15px;
+    }
+    
+    .quoteText {
+        font-size: 1rem;
+    }
+}
+
+/* Clear floats */
+.quoteContent::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
 /* Favorites Page Styles */
 
 
