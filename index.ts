@@ -44,17 +44,8 @@ app.get("/", (req, res) => {
 
 app.use("/",loginRouter); 
 
-app.use("/", secureMiddleware , gameRouter);
+app.use("/registration", registerRouter); 
 
-app.get("/", (req, res) => {
-  if (!req.session.user) {
-    return res.render("landing", {
-      title: "Landing Page",
-      message: "Welcome to our application"
-    });
-  }
-  return res.redirect("/index");
-});
 
 
 app.get("/index", secureMiddleware, (req, res) => {
@@ -66,20 +57,10 @@ app.get("/index", secureMiddleware, (req, res) => {
 });
 
 
-app.use("/registration", registerRouter);
-
-
-app.get("/favoriteCharacter", (req, res) => {
-    res.render("favoriteCharacter", {
-        title: "favoriteCharacter",
-        message: "favoritCharacter"
-
-    });
-});
 
 app.use('/', favoriteRouter);
 app.use('/', blacklistedRouter);
-
+app.use("/", secureMiddleware , gameRouter);
 
 
 app.listen(app.get("port"), async() => {
