@@ -1,4 +1,4 @@
-import express, { Express, Request, response, Response } from "express";
+import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import path from "path";
 import { User } from "./interfaces";
@@ -36,25 +36,18 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("landing", {
-    title: "Landing Page",
-    message: "Welcome to our application"
-  });
+  if (req.session.user) {
+    return res.redirect('/index');
+  }
+  return res.redirect('/login');
 });
+
 
 app.use("/",loginRouter); 
 
 app.use("/", secureMiddleware , gameRouter);
 
-app.get("/", (req, res) => {
-  if (!req.session.user) {
-    return res.render("landing", {
-      title: "Landing Page",
-      message: "Welcome to our application"
-    });
-  }
-  return res.redirect("/index");
-});
+app.use("/registration", registerRouter);
 
 
 app.get("/index", secureMiddleware, (req, res) => {
@@ -66,16 +59,6 @@ app.get("/index", secureMiddleware, (req, res) => {
 });
 
 
-app.use("/registration", registerRouter);
-
-
-app.get("/favoriteCharacter", (req, res) => {
-    res.render("favoriteCharacter", {
-        title: "favoriteCharacter",
-        message: "favoritCharacter"
-
-    });
-});
 
 app.use('/', favoriteRouter);
 app.use('/', blacklistedRouter);
@@ -91,4 +74,3 @@ app.listen(app.get("port"), async() => {
         process.exit(1);
     }
 });
-

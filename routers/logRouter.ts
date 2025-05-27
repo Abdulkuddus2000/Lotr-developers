@@ -5,8 +5,8 @@ import { secureMiddleware, checkLoggedIn } from "../middleWare/secureMiddleware"
 
 const router = express.Router();
 
-router.get("/login", (req, res) => {
-  res.render("login");
+router.get('/login', checkLoggedIn, (req, res) => {
+  res.render('login');
 });
 
 router.post('/login', async (req, res) => {
@@ -40,9 +40,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.get('/login', checkLoggedIn, (req, res) => {
-    res.render('login');
-});
+
 
 router.post("/logout", secureMiddleware, (req, res) => {
   req.session.destroy((err) => {
