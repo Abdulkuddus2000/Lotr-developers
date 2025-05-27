@@ -158,7 +158,6 @@ h3{
     background-color: rgba(0, 0, 0, 0.8); 
 }
 
-
 /* css for landing.html */
 
 .landingPage{
@@ -204,15 +203,15 @@ h3{
     padding: 40px;
     border-radius: 14px;
     text-align: center;
-    color: white;
+    color: black;
     max-width: 450px;
     width: 100%;
 }
 
 .alert-contentLanding h2 {
-    font-size: 45px;
+    font-size: 35px;
     margin-bottom: 24px;
-    color: #fff;
+    color: black;
 }
 
 .alert-contentLanding p {
@@ -288,27 +287,44 @@ h3{
 }
 
 .neonText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     font-family: 'Courier New', Courier, monospace;
     font-size: 20px;
     font-weight: bold;
     color: var(--goudgeel);
-    position: absolute; 
-    margin-top: 160px;
-    margin-left: 90px;
+    margin-top: 120px;
+    margin-left: -10px;
     z-index: 2; 
     pointer-events: none; 
 }
+
+.game1 .neonText{
+    margin-left: -30px;
+}
+
+
+.game2 .neonText{
+    margin-left: -20px;
+}
+
 .game3 .neonText{
-    margin-left: 80px;
+    margin-left: -40px;
 }
 
 
 .game4 .neonText{
-    margin-left: 60px;
+    margin-left: -60px;
 }
 
+.game5 .neonText{
+    margin-left: -20px;
+}
+
+
 .game6 .neonText{
-    margin-left: 90px;
+    margin-left: -40px;
 }
 
 .game {
@@ -2206,20 +2222,23 @@ hr {
 
 .blacklist-item {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    color:  white;
-    padding: 10px;
-    width: 100%; 
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    padding: 15px 20px;
+    width: calc(100% - 40px);
     border-bottom: 1px solid #555;
     font-size: 18px;
+    margin: 0 20px; 
 }
 
 .icon-edit {
-    color: var(--goudgeel);
+    color: var(--goudgeel, #ffd700);
     text-decoration: none;
     cursor: pointer;
-    padding: 1px;
+    padding: 5px;
+    margin: 0 3px; 
+    transition: color 0.3s ease;
 }
 
 .icon-edit:hover{
@@ -2393,6 +2412,7 @@ hr {
         padding: 12px 8px;
         flex-wrap: wrap;
         min-height: 50px;
+ 
     }
     
     .icon-edit {
