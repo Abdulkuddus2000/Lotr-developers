@@ -13,22 +13,23 @@
        </a>
    </figure>
    <main class="mainRegistration">
-        <form method="post">
+    <section class="registration-clean">
+        <form class="register-form" method="post">
             <h2 class="h2-Registration">Registreer</h2>
             <section class="form-registration">
-                <label for="firstname">Gebruikersnaam</label>
+                <label for="firstname">Gebruikersnaam:</label>
                 <input type="text" id="usernameRegistrationPage" name="username" placeholder="" required>
                 <br>
             </section>
             <section class="form-registration">
-                <label for="password">Wachtwoord</label>
+                <label for="password">Wachtwoord:</label>
                 <input type="password" id="passwordRegistrationPage" name="password" placeholder="*****" required>
                 <i class="fa fa-eye eyeIcon eyeIcon1" onmousedown="togglePasswordOnMouseDown(event)"
                 onmouseup="togglePasswordOnMouseUp(event)"></i>
                 <br>
             </section>
             <section class="form-registration">
-                <label for="confirm-password">Bevestig uw wachtwoord</label>
+                <label for="confirm-password">Bevestig uw wachtwoord:</label>
                 <input type="password" id="passwordRegistrationPage" name="confirm-password" placeholder="*****" required>
                 <i class="fa fa-eye eyeIcon eyeIcon1" onmousedown="togglePasswordOnMouseDown(event)"
                     onmouseup="togglePasswordOnMouseUp(event)"></i>
@@ -36,6 +37,8 @@
             </section>           
             <button type="submit" class="regiButton">Bevestigen</button>
         </form>
+    </section>
     </main>
-
+    <script src="../js/iconEyes.js"></script>
+</body>
     <%- include("partials/footer")%>

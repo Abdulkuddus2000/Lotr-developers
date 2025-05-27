@@ -4,9 +4,6 @@ import { checkLoggedIn } from "../middleWare/secureMiddleware";
 
 const router = express.Router();
 
-router.get("/", (req, res) => {
-    res.render("registration");
-});
 
 router.get("/registration", (req, res) => {
     res.render("registration");
