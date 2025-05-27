@@ -4,11 +4,13 @@ import { checkLoggedIn } from "../middleWare/secureMiddleware";
 
 const router = express.Router();
 
+router.get("/", (req, res) => {
+    res.render("registration");
+});
 
 router.get("/registration", (req, res) => {
     res.render("registration");
 });
-
 router.post("/", async (req, res) => {
     const { username, password, "confirm-password": confirmPassword } = req.body;
     

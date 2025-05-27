@@ -36,19 +36,16 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  if (req.session.user) {
-    return res.redirect('/index');
-  }
-  return res.redirect('/login');
+  res.render("landing", {
+    title: "Landing Page",
+    message: "Welcome to our application"
+  });
 });
 
 
 app.use("/",loginRouter); 
 
 app.use("/registration", registerRouter); 
-
-app.use("/registration", registerRouter);
-
 
 app.get("/index", secureMiddleware, (req, res) => {
   res.render("index", {

@@ -9,7 +9,6 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
-
 router.post('/login', async (req, res) => {
   console.log('Login form data:', req.body);
   
