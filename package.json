@@ -4,8 +4,8 @@
   "main": "index.ts",
   "scripts": {
     "build": "tsc",
-    "start": " npm start",
-    "start:prod": "node dist/index.js"
+    "start": " npx ts-node index.ts",
+    "start:prod": ""
   },
   "author": "",
   "license": "ISC",
