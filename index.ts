@@ -45,7 +45,7 @@ app.get("/", (req, res) => {
 
 app.use("/",loginRouter); 
 
-app.use("/", secureMiddleware , gameRouter);
+app.use("/registration", registerRouter); 
 
 app.use("/registration", registerRouter);
 
@@ -62,7 +62,7 @@ app.get("/index", secureMiddleware, (req, res) => {
 
 app.use('/', favoriteRouter);
 app.use('/', blacklistedRouter);
-
+app.use("/", secureMiddleware , gameRouter);
 
 
 app.listen(app.get("port"), async() => {
